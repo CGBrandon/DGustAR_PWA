@@ -1,0 +1,237 @@
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\appsettings.Development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\appsettings.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Data\db.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.runtime.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.exe
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.deps.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.runtimeconfig.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Internal.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.csproj.AssemblyReference.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfoInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.csproj.CoreCompileInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.sourcelink.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\scopedcss\bundle\DGustAR.Api.styles.css
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\staticwebassets.build.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\staticwebassets.development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\swae.build.ex.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR..325C15EB.Up2Date
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\refint\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\DGustAR.Api.genruntimeconfig.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\ref\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\appsettings.Development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\appsettings.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Data\db.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.runtime.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.exe
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.deps.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.runtimeconfig.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Internal.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.csproj.AssemblyReference.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfoInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.csproj.CoreCompileInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.sourcelink.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\scopedcss\bundle\DGustAR.Api.styles.css
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\staticwebassets.build.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\staticwebassets.development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\swae.build.ex.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR..325C15EB.Up2Date
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\refint\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\DGustAR.Api.genruntimeconfig.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\ref\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\ProyectoAPIs - completo\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\appsettings.Development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\appsettings.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Data\db.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.staticwebassets.runtime.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.exe
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.deps.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.runtimeconfig.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Bcl.Cryptography.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Data.SqlClient.Internal.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\cs\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\de\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\es\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\fr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\it\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\ja\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\ko\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\pl\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\pt-BR\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\ru\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\tr\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.csproj.AssemblyReference.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.GeneratedMSBuildEditorConfig.editorconfig
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfoInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.AssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.csproj.CoreCompileInputs.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cs
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.sourcelink.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\scopedcss\bundle\DGustAR.Api.styles.css
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.build.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.development.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\swae.build.ex.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR..325C15EB.Up2Date
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\refint\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.pdb
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.genruntimeconfig.cache
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\ref\DGustAR.Api.dll
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

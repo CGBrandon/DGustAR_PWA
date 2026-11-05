@@ -1,0 +1,7 @@
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\empleados.html
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\index.html
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\js\app.js
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\js\auth.js
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\js\config.js
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\js\login.js
+D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\wwwroot\login.html
