@@ -1,0 +1,235 @@
+## ============================================================
+## .gitignore — DGustAR (ASP.NET Core API + Vue PWA)
+## Estricto: solo se sube lo necesario para que el proyecto
+## compile y se entienda. Nada de binarios, secretos ni caché.
+## ============================================================
+
+
+# ============================================================
+# 1. SECRETOS Y VARIABLES DE ENTORNO  ← NUNCA al repo
+# ============================================================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.staging
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+credentials.json
+secrets/
+secrets.json
+local.settings.json
+# appsettings con overrides locales (pueden tener contraseñas reales)
+appsettings.Local.json
+appsettings.Production.json
+
+
+# ============================================================
+# 2. .NET — COMPILADOS Y CACHÉ (se regeneran con `dotnet build`)
+# ============================================================
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache / VS Community
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Archivos temporales de compilación
+*.ilk
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.vspscc
+*.vssscc
+*.pidb
+*.svclog
+*.scc
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+*.log
+*.[Cc]ache
+
+# NuGet (los paquetes se restauran automáticamente)
+*.nupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+# Publish / deploy
+publish/
+*.[Pp]ublish.xml
+*.azurePubxml
+*.publishproj
+*.publishsettings
+PublishScripts/
+csx/
+*.build.csdef
+ecf/
+rcf/
+
+
+# ============================================================
+# 3. FRONTEND (Vite + Vue + Node) — GENERADOS O PESADOS
+# ============================================================
+node_modules/
+**/node_modules/
+Frontend/node_modules/
+Frontend/dist/
+Frontend/dist-ssr/
+Frontend/.vite/
+Frontend/.cache/
+Frontend/.eslintcache
+
+# Archivos de bloqueo de paquetes — solo subir uno
+# (ya existe Frontend/package.json; el lock se puede regenerar)
+# Frontend/package-lock.json   ← se SUBE para reproducibilidad
+
+
+# ============================================================
+# 4. DATOS LOCALES DE LA API  ← contienen ventas/PINs reales
+# ============================================================
+# Fallback JSON con datos de negocio (generado en runtime)
+API/Data/db.json
+API/Data/*.local.json
+API/Data/backups/
+
+# Archivos y modelos 3D subidos en runtime por usuarios/admin
+API/wwwroot/uploads/
+wwwroot/uploads/
+
+# Bases de datos SQLite locales
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# SQL Server archivos adjuntos locales
+*.mdf
+*.ldf
+
+
+# ============================================================
+# 5. SISTEMA OPERATIVO Y EDITORES
+# ============================================================
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+~$*
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# JetBrains (Rider)
+.idea/
+*.sln.iml
+
+# VS Code (no es el IDE principal, pero puede coexistir)
+.vscode/*
+!.vscode/extensions.json
+
+# Python (por si algún script de utilidad)
+__pycache__/
+*.pyc
+*.pyo
+
+
+# ============================================================
+# 6. HERRAMIENTAS DE CI / COBERTURA / PRUEBAS
+# ============================================================
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.VisualState.xml
+TestResult.xml
+coverage/
+coverage.opencover.xml
+coverage.json
+coverage.cobertura.xml
+**/coveragereport
+.nyc_output/
+
+# dotnet home sandbox
+.dotnet-home/
+
+
+# ============================================================
+# 7. MISCELÁNEA
+# ============================================================
+*.plg
+*.opt
+*.GhostDoc.xml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+.sass-cache/
+.fake/
+.cr/
+paket-files/
+.paket/paket.exe
+Generated_Code/
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+FakesAssemblies/
+AutoTest.Net/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+ClientBin/
+.builds
+.ntvs_analysis.dat
+.mfractor
+profile.arm.json
