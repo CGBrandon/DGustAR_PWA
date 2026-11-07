@@ -150,6 +150,104 @@
     </script>
     <script type="module" crossorigin src="/assets/index-CebOQXM1.js?v=7"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BV5RYNIR.css?v=7">
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         Google Maps Deep Link Booster
+         Intercepta cualquier intento de abrir una reseña de Google Maps
+         y fuerza la apertura en la app nativa (Maps) en lugar del navegador.
+         Funciona en modo PWA standalone, Chrome, Safari y WebView.
+         ══════════════════════════════════════════════════════════════════ -->
+    <script>
+    (function() {
+      'use strict';
+
+      // Abre la app de Google Maps para dejar reseña usando el mejor método
+      // disponible según el dispositivo. Devuelve true si lanzó un deep link.
+      function openMapsAppForReview(placeId, fallbackUrl) {
+        if (!placeId) {
+          window.open(fallbackUrl || 'https://maps.google.com', '_blank', 'noopener,noreferrer');
+          return false;
+        }
+
+        var isIOS     = /iP(hone|od|ad)/.test(navigator.userAgent);
+        var isAndroid = /Android/i.test(navigator.userAgent);
+
+        if (isIOS) {
+          // iOS: comgooglemaps:// abre la app de Google Maps directamente
+          var iosUrl = 'comgooglemaps://?action=writereview&placeid=' + placeId;
+          var fallback = fallbackUrl || ('https://search.google.com/local/writereview?placeid=' + placeId);
+
+          // Intentamos abrir la app. Si no está instalada, el iframe no hace nada
+          // y el setTimeout abre el fallback en Safari (que iOS Maps puede interceptar)
+          var iframe = document.createElement('iframe');
+          iframe.style.cssText = 'position:fixed;top:-9999px;width:1px;height:1px;border:0;';
+          document.body.appendChild(iframe);
+          var launched = false;
+
+          window.addEventListener('blur', function onBlur() {
+            launched = true;
+            window.removeEventListener('blur', onBlur);
+          }, { once: true });
+
+          try { iframe.contentWindow.location.href = iosUrl; } catch(e) {}
+          iframe.src = iosUrl;
+
+          setTimeout(function() {
+            document.body.removeChild(iframe);
+            if (!launched) {
+              // Maps no está instalado: abrimos web de Google Maps
+              window.location.href = fallback;
+            }
+          }, 2000);
+
+        } else if (isAndroid) {
+          // Android: intent:// abre directo la app de Maps sin pasar por Chrome
+          var reviewUrl = 'https://search.google.com/local/writereview?placeid=' + placeId;
+          var intentUrl = 'intent://maps.google.com/maps?action=writereview&placeid=' + placeId
+            + '#Intent;scheme=https;package=com.google.android.apps.maps'
+            + ';S.browser_fallback_url=' + encodeURIComponent(reviewUrl)
+            + ';end';
+          window.location.href = intentUrl;
+
+        } else {
+          // Desktop u otro dispositivo: abrir en pestaña nueva
+          var webUrl = fallbackUrl || ('https://search.google.com/local/writereview?placeid=' + placeId);
+          window.open(webUrl, '_blank', 'noopener,noreferrer');
+        }
+        return true;
+      }
+
+      // Exponer globalmente para que el bundle pueda llamarla si quiere,
+      // pero principalmente interceptamos los clicks del DOM.
+      window.__dgustar_openMapsReview = openMapsAppForReview;
+
+      // Interceptor de clicks: cuando el usuario toca cualquier enlace/botón
+      // que apunta a search.google.com/local/writereview o g.page/r/,
+      // lo redirigimos por nuestro método mejorado.
+      document.addEventListener('click', function(e) {
+        var el = e.target;
+        // Buscar el <a> más cercano aunque se haga click en un hijo
+        while (el && el.tagName !== 'A') el = el.parentElement;
+        if (!el) return;
+
+        var href = el.getAttribute('href') || '';
+        var isReviewLink = href.includes('writereview') || href.includes('g.page/r/');
+        if (!isReviewLink) return;
+
+        // Extraer el placeId de la URL si lo tiene
+        var placeIdMatch = href.match(/placeid=([^&]+)/);
+        var placeId = placeIdMatch ? placeIdMatch[1] : null;
+
+        // Si el placeId es un placeholder o no existe, dejar pasar normal
+        if (!placeId || placeId.includes('CONFIGURA') || placeId.includes('sample')) return;
+
+        e.preventDefault();
+        e.stopPropagation();
+        openMapsAppForReview(placeId, href);
+      }, true); // useCapture: true para interceptar antes que el bundle
+
+    })();
+    </script>
   </head>
   <body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
     <div id="app"></div>

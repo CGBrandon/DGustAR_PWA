@@ -406,10 +406,55 @@ public class StoreRepository : IStoreRepository
         lock (_lock)
         {
             if (dto.GoogleMapsUrl != null) _restaurant.GoogleMapsUrl = dto.GoogleMapsUrl.Trim();
-            if (dto.GoogleMapsReviewUrl != null) _restaurant.GoogleMapsReviewUrl = dto.GoogleMapsReviewUrl.Trim();
-            if (dto.GoogleMapsRating.HasValue) _restaurant.GoogleMapsRating = dto.GoogleMapsRating.Value;
             if (dto.GoogleMapsReviewsCount.HasValue) _restaurant.GoogleMapsReviewsCount = dto.GoogleMapsReviewsCount.Value;
-            if (dto.GooglePlaceId != null) _restaurant.GooglePlaceId = dto.GooglePlaceId.Trim();
+            if (dto.GoogleMapsRating.HasValue) _restaurant.GoogleMapsRating = dto.GoogleMapsRating.Value;
+
+            // Si llega un Place ID, úsalo para auto-generar la URL de reseña
+            // (a menos que el admin haya escrito una URL personalizada)
+            if (dto.GooglePlaceId != null)
+            {
+                var placeId = dto.GooglePlaceId.Trim();
+                _restaurant.GooglePlaceId = placeId;
+
+                // Si la URL de reseña que manda el admin está vacía o genérica,
+                // la construimos automáticamente desde el Place ID para que funcione
+                // la app nativa de Maps sin pedir login
+                bool reviewUrlIsGeneric = string.IsNullOrWhiteSpace(dto.GoogleMapsReviewUrl)
+                    || dto.GoogleMapsReviewUrl.Contains("ChIJ_CONFIGURA_EN_ADMIN")
+                    || dto.GoogleMapsReviewUrl.Contains("ChIJN1t_tDeuEmsRUsoyG83frY4");
+
+                if (!string.IsNullOrEmpty(placeId) && reviewUrlIsGeneric)
+                {
+                    _restaurant.GoogleMapsReviewUrl =
+                        $"https://search.google.com/local/writereview?placeid={placeId}";
+                }
+                else if (dto.GoogleMapsReviewUrl != null)
+                {
+                    _restaurant.GoogleMapsReviewUrl = dto.GoogleMapsReviewUrl.Trim();
+                }
+
+                // Si la URL del perfil tampoco está configurada, la generamos desde el Place ID
+                bool profileUrlIsGeneric = string.IsNullOrWhiteSpace(dto.GoogleMapsUrl)
+                    || dto.GoogleMapsUrl == "https://maps.google.com"
+                    || dto.GoogleMapsUrl.Contains("CONFIGURA_EN_ADMIN");
+
+                if (!string.IsNullOrEmpty(placeId) && profileUrlIsGeneric)
+                {
+                    _restaurant.GoogleMapsUrl =
+                        $"https://www.google.com/maps/place/?q=place_id:{placeId}";
+                }
+                else if (dto.GoogleMapsUrl != null)
+                {
+                    _restaurant.GoogleMapsUrl = dto.GoogleMapsUrl.Trim();
+                }
+            }
+            else
+            {
+                // No llegó Place ID: guardar tal como vino
+                if (dto.GoogleMapsUrl != null) _restaurant.GoogleMapsUrl = dto.GoogleMapsUrl.Trim();
+                if (dto.GoogleMapsReviewUrl != null) _restaurant.GoogleMapsReviewUrl = dto.GoogleMapsReviewUrl.Trim();
+            }
+
             SaveData();
             return Task.FromResult(_restaurant);
         }

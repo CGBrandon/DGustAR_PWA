@@ -56,11 +56,24 @@ public class ReviewsController : ControllerBase
         var total = reviews.Count;
         var avg = total > 0 ? Math.Round((double)reviews.Average(r => r.Rating), 1) : 5.0;
 
+        var restInfo = _db.GetRestaurantInfo();
+        var clicksLog = _db.GetGoogleReviewClicksLog();
+
         return Ok(new
         {
             total,
             promedio = avg,
-            reviews
+            reviews,
+            google_maps = new
+            {
+                url            = restInfo.GoogleMapsUrl,
+                review_url     = restInfo.GoogleMapsReviewUrl,
+                rating         = restInfo.GoogleMapsRating,
+                reviews_count  = restInfo.GoogleMapsReviewsCount,
+                place_id       = restInfo.GooglePlaceId,
+                clicks_count   = restInfo.GoogleReviewsClicks,
+                recent_clicks  = clicksLog.Take(10).ToList()
+            }
         });
     }
 
