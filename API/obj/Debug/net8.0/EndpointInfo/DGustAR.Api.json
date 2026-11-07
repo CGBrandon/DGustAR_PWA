@@ -1261,6 +1261,10 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "notas": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

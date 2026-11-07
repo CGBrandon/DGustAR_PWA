@@ -1,1592 +1,1809 @@
 ﻿{
-  "restaurant": {
-    "nombre": "DGustAR Gastronom\u00EDa \u0026 AR",
-    "moneda": "MXN",
-    "simbolo_moneda": "$",
-    "telefono": "\u002B52 55 1234 5678",
-    "direccion": "Av. Tecnol\u00F3gica 100, Col. Innovaci\u00F3n Gastron\u00F3mica",
-    "activo": true,
-    "google_maps_url": "https://maps.google.com",
-    "google_maps_review_url": "https://g.page/r/sample/review",
-    "google_maps_rating": 4.9,
-    "google_maps_reviews_count": 128,
-    "google_place_id": "ChIJ_sample_place_id",
-    "google_reviews_clicks": 1
-  },
-  "tables": [
-    "Mesa 01",
-    "Mesa 02",
-    "Mesa 03",
-    "Mesa 04",
-    "Mesa 05",
-    "Mesa 06",
-    "Mesa 07",
-    "Mesa 08",
-    "Mesa 09",
-    "Mesa 10",
-    "Mesa 11",
-    "Mesa 12",
-    "Para Llevar"
-  ],
-  "categories": [
-    {
-      "id": "cat-burgers",
-      "nombre": "Hamburguesas Gourmet",
-      "slug": "hamburguesas",
-      "icono": "lunch_dining",
-      "emoji": "\uD83C\uDF54",
-      "orden": 1,
-      "activo": true
-    },
-    {
-      "id": "cat-pizzas",
-      "nombre": "Pizzas Artesanales",
-      "slug": "pizzas",
-      "icono": "local_pizza",
-      "emoji": "\uD83C\uDF55",
-      "orden": 2,
-      "activo": true
-    },
-    {
-      "id": "cat-snacks",
-      "nombre": "Snacks \u0026 Papas",
-      "slug": "snacks",
-      "icono": "fastfood",
-      "emoji": "\uD83C\uDF5F",
-      "orden": 3,
-      "activo": true
-    },
-    {
-      "id": "cat-postres",
-      "nombre": "Postres de Autor",
-      "slug": "postres",
-      "icono": "cake",
-      "emoji": "\uD83C\uDF70",
-      "orden": 4,
-      "activo": true
-    },
-    {
-      "id": "cat-bebidas",
-      "nombre": "Bebidas \u0026 Mocktails",
-      "slug": "bebidas",
-      "icono": "local_bar",
-      "emoji": "\uD83E\uDD64",
-      "orden": 5,
-      "activo": true
-    },
-    {
-      "id": "cat-cafe",
-      "nombre": "Caf\u00E9 de Especialidad",
-      "slug": "cafe",
-      "icono": "coffee",
-      "emoji": "\u2615",
-      "orden": 6,
-      "activo": true
-    }
-  ],
-  "products": [
-    {
-      "id": "prod-pizza-pepperoni",
-      "categoria_id": "cat-pizzas",
-      "nombre": "Pizza Pepperoni Suprema",
-      "descripcion": "Masa madre fermentada 48 horas, salsa de tomate San Marzano, mozzarella fior di latte y pepperoni artesanal.",
-      "precio_base": 189.00,
-      "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "modelo_3d": "/models/pizza.glb",
-      "tiempo_preparacion": 18,
-      "tiempo_preparacion_min": 18,
-      "disponible": true,
-      "destacado": true,
-      "alergenos": [
-        "Gluten",
-        "L\u00E1cteos"
-      ],
-      "ingredientes_base": [
-        "Masa madre 48h",
-        "Tomates San Marzano",
-        "Queso mozzarella",
-        "Pepperoni artesanal"
-      ],
-      "extras_disponibles": [
-        {
-          "id": "ext-extra-queso",
-          "nombre": "Extra Queso Mozzarella",
-          "precio": 30.00
-        },
-        {
-          "id": "ext-orilla-queso",
-          "nombre": "Orilla Rellena de Queso",
-          "precio": 35.00
-        }
-      ]
-    },
-    {
-      "id": "prod-papas-trufa",
-      "categoria_id": "cat-snacks",
-      "nombre": "Papas R\u00FAsticas Trufa \u0026 Parmesano",
-      "descripcion": "Papas cortadas con piel, fritas a doble cocci\u00F3n, aceite de trufa blanca y queso parmesano Reggiano.",
-      "precio_base": 89.00,
-      "imagen": "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "modelo_3d": "/models/burger.glb",
-      "tiempo_preparacion": 10,
-      "tiempo_preparacion_min": 10,
-      "disponible": true,
-      "destacado": false,
-      "alergenos": [
-        "L\u00E1cteos"
-      ],
-      "ingredientes_base": [
-        "Papas r\u00FAsticas",
-        "Aceite de trufa",
-        "Queso parmesano"
-      ],
-      "extras_disponibles": [
-        {
-          "id": "ext-dip-ajo",
-          "nombre": "Dip de Ajo Negro y Romero",
-          "precio": 18.00
-        }
-      ]
-    },
-    {
-      "id": "prod-32f11ac0",
-      "categoria_id": "cat-burgers",
-      "nombre": "Tacos al Pastor",
-      "descripcion": "Deliciosos tacos",
-      "precio_base": 99,
-      "imagen": "",
-      "modelo_3d": "",
-      "tiempo_preparacion": 15,
-      "tiempo_preparacion_min": 15,
-      "disponible": true,
-      "destacado": false,
-      "alergenos": [],
-      "ingredientes_base": [],
-      "extras_disponibles": []
-    }
-  ],
-  "orders": [
-    {
-      "id": "ord-muu7e3xc-mn76",
-      "order_token": "86dd6299-591b-49a1-89be-33b6db64bd45",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Luc\u00EDa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 119,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-snack-boneless",
-          "nombre": "Boneless Crujientes BBQ Ahumada",
-          "imagen": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 119,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 119,
-          "subtotal": 119
-        }
-      ],
-      "subtotal": 119,
-      "total": 119,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T19:18:01.056Z",
-      "actualizado_en": "2026-10-26T00:30:33.3209459Z",
-      "cerrada": false,
-      "cerrada_en": null,
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T19:18:01.056Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "EN_PREPARACION",
-          "timestamp": "2026-10-26T00:30:27.3374301Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "LISTO",
-          "timestamp": "2026-10-26T00:30:29.2924338Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-26T00:30:33.3132231Z",
-          "cambiado_por": "Personal / Cocina"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu7e3x9-2dgb",
-      "order_token": "b71a441f-7917-4e6e-b352-48a5ee963371",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Andr\u00E9s",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 189,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-pepperoni",
-          "nombre": "Pizza Pepperoni Suprema",
-          "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 189,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 189,
-          "subtotal": 189
-        }
-      ],
-      "subtotal": 189,
-      "total": 189,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T19:18:01.053Z",
-      "actualizado_en": "2026-10-26T00:30:34.7306865Z",
-      "cerrada": false,
-      "cerrada_en": null,
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T19:18:01.053Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "EN_PREPARACION",
-          "timestamp": "2026-10-26T00:30:28.1866980Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "LISTO",
-          "timestamp": "2026-10-26T00:30:29.8368456Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-26T00:30:34.7231584Z",
-          "cambiado_por": "Personal / Cocina"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu7e3x4-hqc4",
-      "order_token": "c07884a4-5107-4235-b684-962a23c4f22e",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 95,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-postre-cheesecake",
-          "nombre": "Cheesecake Vasco Frutos Rojos",
-          "imagen": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 95,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 95,
-          "subtotal": 95
-        }
-      ],
-      "subtotal": 95,
-      "total": 95,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T19:18:01.048Z",
-      "actualizado_en": "2026-10-04T19:18:01.679Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T19:18:01.048Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T19:18:01.679Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu7e3x1-nuxa",
-      "order_token": "b70b681a-15b8-4466-8ded-118d9c539d51",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 288,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149,
-          "subtotal": 149
-        },
-        {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble Bacon",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139
-        }
-      ],
-      "subtotal": 288,
-      "total": 288,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T19:18:01.046Z",
-      "actualizado_en": "2026-10-04T19:18:01.679Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T19:18:01.046Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T19:18:01.679Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu6a5ps-962y",
-      "order_token": "d92c37ce-9129-4c8b-aa73-dca877e0ab85",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Luc\u00EDa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 119,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-snack-boneless",
-          "nombre": "Boneless Crujientes BBQ Ahumada",
-          "imagen": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 119,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 119,
-          "subtotal": 119
-        }
-      ],
-      "subtotal": 119,
-      "total": 119,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:46:57.136Z",
-      "actualizado_en": "2026-10-04T19:18:01.042Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:46:57.136Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T19:18:01.042Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu6a5pr-x1y1",
-      "order_token": "68d28ea8-a25f-47a0-8240-5616c007eaca",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Andr\u00E9s",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 189,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-pepperoni",
-          "nombre": "Pizza Pepperoni Suprema",
-          "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 189,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 189,
-          "subtotal": 189
-        }
-      ],
-      "subtotal": 189,
-      "total": 189,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:46:57.135Z",
-      "actualizado_en": "2026-10-04T19:18:01.042Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:46:57.135Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T19:18:01.042Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu6a5pn-u9k3",
-      "order_token": "7321bfde-86f0-4ab7-bd3a-52d1e2304ad9",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 95,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-postre-cheesecake",
-          "nombre": "Cheesecake Vasco Frutos Rojos",
-          "imagen": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 95,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 95,
-          "subtotal": 95
-        }
-      ],
-      "subtotal": 95,
-      "total": 95,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:46:57.131Z",
-      "actualizado_en": "2026-10-04T18:46:57.752Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:46:57.131Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:46:57.752Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu6a5pk-xkfx",
-      "order_token": "c062adee-575c-4668-ae12-fee90e0e5c55",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 288,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149,
-          "subtotal": 149
-        },
-        {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble Bacon",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139
-        }
-      ],
-      "subtotal": 288,
-      "total": 288,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:46:57.128Z",
-      "actualizado_en": "2026-10-04T18:46:57.752Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:46:57.128Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:46:57.752Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4nre7-nlpb",
-      "order_token": "ebcd735d-7a09-465f-b26a-ca4f0bbc46a0",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Luc\u00EDa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 119,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-snack-boneless",
-          "nombre": "Boneless Crujientes BBQ Ahumada",
-          "imagen": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 119,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 119,
-          "subtotal": 119
-        }
-      ],
-      "subtotal": 119,
-      "total": 119,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:01:32.527Z",
-      "actualizado_en": "2026-10-04T18:46:57.126Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:01:32.527Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:46:57.126Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4nre5-uzid",
-      "order_token": "7dd6ba78-12c0-481b-b491-5c3973a5eefa",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Andr\u00E9s",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 189,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-pepperoni",
-          "nombre": "Pizza Pepperoni Suprema",
-          "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 189,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 189,
-          "subtotal": 189
-        }
-      ],
-      "subtotal": 189,
-      "total": 189,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:01:32.525Z",
-      "actualizado_en": "2026-10-04T18:46:57.126Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:01:32.525Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:46:57.126Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4nre2-fwx3",
-      "order_token": "8baf314c-2f96-4d16-b1bd-8152511aaaa0",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 95,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-postre-cheesecake",
-          "nombre": "Cheesecake Vasco Frutos Rojos",
-          "imagen": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 95,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 95,
-          "subtotal": 95
-        }
-      ],
-      "subtotal": 95,
-      "total": 95,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:01:32.522Z",
-      "actualizado_en": "2026-10-04T18:01:33.139Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:01:32.522Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:01:33.139Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4nrdz-i0gj",
-      "order_token": "a8bec642-4623-4e4e-8088-57682653ab60",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 288,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149,
-          "subtotal": 149
-        },
-        {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble Bacon",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139
-        }
-      ],
-      "subtotal": 288,
-      "total": 288,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T18:01:32.519Z",
-      "actualizado_en": "2026-10-04T18:01:33.139Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T18:01:32.519Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:01:33.139Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4j60m-w07k",
-      "order_token": "4cd6a494-1684-451a-9d02-32c26d79113e",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Luc\u00EDa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 119,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-snack-boneless",
-          "nombre": "Boneless Crujientes BBQ Ahumada",
-          "imagen": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 119,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 119,
-          "subtotal": 119
-        }
-      ],
-      "subtotal": 119,
-      "total": 119,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T17:57:58.198Z",
-      "actualizado_en": "2026-10-04T18:01:32.516Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T17:57:58.198Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:01:32.516Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4j60k-o44o",
-      "order_token": "51dffe24-e73a-4ce6-bc6c-cebf48612d9f",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Andr\u00E9s",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 189,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-pepperoni",
-          "nombre": "Pizza Pepperoni Suprema",
-          "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 189,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 189,
-          "subtotal": 189
-        }
-      ],
-      "subtotal": 189,
-      "total": 189,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T17:57:58.196Z",
-      "actualizado_en": "2026-10-04T18:01:32.516Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T17:57:58.196Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T18:01:32.516Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4j60f-ha13",
-      "order_token": "202c18fd-c797-495f-bcd9-2b9503ee49c9",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 95,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-postre-cheesecake",
-          "nombre": "Cheesecake Vasco Frutos Rojos",
-          "imagen": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 95,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 95,
-          "subtotal": 95
-        }
-      ],
-      "subtotal": 95,
-      "total": 95,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T17:57:58.191Z",
-      "actualizado_en": "2026-10-04T17:57:58.824Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T17:57:58.191Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T17:57:58.824Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-muu4j60d-hn1o",
-      "order_token": "4ea8bd20-2d93-432c-a6db-54f855815a41",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 288,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149,
-          "subtotal": 149
-        },
-        {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble Bacon",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139
-        }
-      ],
-      "subtotal": 288,
-      "total": 288,
-      "notas_cliente": "",
-      "creado_en": "2026-10-04T17:57:58.189Z",
-      "actualizado_en": "2026-10-04T17:57:58.824Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-04T17:57:58.189Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T17:57:58.824Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-mumweeyw-t4iv",
-      "order_token": "31695423-bd95-4eda-a538-0263d868e28b",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Luc\u00EDa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 119,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-snack-boneless",
-          "nombre": "Boneless Crujientes BBQ Ahumada",
-          "imagen": "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 119,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 119,
-          "subtotal": 119
-        }
-      ],
-      "subtotal": 119,
-      "total": 119,
-      "notas_cliente": "",
-      "creado_en": "2026-09-29T16:35:56.360Z",
-      "actualizado_en": "2026-10-04T17:57:58.185Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-09-29T16:35:56.360Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T17:57:58.185Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-mumweeyu-c63v",
-      "order_token": "6407745e-8877-4085-9bdb-ec94878721c4",
-      "mesa": "Mesa 05",
-      "tipo_cuenta": "SEPARADA",
-      "comensal": "Andr\u00E9s",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 189,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-pepperoni",
-          "nombre": "Pizza Pepperoni Suprema",
-          "imagen": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 189,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 189,
-          "subtotal": 189
-        }
-      ],
-      "subtotal": 189,
-      "total": 189,
-      "notas_cliente": "",
-      "creado_en": "2026-09-29T16:35:56.358Z",
-      "actualizado_en": "2026-10-04T17:57:58.185Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.042Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-09-29T16:35:56.358Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-04T17:57:58.185Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-mumweeyq-zdtt",
-      "order_token": "a68276ac-2afa-4b6c-ba48-506b918875c1",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 95,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-postre-cheesecake",
-          "nombre": "Cheesecake Vasco Frutos Rojos",
-          "imagen": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 95,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 95,
-          "subtotal": 95
-        }
-      ],
-      "subtotal": 95,
-      "total": 95,
-      "notas_cliente": "",
-      "creado_en": "2026-09-29T16:35:56.354Z",
-      "actualizado_en": "2026-09-29T16:35:56.985Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-09-29T16:35:56.354Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-09-29T16:35:56.985Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-mumweeyn-2s73",
-      "order_token": "38b505db-598f-423e-9280-ca6e4954f606",
-      "mesa": "Mesa 07",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 288,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149,
-          "subtotal": 149
-        },
-        {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble Bacon",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139
-        }
-      ],
-      "subtotal": 288,
-      "total": 288,
-      "notas_cliente": "",
-      "creado_en": "2026-09-29T16:35:56.352Z",
-      "actualizado_en": "2026-09-29T16:35:56.985Z",
-      "cerrada": true,
-      "cerrada_en": "2026-10-04T19:18:01.679Z",
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-09-29T16:35:56.352Z",
-          "cambiado_por": "Sistema"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-09-29T16:35:56.985Z",
-          "cambiado_por": "Sistema"
-        }
-      ]
-    },
-    {
-      "id": "ord-1a175919838-493f",
-      "order_token": "5a44f258-5a8d-4147-9c29-4baa629b2614",
-      "mesa": "Mesa 01",
-      "tipo_cuenta": "MESA",
-      "comensal": "Familia L\u00F3pez",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 298,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-burger-bbq",
-          "nombre": "Hamburguesa BBQ Trufa",
-          "imagen": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 149.00,
-          "cantidad": 2,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 149.00,
-          "subtotal": 298.00
-        }
-      ],
-      "subtotal": 298.00,
-      "total": 298.00,
-      "notas_cliente": "",
-      "creado_en": "2026-10-26T00:17:18.3928774Z",
-      "actualizado_en": "2026-10-26T00:30:32.0855874Z",
-      "cerrada": false,
-      "cerrada_en": null,
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-10-26T00:17:18.3928774Z",
-          "cambiado_por": "Comensal PWA"
-        },
-        {
-          "estado": "EN_PREPARACION",
-          "timestamp": "2026-10-26T00:30:26.6686858Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "LISTO",
-          "timestamp": "2026-10-26T00:30:28.6523775Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-10-26T00:30:32.0656773Z",
-          "cambiado_por": "Personal / Cocina"
-        }
-      ]
-    },
-    {
-      "id": "ord-1a1a9f29620-5f78",
-      "order_token": "5a3dbab1-46ad-4682-90e1-f02267200c5c",
-      "mesa": "Mesa 01",
-      "tipo_cuenta": "MESA",
-      "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
-      "metodo_pago": "Pago al mesero en mesa",
-      "estado": "ENTREGADO",
-      "estado_pago": "PAGADO",
-      "monto_pagado": 318,
-      "saldo_pendiente": 0,
-      "items": [
-        {
-          "producto_id": "prod-pizza-burrata",
-          "nombre": "Pizza Artesanal Burrata \u0026 Prosciutto",
-          "imagen": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 229.00,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 229.00,
-          "subtotal": 229.00
-        },
-        {
-          "producto_id": "prod-papas-trufa",
-          "nombre": "Papas R\u00FAsticas Trufa \u0026 Parmesano",
-          "imagen": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 89.00,
-          "cantidad": 1,
-          "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 89.00,
-          "subtotal": 89.00
-        }
-      ],
-      "subtotal": 318.00,
-      "total": 318.00,
-      "notas_cliente": "",
-      "creado_en": "2026-11-05T04:23:30.0803673Z",
-      "actualizado_en": "2026-11-05T04:24:37.9185208Z",
-      "cerrada": false,
-      "cerrada_en": null,
-      "historial_estados": [
-        {
-          "estado": "NUEVO",
-          "timestamp": "2026-11-05T04:23:30.0803673Z",
-          "cambiado_por": "Comensal PWA"
-        },
-        {
-          "estado": "EN_PREPARACION",
-          "timestamp": "2026-11-05T04:23:38.0241637Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "LISTO",
-          "timestamp": "2026-11-05T04:24:33.9947368Z",
-          "cambiado_por": "Personal / Cocina"
-        },
-        {
-          "estado": "ENTREGADO",
-          "timestamp": "2026-11-05T04:24:37.9185208Z",
-          "cambiado_por": "Personal / Cocina"
-        }
-      ]
-    }
-  ],
-  "payments": [
-    {
-      "id": "pay-muu7e4em-j54on",
-      "order_id": "ord-muu7e3x4-hqc4",
-      "order_token": "c07884a4-5107-4235-b684-962a23c4f22e",
-      "amount": 95,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.7998812Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu7e4el-k9x0d",
-      "order_id": "ord-muu7e3x1-nuxa",
-      "order_token": "b70b681a-15b8-4466-8ded-118d9c539d51",
-      "amount": 288,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8002621Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu7e3ww-aia19",
-      "order_id": "ord-muu6a5pr-x1y1",
-      "order_token": "68d28ea8-a25f-47a0-8240-5616c007eaca",
-      "amount": 189,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8002703Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu7e3wu-pkbjm",
-      "order_id": "ord-muu6a5ps-962y",
-      "order_token": "d92c37ce-9129-4c8b-aa73-dca877e0ab85",
-      "amount": 119,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8002761Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu6a66v-lfild",
-      "order_id": "ord-muu6a5pn-u9k3",
-      "order_token": "7321bfde-86f0-4ab7-bd3a-52d1e2304ad9",
-      "amount": 95,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8002816Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu6a66u-yl9ep",
-      "order_id": "ord-muu6a5pk-xkfx",
-      "order_token": "c062adee-575c-4668-ae12-fee90e0e5c55",
-      "amount": 288,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8002870Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu6a5pg-dah5f",
-      "order_id": "ord-muu4nre5-uzid",
-      "order_token": "7dd6ba78-12c0-481b-b491-5c3973a5eefa",
-      "amount": 189,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8002923Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu6a5pe-3g04s",
-      "order_id": "ord-muu4nre7-nlpb",
-      "order_token": "ebcd735d-7a09-465f-b26a-ca4f0bbc46a0",
-      "amount": 119,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8002976Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4nrv6-fjr7s",
-      "order_id": "ord-muu4nre2-fwx3",
-      "order_token": "8baf314c-2f96-4d16-b1bd-8152511aaaa0",
-      "amount": 95,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003030Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4nrv4-8qxq7",
-      "order_id": "ord-muu4nrdz-i0gj",
-      "order_token": "a8bec642-4623-4e4e-8088-57682653ab60",
-      "amount": 288,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003083Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4nrdu-z5czp",
-      "order_id": "ord-muu4j60k-o44o",
-      "order_token": "51dffe24-e73a-4ce6-bc6c-cebf48612d9f",
-      "amount": 189,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8003136Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4nrdt-j135y",
-      "order_id": "ord-muu4j60m-w07k",
-      "order_token": "4cd6a494-1684-451a-9d02-32c26d79113e",
-      "amount": 119,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8003190Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4j6hz-aadw6",
-      "order_id": "ord-muu4j60f-ha13",
-      "order_token": "202c18fd-c797-495f-bcd9-2b9503ee49c9",
-      "amount": 95,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003249Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4j6hx-hnrtr",
-      "order_id": "ord-muu4j60d-hn1o",
-      "order_token": "4ea8bd20-2d93-432c-a6db-54f855815a41",
-      "amount": 288,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003365Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4j608-ly85z",
-      "order_id": "ord-mumweeyu-c63v",
-      "order_token": "6407745e-8877-4085-9bdb-ec94878721c4",
-      "amount": 189,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8003422Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-muu4j606-yad0w",
-      "order_id": "ord-mumweeyw-t4iv",
-      "order_token": "31695423-bd95-4eda-a538-0263d868e28b",
-      "amount": 119,
-      "method": "EFECTIVO",
-      "received_by": "Preparaci\u00F3n de pruebas",
-      "timestamp": "2026-10-26T00:12:29.8003479Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-mumwefg8-0awb5",
-      "order_id": "ord-mumweeyq-zdtt",
-      "order_token": "a68276ac-2afa-4b6c-ba48-506b918875c1",
-      "amount": 95,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003538Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-mumwefg6-u3hxf",
-      "order_id": "ord-mumweeyn-2s73",
-      "order_token": "38b505db-598f-423e-9280-ca6e4954f606",
-      "amount": 288,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:12:29.8003598Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-1a1759db495-3a4f",
-      "order_id": "ord-1a175919838-493f",
-      "order_token": "5a44f258-5a8d-4147-9c29-4baa629b2614",
-      "amount": 298,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:30:32.0855539Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-1a1759db968-980b",
-      "order_id": "ord-muu7e3xc-mn76",
-      "order_token": "86dd6299-591b-49a1-89be-33b6db64bd45",
-      "amount": 119,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:30:33.3209442Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-1a1759dbeea-77e2",
-      "order_id": "ord-muu7e3x9-2dgb",
-      "order_token": "b71a441f-7917-4e6e-b352-48a5ee963371",
-      "amount": 189,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-10-26T00:30:34.7306846Z",
-      "status": "COMPLETED"
-    },
-    {
-      "id": "pay-1a1a9f38bc1-ff4b",
-      "order_id": "ord-1a1a9f29620-5f78",
-      "order_token": "5a3dbab1-46ad-4682-90e1-f02267200c5c",
-      "amount": 318,
-      "method": "EFECTIVO",
-      "received_by": "Gerencia",
-      "timestamp": "2026-11-05T04:24:32.9616166Z",
-      "status": "COMPLETED"
-    }
-  ],
-  "reviews": [
-    {
-      "id": "rev-muu7e4hu-efpv",
-      "rating": 5,
-      "comentario": "\u00A1La hamburguesa Trufa Negra estuvo incre\u00EDble y la experiencia de verla en 3D nos fascin\u00F3!",
-      "tags": [
-        "Sabor Exquisito",
-        "Men\u00FA AR 3D Asombroso",
-        "Servicio R\u00E1pido"
-      ],
-      "mesa": "Mesa 04",
-      "comensal": "Mariana G.",
-      "order_token": "ord-test-sample",
-      "fecha": "2026-10-04T19:18:01.794Z"
-    },
-    {
-      "id": "rev-muu6a6a2-ct62",
-      "rating": 5,
-      "comentario": "\u00A1La hamburguesa Trufa Negra estuvo incre\u00EDble y la experiencia de verla en 3D nos fascin\u00F3!",
-      "tags": [
-        "Sabor Exquisito",
-        "Men\u00FA AR 3D Asombroso",
-        "Servicio R\u00E1pido"
-      ],
-      "mesa": "Mesa 04",
-      "comensal": "Mariana G.",
-      "order_token": "ord-test-sample",
-      "fecha": "2026-10-04T18:46:57.866Z"
-    },
-    {
-      "id": "rev-muu4nryh-xpeq",
-      "rating": 5,
-      "comentario": "\u00A1La hamburguesa Trufa Negra estuvo incre\u00EDble y la experiencia de verla en 3D nos fascin\u00F3!",
-      "tags": [
-        "Sabor Exquisito",
-        "Men\u00FA AR 3D Asombroso",
-        "Servicio R\u00E1pido"
-      ],
-      "mesa": "Mesa 04",
-      "comensal": "Mariana G.",
-      "order_token": "ord-test-sample",
-      "fecha": "2026-10-04T18:01:33.257Z"
-    },
-    {
-      "id": "rev-muu4j6lc-0n0w",
-      "rating": 5,
-      "comentario": "\u00A1La hamburguesa Trufa Negra estuvo incre\u00EDble y la experiencia de verla en 3D nos fascin\u00F3!",
-      "tags": [
-        "Sabor Exquisito",
-        "Men\u00FA AR 3D Asombroso",
-        "Servicio R\u00E1pido"
-      ],
-      "mesa": "Mesa 04",
-      "comensal": "Mariana G.",
-      "order_token": "ord-test-sample",
-      "fecha": "2026-10-04T17:57:58.944Z"
-    },
-    {
-      "id": "rev-mumwefjd-4k1m",
-      "rating": 5,
-      "comentario": "\u00A1La hamburguesa Trufa Negra estuvo incre\u00EDble y la experiencia de verla en 3D nos fascin\u00F3!",
-      "tags": [
-        "Sabor Exquisito",
-        "Men\u00FA AR 3D Asombroso",
-        "Servicio R\u00E1pido"
-      ],
-      "mesa": "Mesa 04",
-      "comensal": "Mariana G.",
-      "order_token": "ord-test-sample",
-      "fecha": "2026-09-29T16:35:57.097Z"
-    }
-  ],
-  "cortes": [
-    {
-      "id": "corte-1a18f7ec0db",
-      "responsable": "Administrador",
-      "inicio_periodo": "2026-10-30T17:06:51.2265831Z",
-      "fin_periodo": "2026-10-31T01:06:51.2265760Z",
-      "fondo_inicial": 500,
-      "efectivo_contado": 0,
-      "total_efectivo": 0,
-      "total_terminal": 0,
-      "total_transferencia": 0,
-      "total_ventas": 0,
-      "diferencia_efectivo": -500,
-      "cantidad_pedidos": 0,
-      "notas": "",
-      "timestamp": "2026-10-31T01:06:51.2265760Z"
-    }
-  ],
-  "google_review_clicks_log": [
-    {
-      "id": "gclick-1a1a9f3d626",
-      "timestamp": "2026-11-05T04:24:52.0061728Z",
-      "mesa": "Mesa 01",
-      "comensal": "Cuenta General de la Mesa",
-      "rating_intent": 5,
-      "order_token": "5a3dbab1-46ad-4682-90e1-f02267200c5c"
-    }
-  ],
-  "admin_pin": "1234",
-  "staff_pin": "1111",
-  "admin_token": "bistro-admin-authorized",
-  "staff_token": "bistro-staff-authorized"
+    "restaurant":  {
+                       "nombre":  "DGustAR Gastronomía \u0026 AR",
+                       "moneda":  "MXN",
+                       "simbolo_moneda":  "$",
+                       "telefono":  "+52 55 1234 5678",
+                       "direccion":  "Av. Tecnológica 100, Col. Innovación Gastronómica",
+                       "activo":  true,
+                       "google_maps_url":  "https://maps.google.com",
+                       "google_maps_review_url":  "https://g.page/r/sample/review",
+                       "google_maps_rating":  4.9,
+                       "google_maps_reviews_count":  128,
+                       "google_place_id":  "ChIJ_sample_place_id",
+                       "google_reviews_clicks":  1
+                   },
+    "tables":  [
+                   "Mesa 01",
+                   "Mesa 02",
+                   "Mesa 03",
+                   "Mesa 04",
+                   "Mesa 05",
+                   "Mesa 06",
+                   "Mesa 07",
+                   "Mesa 08",
+                   "Mesa 09",
+                   "Mesa 10",
+                   "Mesa 11",
+                   "Mesa 12",
+                   "Para Llevar"
+               ],
+    "categories":  [
+                       {
+                           "id":  "cat-burgers",
+                           "nombre":  "Hamburguesas Gourmet",
+                           "slug":  "hamburguesas",
+                           "icono":  "lunch_dining",
+                           "emoji":  "🍔",
+                           "orden":  1,
+                           "activo":  true
+                       },
+                       {
+                           "id":  "cat-pizzas",
+                           "nombre":  "Pizzas Artesanales",
+                           "slug":  "pizzas",
+                           "icono":  "local_pizza",
+                           "emoji":  "🍕",
+                           "orden":  2,
+                           "activo":  true
+                       },
+                       {
+                           "id":  "cat-snacks",
+                           "nombre":  "Snacks \u0026 Papas",
+                           "slug":  "snacks",
+                           "icono":  "fastfood",
+                           "emoji":  "🍟",
+                           "orden":  3,
+                           "activo":  true
+                       },
+                       {
+                           "id":  "cat-postres",
+                           "nombre":  "Postres de Autor",
+                           "slug":  "postres",
+                           "icono":  "cake",
+                           "emoji":  "🍰",
+                           "orden":  4,
+                           "activo":  true
+                       },
+                       {
+                           "id":  "cat-bebidas",
+                           "nombre":  "Bebidas \u0026 Mocktails",
+                           "slug":  "bebidas",
+                           "icono":  "local_bar",
+                           "emoji":  "🥤",
+                           "orden":  5,
+                           "activo":  true
+                       },
+                       {
+                           "id":  "cat-cafe",
+                           "nombre":  "Café de Especialidad",
+                           "slug":  "cafe",
+                           "icono":  "coffee",
+                           "emoji":  "☕",
+                           "orden":  6,
+                           "activo":  true
+                       }
+                   ],
+    "products":  [
+                     {
+                         "id":  "prod-pizza-pepperoni",
+                         "categoria_id":  "cat-pizzas",
+                         "nombre":  "Pizza Pepperoni Suprema",
+                         "descripcion":  "Masa madre fermentada 48 horas, salsa de tomate San Marzano, mozzarella fior di latte y pepperoni artesanal.",
+                         "precio_base":  189.00,
+                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                         "modelo_3d":  "/models/pizza.glb",
+                         "tiempo_preparacion":  18,
+                         "tiempo_preparacion_min":  18,
+                         "disponible":  true,
+                         "destacado":  true,
+                         "alergenos":  [
+                                           "Gluten",
+                                           "Lácteos"
+                                       ],
+                         "ingredientes_base":  [
+                                                   "Masa madre 48h",
+                                                   "Tomates San Marzano",
+                                                   "Queso mozzarella",
+                                                   "Pepperoni artesanal"
+                                               ],
+                         "extras_disponibles":  [
+                                                    {
+                                                        "id":  "ext-extra-queso",
+                                                        "nombre":  "Extra Queso Mozzarella",
+                                                        "precio":  30.00
+                                                    },
+                                                    {
+                                                        "id":  "ext-orilla-queso",
+                                                        "nombre":  "Orilla Rellena de Queso",
+                                                        "precio":  35.00
+                                                    }
+                                                ]
+                     },
+                     {
+                         "id":  "prod-papas-trufa",
+                         "categoria_id":  "cat-snacks",
+                         "nombre":  "Papas Rústicas Trufa \u0026 Parmesano",
+                         "descripcion":  "Papas cortadas con piel, fritas a doble cocción, aceite de trufa blanca y queso parmesano Reggiano.",
+                         "precio_base":  89.00,
+                         "imagen":  "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                         "modelo_3d":  "/models/fries.glb",
+                         "tiempo_preparacion":  10,
+                         "tiempo_preparacion_min":  10,
+                         "disponible":  true,
+                         "destacado":  false,
+                         "alergenos":  [
+                                           "Lácteos"
+                                       ],
+                         "ingredientes_base":  [
+                                                   "Papas rústicas",
+                                                   "Aceite de trufa",
+                                                   "Queso parmesano"
+                                               ],
+                         "extras_disponibles":  [
+                                                    {
+                                                        "id":  "ext-dip-ajo",
+                                                        "nombre":  "Dip de Ajo Negro y Romero",
+                                                        "precio":  18.00
+                                                    }
+                                                ]
+                     },
+                     {
+                         "id":  "prod-32f11ac0",
+                         "categoria_id":  "cat-burgers",
+                         "nombre":  "Tacos al Pastor",
+                         "descripcion":  "Deliciosos tacos",
+                         "precio_base":  99,
+                         "imagen":  "",
+                         "modelo_3d":  "",
+                         "tiempo_preparacion":  15,
+                         "tiempo_preparacion_min":  15,
+                         "disponible":  true,
+                         "destacado":  false,
+                         "alergenos":  [
+
+                                       ],
+                         "ingredientes_base":  [
+
+                                               ],
+                         "extras_disponibles":  [
+
+                                                ]
+                     },
+                     {
+                         "id":  "prod-burger-clasica",
+                         "categoria_id":  "cat-burgers",
+                         "nombre":  "Smash Burger Doble Bacon",
+                         "descripcion":  "Doble carne Angus smash de 100g c/u con costra caramelizada, queso americano fundido, tocino ahumado crujiente, pepinillos agridulces y salsa especial sobre pan de papa tostado.",
+                         "precio_base":  139,
+                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                         "modelo_3d":  "/models/burger.glb",
+                         "tiempo_preparacion":  12,
+                         "tiempo_preparacion_min":  12,
+                         "disponible":  true,
+                         "destacado":  true,
+                         "alergenos":  [
+                                           "Gluten",
+                                           "Lácteos",
+                                           "Cerdo"
+                                       ],
+                         "ingredientes_base":  [
+                                                   "Pan de papa tostado",
+                                                   "Doble smash 200g",
+                                                   "Queso americano",
+                                                   "Tocino crujiente",
+                                                   "Pepinillos agridulces",
+                                                   "Salsa de la casa"
+                                               ],
+                         "extras_disponibles":  [
+                                                    {
+                                                        "id":  "ext-tocino-extra",
+                                                        "nombre":  "Tocino Ahumado Extra",
+                                                        "precio":  25
+                                                    },
+                                                    {
+                                                        "id":  "ext-queso-extra",
+                                                        "nombre":  "Doble Queso Americano",
+                                                        "precio":  20
+                                                    }
+                                                ]
+                     },
+                     {
+                         "id":  "prod-volcan-chocolate",
+                         "categoria_id":  "cat-postres",
+                         "nombre":  "Volcán de Chocolate Belga",
+                         "descripcion":  "Bizcocho tibio de chocolate amargo 70% con corazón líquido fundente, acompañado de helado artesanal de vainilla Bourbon de Madagascar.",
+                         "precio_base":  105,
+                         "imagen":  "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                         "modelo_3d":  "/models/dessert.glb",
+                         "tiempo_preparacion":  12,
+                         "tiempo_preparacion_min":  12,
+                         "disponible":  true,
+                         "destacado":  true,
+                         "alergenos":  [
+                                           "Gluten",
+                                           "Lácteos",
+                                           "Huevo"
+                                       ],
+                         "ingredientes_base":  [
+                                                   "Chocolate belga 70%",
+                                                   "Mantequilla de granja",
+                                                   "Helado de vainilla Bourbon",
+                                                   "Crumble de avellanas"
+                                               ],
+                         "extras_disponibles":  [
+                                                    {
+                                                        "id":  "ext-helado-extra",
+                                                        "nombre":  "Bola Extra de Helado",
+                                                        "precio":  25
+                                                    }
+                                                ]
+                     },
+                     {
+                         "id":  "prod-mocktail-berries",
+                         "categoria_id":  "cat-bebidas",
+                         "nombre":  "Mocktail Frutos Rojos \u0026 Albahaca",
+                         "descripcion":  "Infusión artesanal de frutos del bosque frescos macerados con jarabe de agave orgánico, hojas de albahaca morada, limón eureka y top de agua mineral gasificada.",
+                         "precio_base":  85,
+                         "imagen":  "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                         "modelo_3d":  "/models/drink.glb",
+                         "tiempo_preparacion":  8,
+                         "tiempo_preparacion_min":  8,
+                         "disponible":  true,
+                         "destacado":  true,
+                         "alergenos":  [
+
+                                       ],
+                         "ingredientes_base":  [
+                                                   "Frutos rojos frescos",
+                                                   "Albahaca morada",
+                                                   "Jarabe de agave",
+                                                   "Limón eureka",
+                                                   "Agua con gas"
+                                               ],
+                         "extras_disponibles":  [
+                                                    {
+                                                        "id":  "ext-escarchado",
+                                                        "nombre":  "Escarchado de Frutos Silvestres",
+                                                        "precio":  15
+                                                    }
+                                                ]
+                     }
+                 ],
+    "orders":  [
+                   {
+                       "id":  "ord-muu7e3xc-mn76",
+                       "order_token":  "86dd6299-591b-49a1-89be-33b6db64bd45",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Lucía",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  119,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-snack-boneless",
+                                         "nombre":  "Boneless Crujientes BBQ Ahumada",
+                                         "imagen":  "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  119,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  119,
+                                         "subtotal":  119
+                                     }
+                                 ],
+                       "subtotal":  119,
+                       "total":  119,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T19:18:01.056Z",
+                       "actualizado_en":  "2026-10-26T00:30:33.3209459Z",
+                       "cerrada":  false,
+                       "cerrada_en":  null,
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T19:18:01.056Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "EN_PREPARACION",
+                                                     "timestamp":  "2026-10-26T00:30:27.3374301Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "LISTO",
+                                                     "timestamp":  "2026-10-26T00:30:29.2924338Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-26T00:30:33.3132231Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu7e3x9-2dgb",
+                       "order_token":  "b71a441f-7917-4e6e-b352-48a5ee963371",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Andrés",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  189,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-pepperoni",
+                                         "nombre":  "Pizza Pepperoni Suprema",
+                                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  189,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  189,
+                                         "subtotal":  189
+                                     }
+                                 ],
+                       "subtotal":  189,
+                       "total":  189,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T19:18:01.053Z",
+                       "actualizado_en":  "2026-10-26T00:30:34.7306865Z",
+                       "cerrada":  false,
+                       "cerrada_en":  null,
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T19:18:01.053Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "EN_PREPARACION",
+                                                     "timestamp":  "2026-10-26T00:30:28.1866980Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "LISTO",
+                                                     "timestamp":  "2026-10-26T00:30:29.8368456Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-26T00:30:34.7231584Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu7e3x4-hqc4",
+                       "order_token":  "c07884a4-5107-4235-b684-962a23c4f22e",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  95,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-postre-cheesecake",
+                                         "nombre":  "Cheesecake Vasco Frutos Rojos",
+                                         "imagen":  "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  95,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  95,
+                                         "subtotal":  95
+                                     }
+                                 ],
+                       "subtotal":  95,
+                       "total":  95,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T19:18:01.048Z",
+                       "actualizado_en":  "2026-10-04T19:18:01.679Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T19:18:01.048Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T19:18:01.679Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu7e3x1-nuxa",
+                       "order_token":  "b70b681a-15b8-4466-8ded-118d9c539d51",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  288,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149,
+                                         "subtotal":  149
+                                     },
+                                     {
+                                         "producto_id":  "prod-burger-clasica",
+                                         "nombre":  "Smash Burger Doble Bacon",
+                                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  139,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  139,
+                                         "subtotal":  139
+                                     }
+                                 ],
+                       "subtotal":  288,
+                       "total":  288,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T19:18:01.046Z",
+                       "actualizado_en":  "2026-10-04T19:18:01.679Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T19:18:01.046Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T19:18:01.679Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu6a5ps-962y",
+                       "order_token":  "d92c37ce-9129-4c8b-aa73-dca877e0ab85",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Lucía",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  119,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-snack-boneless",
+                                         "nombre":  "Boneless Crujientes BBQ Ahumada",
+                                         "imagen":  "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  119,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  119,
+                                         "subtotal":  119
+                                     }
+                                 ],
+                       "subtotal":  119,
+                       "total":  119,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:46:57.136Z",
+                       "actualizado_en":  "2026-10-04T19:18:01.042Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:46:57.136Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T19:18:01.042Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu6a5pr-x1y1",
+                       "order_token":  "68d28ea8-a25f-47a0-8240-5616c007eaca",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Andrés",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  189,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-pepperoni",
+                                         "nombre":  "Pizza Pepperoni Suprema",
+                                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  189,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  189,
+                                         "subtotal":  189
+                                     }
+                                 ],
+                       "subtotal":  189,
+                       "total":  189,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:46:57.135Z",
+                       "actualizado_en":  "2026-10-04T19:18:01.042Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:46:57.135Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T19:18:01.042Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu6a5pn-u9k3",
+                       "order_token":  "7321bfde-86f0-4ab7-bd3a-52d1e2304ad9",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  95,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-postre-cheesecake",
+                                         "nombre":  "Cheesecake Vasco Frutos Rojos",
+                                         "imagen":  "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  95,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  95,
+                                         "subtotal":  95
+                                     }
+                                 ],
+                       "subtotal":  95,
+                       "total":  95,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:46:57.131Z",
+                       "actualizado_en":  "2026-10-04T18:46:57.752Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:46:57.131Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:46:57.752Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu6a5pk-xkfx",
+                       "order_token":  "c062adee-575c-4668-ae12-fee90e0e5c55",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  288,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149,
+                                         "subtotal":  149
+                                     },
+                                     {
+                                         "producto_id":  "prod-burger-clasica",
+                                         "nombre":  "Smash Burger Doble Bacon",
+                                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  139,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  139,
+                                         "subtotal":  139
+                                     }
+                                 ],
+                       "subtotal":  288,
+                       "total":  288,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:46:57.128Z",
+                       "actualizado_en":  "2026-10-04T18:46:57.752Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:46:57.128Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:46:57.752Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4nre7-nlpb",
+                       "order_token":  "ebcd735d-7a09-465f-b26a-ca4f0bbc46a0",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Lucía",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  119,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-snack-boneless",
+                                         "nombre":  "Boneless Crujientes BBQ Ahumada",
+                                         "imagen":  "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  119,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  119,
+                                         "subtotal":  119
+                                     }
+                                 ],
+                       "subtotal":  119,
+                       "total":  119,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:01:32.527Z",
+                       "actualizado_en":  "2026-10-04T18:46:57.126Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:01:32.527Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:46:57.126Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4nre5-uzid",
+                       "order_token":  "7dd6ba78-12c0-481b-b491-5c3973a5eefa",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Andrés",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  189,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-pepperoni",
+                                         "nombre":  "Pizza Pepperoni Suprema",
+                                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  189,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  189,
+                                         "subtotal":  189
+                                     }
+                                 ],
+                       "subtotal":  189,
+                       "total":  189,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:01:32.525Z",
+                       "actualizado_en":  "2026-10-04T18:46:57.126Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:01:32.525Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:46:57.126Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4nre2-fwx3",
+                       "order_token":  "8baf314c-2f96-4d16-b1bd-8152511aaaa0",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  95,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-postre-cheesecake",
+                                         "nombre":  "Cheesecake Vasco Frutos Rojos",
+                                         "imagen":  "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  95,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  95,
+                                         "subtotal":  95
+                                     }
+                                 ],
+                       "subtotal":  95,
+                       "total":  95,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:01:32.522Z",
+                       "actualizado_en":  "2026-10-04T18:01:33.139Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:01:32.522Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:01:33.139Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4nrdz-i0gj",
+                       "order_token":  "a8bec642-4623-4e4e-8088-57682653ab60",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  288,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149,
+                                         "subtotal":  149
+                                     },
+                                     {
+                                         "producto_id":  "prod-burger-clasica",
+                                         "nombre":  "Smash Burger Doble Bacon",
+                                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  139,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  139,
+                                         "subtotal":  139
+                                     }
+                                 ],
+                       "subtotal":  288,
+                       "total":  288,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T18:01:32.519Z",
+                       "actualizado_en":  "2026-10-04T18:01:33.139Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T18:01:32.519Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:01:33.139Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4j60m-w07k",
+                       "order_token":  "4cd6a494-1684-451a-9d02-32c26d79113e",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Lucía",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  119,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-snack-boneless",
+                                         "nombre":  "Boneless Crujientes BBQ Ahumada",
+                                         "imagen":  "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  119,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  119,
+                                         "subtotal":  119
+                                     }
+                                 ],
+                       "subtotal":  119,
+                       "total":  119,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T17:57:58.198Z",
+                       "actualizado_en":  "2026-10-04T18:01:32.516Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T17:57:58.198Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:01:32.516Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4j60k-o44o",
+                       "order_token":  "51dffe24-e73a-4ce6-bc6c-cebf48612d9f",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Andrés",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  189,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-pepperoni",
+                                         "nombre":  "Pizza Pepperoni Suprema",
+                                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  189,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  189,
+                                         "subtotal":  189
+                                     }
+                                 ],
+                       "subtotal":  189,
+                       "total":  189,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T17:57:58.196Z",
+                       "actualizado_en":  "2026-10-04T18:01:32.516Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T17:57:58.196Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T18:01:32.516Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4j60f-ha13",
+                       "order_token":  "202c18fd-c797-495f-bcd9-2b9503ee49c9",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  95,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-postre-cheesecake",
+                                         "nombre":  "Cheesecake Vasco Frutos Rojos",
+                                         "imagen":  "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  95,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  95,
+                                         "subtotal":  95
+                                     }
+                                 ],
+                       "subtotal":  95,
+                       "total":  95,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T17:57:58.191Z",
+                       "actualizado_en":  "2026-10-04T17:57:58.824Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T17:57:58.191Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T17:57:58.824Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-muu4j60d-hn1o",
+                       "order_token":  "4ea8bd20-2d93-432c-a6db-54f855815a41",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  288,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149,
+                                         "subtotal":  149
+                                     },
+                                     {
+                                         "producto_id":  "prod-burger-clasica",
+                                         "nombre":  "Smash Burger Doble Bacon",
+                                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  139,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  139,
+                                         "subtotal":  139
+                                     }
+                                 ],
+                       "subtotal":  288,
+                       "total":  288,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-04T17:57:58.189Z",
+                       "actualizado_en":  "2026-10-04T17:57:58.824Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-04T17:57:58.189Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T17:57:58.824Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-mumweeyw-t4iv",
+                       "order_token":  "31695423-bd95-4eda-a538-0263d868e28b",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Lucía",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  119,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-snack-boneless",
+                                         "nombre":  "Boneless Crujientes BBQ Ahumada",
+                                         "imagen":  "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  119,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  119,
+                                         "subtotal":  119
+                                     }
+                                 ],
+                       "subtotal":  119,
+                       "total":  119,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-09-29T16:35:56.360Z",
+                       "actualizado_en":  "2026-10-04T17:57:58.185Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-09-29T16:35:56.360Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T17:57:58.185Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-mumweeyu-c63v",
+                       "order_token":  "6407745e-8877-4085-9bdb-ec94878721c4",
+                       "mesa":  "Mesa 05",
+                       "tipo_cuenta":  "SEPARADA",
+                       "comensal":  "Andrés",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  189,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-pepperoni",
+                                         "nombre":  "Pizza Pepperoni Suprema",
+                                         "imagen":  "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  189,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  189,
+                                         "subtotal":  189
+                                     }
+                                 ],
+                       "subtotal":  189,
+                       "total":  189,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-09-29T16:35:56.358Z",
+                       "actualizado_en":  "2026-10-04T17:57:58.185Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.042Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-09-29T16:35:56.358Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-04T17:57:58.185Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-mumweeyq-zdtt",
+                       "order_token":  "a68276ac-2afa-4b6c-ba48-506b918875c1",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  95,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-postre-cheesecake",
+                                         "nombre":  "Cheesecake Vasco Frutos Rojos",
+                                         "imagen":  "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  95,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  95,
+                                         "subtotal":  95
+                                     }
+                                 ],
+                       "subtotal":  95,
+                       "total":  95,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-09-29T16:35:56.354Z",
+                       "actualizado_en":  "2026-09-29T16:35:56.985Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-09-29T16:35:56.354Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-09-29T16:35:56.985Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-mumweeyn-2s73",
+                       "order_token":  "38b505db-598f-423e-9280-ca6e4954f606",
+                       "mesa":  "Mesa 07",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  288,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149,
+                                         "subtotal":  149
+                                     },
+                                     {
+                                         "producto_id":  "prod-burger-clasica",
+                                         "nombre":  "Smash Burger Doble Bacon",
+                                         "imagen":  "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  139,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  139,
+                                         "subtotal":  139
+                                     }
+                                 ],
+                       "subtotal":  288,
+                       "total":  288,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-09-29T16:35:56.352Z",
+                       "actualizado_en":  "2026-09-29T16:35:56.985Z",
+                       "cerrada":  true,
+                       "cerrada_en":  "2026-10-04T19:18:01.679Z",
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-09-29T16:35:56.352Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-09-29T16:35:56.985Z",
+                                                     "cambiado_por":  "Sistema"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-1a175919838-493f",
+                       "order_token":  "5a44f258-5a8d-4147-9c29-4baa629b2614",
+                       "mesa":  "Mesa 01",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Familia López",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  298,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-burger-bbq",
+                                         "nombre":  "Hamburguesa BBQ Trufa",
+                                         "imagen":  "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  149.00,
+                                         "cantidad":  2,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  149.00,
+                                         "subtotal":  298.00
+                                     }
+                                 ],
+                       "subtotal":  298.00,
+                       "total":  298.00,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-10-26T00:17:18.3928774Z",
+                       "actualizado_en":  "2026-10-26T00:30:32.0855874Z",
+                       "cerrada":  false,
+                       "cerrada_en":  null,
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-10-26T00:17:18.3928774Z",
+                                                     "cambiado_por":  "Comensal PWA"
+                                                 },
+                                                 {
+                                                     "estado":  "EN_PREPARACION",
+                                                     "timestamp":  "2026-10-26T00:30:26.6686858Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "LISTO",
+                                                     "timestamp":  "2026-10-26T00:30:28.6523775Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-10-26T00:30:32.0656773Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 }
+                                             ]
+                   },
+                   {
+                       "id":  "ord-1a1a9f29620-5f78",
+                       "order_token":  "5a3dbab1-46ad-4682-90e1-f02267200c5c",
+                       "mesa":  "Mesa 01",
+                       "tipo_cuenta":  "MESA",
+                       "comensal":  "Cuenta General de la Mesa",
+                       "tipo_servicio":  "En Mesa",
+                       "metodo_pago":  "Pago al mesero en mesa",
+                       "estado":  "ENTREGADO",
+                       "estado_pago":  "PAGADO",
+                       "monto_pagado":  318,
+                       "saldo_pendiente":  0,
+                       "items":  [
+                                     {
+                                         "producto_id":  "prod-pizza-burrata",
+                                         "nombre":  "Pizza Artesanal Burrata \u0026 Prosciutto",
+                                         "imagen":  "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  229.00,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  229.00,
+                                         "subtotal":  229.00
+                                     },
+                                     {
+                                         "producto_id":  "prod-papas-trufa",
+                                         "nombre":  "Papas Rústicas Trufa \u0026 Parmesano",
+                                         "imagen":  "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+                                         "precio_base":  89.00,
+                                         "cantidad":  1,
+                                         "ingredientes_removidos":  [
+
+                                                                    ],
+                                         "extras":  [
+
+                                                    ],
+                                         "precio_unitario":  89.00,
+                                         "subtotal":  89.00
+                                     }
+                                 ],
+                       "subtotal":  318.00,
+                       "total":  318.00,
+                       "notas_cliente":  "",
+                       "creado_en":  "2026-11-05T04:23:30.0803673Z",
+                       "actualizado_en":  "2026-11-05T04:24:37.9185208Z",
+                       "cerrada":  false,
+                       "cerrada_en":  null,
+                       "historial_estados":  [
+                                                 {
+                                                     "estado":  "NUEVO",
+                                                     "timestamp":  "2026-11-05T04:23:30.0803673Z",
+                                                     "cambiado_por":  "Comensal PWA"
+                                                 },
+                                                 {
+                                                     "estado":  "EN_PREPARACION",
+                                                     "timestamp":  "2026-11-05T04:23:38.0241637Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "LISTO",
+                                                     "timestamp":  "2026-11-05T04:24:33.9947368Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 },
+                                                 {
+                                                     "estado":  "ENTREGADO",
+                                                     "timestamp":  "2026-11-05T04:24:37.9185208Z",
+                                                     "cambiado_por":  "Personal / Cocina"
+                                                 }
+                                             ]
+                   }
+               ],
+    "payments":  [
+                     {
+                         "id":  "pay-muu7e4em-j54on",
+                         "order_id":  "ord-muu7e3x4-hqc4",
+                         "order_token":  "c07884a4-5107-4235-b684-962a23c4f22e",
+                         "amount":  95,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.7998812Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu7e4el-k9x0d",
+                         "order_id":  "ord-muu7e3x1-nuxa",
+                         "order_token":  "b70b681a-15b8-4466-8ded-118d9c539d51",
+                         "amount":  288,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8002621Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu7e3ww-aia19",
+                         "order_id":  "ord-muu6a5pr-x1y1",
+                         "order_token":  "68d28ea8-a25f-47a0-8240-5616c007eaca",
+                         "amount":  189,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8002703Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu7e3wu-pkbjm",
+                         "order_id":  "ord-muu6a5ps-962y",
+                         "order_token":  "d92c37ce-9129-4c8b-aa73-dca877e0ab85",
+                         "amount":  119,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8002761Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu6a66v-lfild",
+                         "order_id":  "ord-muu6a5pn-u9k3",
+                         "order_token":  "7321bfde-86f0-4ab7-bd3a-52d1e2304ad9",
+                         "amount":  95,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8002816Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu6a66u-yl9ep",
+                         "order_id":  "ord-muu6a5pk-xkfx",
+                         "order_token":  "c062adee-575c-4668-ae12-fee90e0e5c55",
+                         "amount":  288,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8002870Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu6a5pg-dah5f",
+                         "order_id":  "ord-muu4nre5-uzid",
+                         "order_token":  "7dd6ba78-12c0-481b-b491-5c3973a5eefa",
+                         "amount":  189,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8002923Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu6a5pe-3g04s",
+                         "order_id":  "ord-muu4nre7-nlpb",
+                         "order_token":  "ebcd735d-7a09-465f-b26a-ca4f0bbc46a0",
+                         "amount":  119,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8002976Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4nrv6-fjr7s",
+                         "order_id":  "ord-muu4nre2-fwx3",
+                         "order_token":  "8baf314c-2f96-4d16-b1bd-8152511aaaa0",
+                         "amount":  95,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003030Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4nrv4-8qxq7",
+                         "order_id":  "ord-muu4nrdz-i0gj",
+                         "order_token":  "a8bec642-4623-4e4e-8088-57682653ab60",
+                         "amount":  288,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003083Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4nrdu-z5czp",
+                         "order_id":  "ord-muu4j60k-o44o",
+                         "order_token":  "51dffe24-e73a-4ce6-bc6c-cebf48612d9f",
+                         "amount":  189,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8003136Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4nrdt-j135y",
+                         "order_id":  "ord-muu4j60m-w07k",
+                         "order_token":  "4cd6a494-1684-451a-9d02-32c26d79113e",
+                         "amount":  119,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8003190Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4j6hz-aadw6",
+                         "order_id":  "ord-muu4j60f-ha13",
+                         "order_token":  "202c18fd-c797-495f-bcd9-2b9503ee49c9",
+                         "amount":  95,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003249Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4j6hx-hnrtr",
+                         "order_id":  "ord-muu4j60d-hn1o",
+                         "order_token":  "4ea8bd20-2d93-432c-a6db-54f855815a41",
+                         "amount":  288,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003365Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4j608-ly85z",
+                         "order_id":  "ord-mumweeyu-c63v",
+                         "order_token":  "6407745e-8877-4085-9bdb-ec94878721c4",
+                         "amount":  189,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8003422Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-muu4j606-yad0w",
+                         "order_id":  "ord-mumweeyw-t4iv",
+                         "order_token":  "31695423-bd95-4eda-a538-0263d868e28b",
+                         "amount":  119,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Preparación de pruebas",
+                         "timestamp":  "2026-10-26T00:12:29.8003479Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-mumwefg8-0awb5",
+                         "order_id":  "ord-mumweeyq-zdtt",
+                         "order_token":  "a68276ac-2afa-4b6c-ba48-506b918875c1",
+                         "amount":  95,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003538Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-mumwefg6-u3hxf",
+                         "order_id":  "ord-mumweeyn-2s73",
+                         "order_token":  "38b505db-598f-423e-9280-ca6e4954f606",
+                         "amount":  288,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:12:29.8003598Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-1a1759db495-3a4f",
+                         "order_id":  "ord-1a175919838-493f",
+                         "order_token":  "5a44f258-5a8d-4147-9c29-4baa629b2614",
+                         "amount":  298,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:30:32.0855539Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-1a1759db968-980b",
+                         "order_id":  "ord-muu7e3xc-mn76",
+                         "order_token":  "86dd6299-591b-49a1-89be-33b6db64bd45",
+                         "amount":  119,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:30:33.3209442Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-1a1759dbeea-77e2",
+                         "order_id":  "ord-muu7e3x9-2dgb",
+                         "order_token":  "b71a441f-7917-4e6e-b352-48a5ee963371",
+                         "amount":  189,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-10-26T00:30:34.7306846Z",
+                         "status":  "COMPLETED"
+                     },
+                     {
+                         "id":  "pay-1a1a9f38bc1-ff4b",
+                         "order_id":  "ord-1a1a9f29620-5f78",
+                         "order_token":  "5a3dbab1-46ad-4682-90e1-f02267200c5c",
+                         "amount":  318,
+                         "method":  "EFECTIVO",
+                         "received_by":  "Gerencia",
+                         "timestamp":  "2026-11-05T04:24:32.9616166Z",
+                         "status":  "COMPLETED"
+                     }
+                 ],
+    "reviews":  [
+                    {
+                        "id":  "rev-muu7e4hu-efpv",
+                        "rating":  5,
+                        "comentario":  "¡La hamburguesa Trufa Negra estuvo increíble y la experiencia de verla en 3D nos fascinó!",
+                        "tags":  [
+                                     "Sabor Exquisito",
+                                     "Menú AR 3D Asombroso",
+                                     "Servicio Rápido"
+                                 ],
+                        "mesa":  "Mesa 04",
+                        "comensal":  "Mariana G.",
+                        "order_token":  "ord-test-sample",
+                        "fecha":  "2026-10-04T19:18:01.794Z"
+                    },
+                    {
+                        "id":  "rev-muu6a6a2-ct62",
+                        "rating":  5,
+                        "comentario":  "¡La hamburguesa Trufa Negra estuvo increíble y la experiencia de verla en 3D nos fascinó!",
+                        "tags":  [
+                                     "Sabor Exquisito",
+                                     "Menú AR 3D Asombroso",
+                                     "Servicio Rápido"
+                                 ],
+                        "mesa":  "Mesa 04",
+                        "comensal":  "Mariana G.",
+                        "order_token":  "ord-test-sample",
+                        "fecha":  "2026-10-04T18:46:57.866Z"
+                    },
+                    {
+                        "id":  "rev-muu4nryh-xpeq",
+                        "rating":  5,
+                        "comentario":  "¡La hamburguesa Trufa Negra estuvo increíble y la experiencia de verla en 3D nos fascinó!",
+                        "tags":  [
+                                     "Sabor Exquisito",
+                                     "Menú AR 3D Asombroso",
+                                     "Servicio Rápido"
+                                 ],
+                        "mesa":  "Mesa 04",
+                        "comensal":  "Mariana G.",
+                        "order_token":  "ord-test-sample",
+                        "fecha":  "2026-10-04T18:01:33.257Z"
+                    },
+                    {
+                        "id":  "rev-muu4j6lc-0n0w",
+                        "rating":  5,
+                        "comentario":  "¡La hamburguesa Trufa Negra estuvo increíble y la experiencia de verla en 3D nos fascinó!",
+                        "tags":  [
+                                     "Sabor Exquisito",
+                                     "Menú AR 3D Asombroso",
+                                     "Servicio Rápido"
+                                 ],
+                        "mesa":  "Mesa 04",
+                        "comensal":  "Mariana G.",
+                        "order_token":  "ord-test-sample",
+                        "fecha":  "2026-10-04T17:57:58.944Z"
+                    },
+                    {
+                        "id":  "rev-mumwefjd-4k1m",
+                        "rating":  5,
+                        "comentario":  "¡La hamburguesa Trufa Negra estuvo increíble y la experiencia de verla en 3D nos fascinó!",
+                        "tags":  [
+                                     "Sabor Exquisito",
+                                     "Menú AR 3D Asombroso",
+                                     "Servicio Rápido"
+                                 ],
+                        "mesa":  "Mesa 04",
+                        "comensal":  "Mariana G.",
+                        "order_token":  "ord-test-sample",
+                        "fecha":  "2026-09-29T16:35:57.097Z"
+                    }
+                ],
+    "cortes":  [
+                   {
+                       "id":  "corte-1a18f7ec0db",
+                       "responsable":  "Administrador",
+                       "inicio_periodo":  "2026-10-30T17:06:51.2265831Z",
+                       "fin_periodo":  "2026-10-31T01:06:51.2265760Z",
+                       "fondo_inicial":  500,
+                       "efectivo_contado":  0,
+                       "total_efectivo":  0,
+                       "total_terminal":  0,
+                       "total_transferencia":  0,
+                       "total_ventas":  0,
+                       "diferencia_efectivo":  -500,
+                       "cantidad_pedidos":  0,
+                       "notas":  "",
+                       "timestamp":  "2026-10-31T01:06:51.2265760Z"
+                   }
+               ],
+    "google_review_clicks_log":  [
+                                     {
+                                         "id":  "gclick-1a1a9f3d626",
+                                         "timestamp":  "2026-11-05T04:24:52.0061728Z",
+                                         "mesa":  "Mesa 01",
+                                         "comensal":  "Cuenta General de la Mesa",
+                                         "rating_intent":  5,
+                                         "order_token":  "5a3dbab1-46ad-4682-90e1-f02267200c5c"
+                                     }
+                                 ],
+    "admin_pin":  "1234",
+    "staff_pin":  "1111",
+    "admin_token":  "bistro-admin-authorized",
+    "staff_token":  "bistro-staff-authorized"
 }

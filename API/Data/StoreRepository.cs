@@ -1374,9 +1374,26 @@ public class StoreRepository : IStoreRepository
         lock (_lock)
         {
             var ahora = DateTime.UtcNow.ToString("o");
-            var inicio = _cortes.Count > 0 ? _cortes.First().FinPeriodo : DateTime.UtcNow.AddHours(-8).ToString("o");
+            DateTimeOffset cutoff;
+            string inicio;
 
-            var paymentsShift = _payments.Where(p => string.Compare(p.Timestamp, inicio, StringComparison.Ordinal) >= 0).ToList();
+            if (_cortes.Count > 0 && DateTimeOffset.TryParse(_cortes.First().FinPeriodo, out var cdt))
+            {
+                cutoff = cdt;
+                inicio = _cortes.First().FinPeriodo;
+            }
+            else
+            {
+                cutoff = DateTimeOffset.MinValue;
+                inicio = DateTime.UtcNow.AddHours(-12).ToString("o");
+            }
+
+            var paymentsShift = _payments.Where(p =>
+            {
+                if (DateTimeOffset.TryParse(p.Timestamp, out var dtoTs)) return dtoTs >= cutoff;
+                return true;
+            }).ToList();
+
             var totalEfectivo = paymentsShift.Where(p => p.Method == "EFECTIVO").Sum(p => p.Amount);
             var totalTerminal = paymentsShift.Where(p => p.Method == "TERMINAL_EXTERNA").Sum(p => p.Amount);
             var totalVentas = paymentsShift.Sum(p => p.Amount);
@@ -1460,37 +1477,114 @@ public class StoreRepository : IStoreRepository
         lock (_lock)
         {
             var now = DateTimeOffset.UtcNow;
-            DateTimeOffset cutoff = period switch
-            {
-                "shift" => _cortes.Count > 0 && DateTimeOffset.TryParse(_cortes.First().FinPeriodo, out var cdt) ? cdt : now.AddHours(-8),
-                "today" => new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, TimeSpan.Zero),
-                "week" => now.AddDays(-7),
-                "month" => now.AddDays(-30),
-                _ => DateTimeOffset.MinValue
-            };
+            var periodClean = (period ?? "shift").ToLowerInvariant().Trim();
 
-            var payments = _payments.Where(p =>
+            DateTimeOffset cutoff;
+            string periodName;
+
+            switch (periodClean)
+            {
+                case "today":
+                    cutoff = new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, TimeSpan.Zero);
+                    periodName = "Hoy";
+                    break;
+                case "week":
+                    cutoff = now.AddDays(-7);
+                    periodName = "Últimos 7 días";
+                    break;
+                case "month":
+                    cutoff = now.AddDays(-30);
+                    periodName = "Últimos 30 días";
+                    break;
+                case "shift":
+                default:
+                    if (_cortes.Count > 0 && DateTimeOffset.TryParse(_cortes.First().FinPeriodo, out var cdt))
+                    {
+                        cutoff = cdt;
+                    }
+                    else
+                    {
+                        cutoff = new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, TimeSpan.Zero);
+                        if (!_payments.Any(p => DateTimeOffset.TryParse(p.Timestamp, out var dto) && dto >= cutoff))
+                        {
+                            cutoff = DateTimeOffset.MinValue;
+                        }
+                    }
+                    periodName = "Turno Actual";
+                    break;
+            }
+
+            var paymentsInPeriod = _payments.Where(p =>
             {
                 if (DateTimeOffset.TryParse(p.Timestamp, out var dto)) return dto >= cutoff;
                 return true;
             }).ToList();
 
-            var totalEfectivo = payments.Where(p => p.Method == "EFECTIVO").Sum(p => p.Amount);
-            var totalTerminal = payments.Where(p => p.Method == "TERMINAL_EXTERNA").Sum(p => p.Amount);
-            var totalVentas = payments.Sum(p => p.Amount);
+            var paymentOrderIds = new HashSet<string>(paymentsInPeriod.Select(p => p.OrderId));
+
+            var ordersInPeriod = _orders.Where(o =>
+            {
+                if (paymentOrderIds.Contains(o.Id)) return true;
+                if (DateTimeOffset.TryParse(o.CreadoEn, out var dto)) return dto >= cutoff;
+                return false;
+            }).OrderByDescending(o => o.CreadoEn).ToList();
+
+            var totalEfectivo = paymentsInPeriod.Where(p => p.Method == "EFECTIVO").Sum(p => p.Amount);
+            var totalTerminal = paymentsInPeriod.Where(p => p.Method == "TERMINAL_EXTERNA").Sum(p => p.Amount);
+            var totalVentas = paymentsInPeriod.Sum(p => p.Amount);
+
+            var pendientes = ordersInPeriod.Where(o => o.Estado != "CANCELADO" && o.EstadoPago != "PAGADO").ToList();
+            var ventasPendientes = pendientes.Sum(o => o.SaldoPendiente > 0 ? o.SaldoPendiente : o.Total);
+            var ordenesPendientes = pendientes.Count;
+
+            var ordenesPagadas = ordersInPeriod.Count(o => o.EstadoPago == "PAGADO");
+            var ordenesEntregadas = ordersInPeriod.Count(o => o.Estado == "ENTREGADO");
+
+            var ticketPromedio = ordenesPagadas > 0
+                ? Math.Round(totalVentas / ordenesPagadas, 2)
+                : (ordersInPeriod.Count > 0 ? Math.Round(totalVentas / ordersInPeriod.Count, 2) : 0m);
+
+            var topProductos = ordersInPeriod
+                .Where(o => o.Estado != "CANCELADO")
+                .SelectMany(o => o.Items)
+                .GroupBy(i => i.ProductoId)
+                .Select(g => new
+                {
+                    producto_id = g.Key,
+                    nombre = g.First().Nombre,
+                    cantidad = g.Sum(x => x.Cantidad),
+                    subtotal = g.Sum(x => x.PrecioUnitario * x.Cantidad)
+                })
+                .OrderByDescending(x => x.cantidad)
+                .Take(5)
+                .ToList();
 
             var report = new
             {
-                periodo = period,
+                ventas_totales = totalVentas,
+                ventas_efectivo = totalEfectivo,
+                ventas_tarjeta = totalTerminal,
+                total_ordenes = ordersInPeriod.Count,
+                ordenes_entregadas = ordenesEntregadas,
+                ordenes_pagadas = ordenesPagadas,
+                ticket_promedio = ticketPromedio,
+                ventas_pendientes_cobro = ventasPendientes,
+                ordenes_pendientes_cobro = ordenesPendientes,
+                periodName = periodName,
+                periodo = periodClean,
                 inicio_periodo = cutoff.ToString("o"),
                 fin_periodo = now.ToString("o"),
+                ultimo_corte_timestamp = _cortes.FirstOrDefault()?.Timestamp,
+                top_productos = topProductos,
+                orders = ordersInPeriod,
+
+                total_ventas = totalVentas,
                 total_efectivo = totalEfectivo,
                 total_terminal = totalTerminal,
                 total_transferencia = 0m,
-                total_ventas = totalVentas,
-                cantidad_pagos = payments.Count,
-                cantidad_ordenes = payments.Select(p => p.OrderId).Distinct().Count(),
-                pagos = payments.Take(50).ToList()
+                cantidad_pagos = paymentsInPeriod.Count,
+                cantidad_ordenes = ordersInPeriod.Count,
+                pagos = paymentsInPeriod.Take(50).ToList()
             };
 
             return Task.FromResult<object>(report);

@@ -109,6 +109,21 @@ public class OrderService
 
             totalAcumulado += subtotalItem;
 
+            var itemNotesParts = new List<string>();
+            if (ingredientesRemovidos.Count > 0)
+            {
+                itemNotesParts.Add("Sin: " + string.Join(", ", ingredientesRemovidos));
+            }
+            if (!string.IsNullOrWhiteSpace(rawItem.Notas))
+            {
+                itemNotesParts.Add(rawItem.Notas.Trim());
+            }
+            if (!string.IsNullOrWhiteSpace(payload.NotasCliente))
+            {
+                itemNotesParts.Add(payload.NotasCliente.Trim());
+            }
+            var itemNotas = string.Join(" · ", itemNotesParts);
+
             itemsCalculados.Add(new OrderItem
             {
                 ProductoId = product.Id,
@@ -119,7 +134,8 @@ public class OrderService
                 IngredientesRemovidos = ingredientesRemovidos,
                 Extras = extrasResueltos,
                 PrecioUnitario = precioUnitario,
-                Subtotal = subtotalItem
+                Subtotal = subtotalItem,
+                Notas = itemNotas
             });
         }
 

@@ -154,6 +154,9 @@ public class OrderItem
 
     [JsonPropertyName("subtotal")]
     public decimal Subtotal { get; set; }
+
+    [JsonPropertyName("notas")]
+    public string Notas { get; set; } = string.Empty;
 }
 
 public class OrderStatusHistory
@@ -366,6 +369,9 @@ public class CreateOrderItemDto
 
     [JsonPropertyName("extras_seleccionados")]
     public List<string>? ExtrasSeleccionados { get; set; }
+
+    [JsonPropertyName("notas")]
+    public string? Notas { get; set; }
 }
 
 public class CreateOrderDto
