@@ -1,0 +1,172 @@
+:root {
+  --primary-color: #b80035;
+  --primary-dark: #8c0027;
+  --primary-light: #ff4d79;
+  --secondary-color: #1e293b;
+  --accent-gold: #f59e0b;
+}
+
+body {
+  background: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.bg-dgustar {
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%) !important;
+}
+
+.navbar-dgustar {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+.home-hero {
+  background: radial-gradient(circle at 10% 20%, rgba(184, 0, 53, 0.25) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
+              #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.module-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(184, 0, 53, 0.5);
+}
+
+.module-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.icon-clients {
+  background: linear-gradient(135deg, #b80035 0%, #ff4d79 100%);
+  color: #ffffff;
+}
+
+.icon-users {
+  background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
+  color: #ffffff;
+}
+
+.icon-swagger {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  color: #ffffff;
+}
+
+.btn-primary-dgustar {
+  background: linear-gradient(135deg, #b80035 0%, #d91448 100%);
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary-dgustar:hover {
+  background: linear-gradient(135deg, #8c0027 0%, #b80035 100%);
+  color: #ffffff;
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(184, 0, 53, 0.4);
+}
+
+.btn-secondary-dgustar {
+  background: #334155;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-dgustar:hover {
+  background: #475569;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.login-page {
+  background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+}
+
+.login-card {
+  width: min(100%, 28rem);
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+}
+
+.login-logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #b80035 0%, #ff4d79 100%);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(184, 0, 53, 0.4);
+}
+
+.badge-mesa {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.badge-mesa:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.badge-pin {
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.4rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gold {
+  color: #fbbf24 !important;
+}
+
+.table {
+  color: #f8fafc;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: rgba(255, 255, 255, 0.08);
+}
