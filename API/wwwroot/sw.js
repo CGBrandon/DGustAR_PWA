@@ -1,5 +1,6 @@
-const CACHE_NAME = 'dgustar-pwa-v7';
+const CACHE_NAME = 'dgustar-pwa-v8';
 
+// Recursos del App Shell (críticos — se cachean en install)
 const CORE_ASSETS = [
   '/',
   '/menu',
@@ -15,12 +16,33 @@ const CORE_ASSETS = [
   '/manifest-admin.json'
 ];
 
-// 1. Instalación y precaché de recursos críticos
+// Modelos 3D — se cachean en background después de que el App Shell esté listo
+const MODEL_ASSETS = [
+  '/models/burger.glb',
+  '/models/pizza.glb',
+  '/models/fries.glb',
+  '/models/drink.glb',
+  '/models/coffee.glb',
+  '/models/dessert.glb'
+];
+
+// 1. Instalación: precachea el App Shell y luego carga modelos en background
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log('[SW] Precachando App Shell...');
-      return cache.addAll(CORE_ASSETS);
+      // Primero el shell (crítico, bloquea install)
+      return cache.addAll(CORE_ASSETS).then(() => {
+        // Luego los modelos 3D en background (no bloquea install)
+        // Se cachean uno a uno para no saturar la red
+        return MODEL_ASSETS.reduce((chain, url) => {
+          return chain.then(() =>
+            cache.add(url).catch((err) =>
+              console.warn('[SW] No se pudo precargar modelo:', url, err)
+            )
+          );
+        }, Promise.resolve());
+      });
     }).then(() => self.skipWaiting())
   );
 });

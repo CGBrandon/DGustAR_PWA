@@ -72,6 +72,15 @@
       "emoji": "\u2615",
       "orden": 6,
       "activo": true
+    },
+    {
+      "id": "cat-221f74f9",
+      "nombre": "especialistas",
+      "slug": "especialistas",
+      "icono": "category",
+      "emoji": "\uD83C\uDF7D\uFE0F",
+      "orden": 7,
+      "activo": true
     }
   ],
   "products": [
@@ -112,31 +121,25 @@
     },
     {
       "id": "prod-papas-trufa",
-      "categoria_id": "cat-snacks",
-      "nombre": "Papas R\u00FAsticas Trufa \u0026 Parmesano",
-      "descripcion": "Papas cortadas con piel, fritas a doble cocci\u00F3n, aceite de trufa blanca y queso parmesano Reggiano.",
-      "precio_base": 89.00,
-      "imagen": "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "categoria_id": "cat-pizzas",
+      "nombre": "Papas R\u00FAsticas ",
+      "descripcion": "Corte grueso con piel, dob",
+      "precio_base": 100,
+      "imagen": "/uploads/asset-633213d609054d849af3b7fc091e6758.png",
       "modelo_3d": "/models/fries.glb",
       "tiempo_preparacion": 10,
       "tiempo_preparacion_min": 10,
       "disponible": true,
-      "destacado": false,
-      "alergenos": [
-        "L\u00E1cteos"
-      ],
+      "destacado": true,
+      "alergenos": [],
       "ingredientes_base": [
         "Papas r\u00FAsticas",
-        "Aceite de trufa",
-        "Queso parmesano"
+        "Aceite de trufa blanca",
+        "Parmesano Reggiano 24 meses",
+        "Perejil picado",
+        "Sal de mar"
       ],
-      "extras_disponibles": [
-        {
-          "id": "ext-dip-ajo",
-          "nombre": "Dip de Ajo Negro y Romero",
-          "precio": 18.00
-        }
-      ]
+      "extras_disponibles": []
     },
     {
       "id": "prod-32f11ac0",
@@ -157,11 +160,11 @@
     {
       "id": "prod-burger-clasica",
       "categoria_id": "cat-burgers",
-      "nombre": "Smash Burger Doble carne sabrosa",
+      "nombre": "Smash Burger Doble carne",
       "descripcion": "Doble medall\u00F3n de 100g smash caramelizado, queso americano fundido, tiras de tocino crocante, pepinillos encurtidos y aderezo especial de la casa.",
       "precio_base": 139,
       "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "modelo_3d": "https://cdn.dgustar.com/models/burger.glb",
+      "modelo_3d": "/models/burger.glb",
       "tiempo_preparacion": 12,
       "tiempo_preparacion_min": 12,
       "disponible": true,
@@ -180,33 +183,23 @@
     {
       "id": "prod-volcan-chocolate",
       "categoria_id": "cat-postres",
-      "nombre": "Volc\u00E1n de Chocolate Belga",
+      "nombre": "Volc\u00E1n de Chocolate",
       "descripcion": "Bizcocho tibio de chocolate amargo 70% con coraz\u00F3n l\u00EDquido fundente, acompa\u00F1ado de helado artesanal de vainilla Bourbon de Madagascar.",
-      "precio_base": 105,
+      "precio_base": 89,
       "imagen": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
       "modelo_3d": "/models/dessert.glb",
       "tiempo_preparacion": 12,
       "tiempo_preparacion_min": 12,
       "disponible": true,
       "destacado": true,
-      "alergenos": [
-        "Gluten",
-        "L\u00E1cteos",
-        "Huevo"
-      ],
+      "alergenos": [],
       "ingredientes_base": [
         "Chocolate belga 70%",
         "Mantequilla de granja",
         "Helado de vainilla Bourbon",
         "Crumble de avellanas"
       ],
-      "extras_disponibles": [
-        {
-          "id": "ext-helado-extra",
-          "nombre": "Bola Extra de Helado",
-          "precio": 25
-        }
-      ]
+      "extras_disponibles": []
     },
     {
       "id": "prod-mocktail-berries",
@@ -215,7 +208,7 @@
       "descripcion": "Infusi\u00F3n fresca de frutos del bosque macerados con lim\u00F3n eureka, jarabe artesanal de albahaca morada, soda artesanal y hielo cristalino.",
       "precio_base": 65,
       "imagen": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "modelo_3d": "https://cdn.dgustar.com/models/drink.glb",
+      "modelo_3d": "/models/drink.glb",
       "tiempo_preparacion": 5,
       "tiempo_preparacion_min": 5,
       "disponible": true,
@@ -1652,6 +1645,22 @@
     }
   ],
   "cortes": [
+    {
+      "id": "corte-1a1c2bd0214",
+      "responsable": "Administrador",
+      "inicio_periodo": "2026-10-31T01:06:51.2265760Z",
+      "fin_periodo": "2026-11-09T23:55:29.1714185Z",
+      "fondo_inicial": 500,
+      "efectivo_contado": 0,
+      "total_efectivo": 318,
+      "total_terminal": 0,
+      "total_transferencia": 0,
+      "total_ventas": 318,
+      "diferencia_efectivo": -818,
+      "cantidad_pedidos": 1,
+      "notas": "",
+      "timestamp": "2026-11-09T23:55:29.1714185Z"
+    },
     {
       "id": "corte-1a18f7ec0db",
       "responsable": "Administrador",

@@ -32,15 +32,15 @@ body {
 
 .home-hero {
   background: radial-gradient(circle at 10% 20%, rgba(184, 0, 53, 0.25) 0%, transparent 40%),
-              radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
-              #0f172a;
+    radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
+    #0f172a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .module-card {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  background: #1e293b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #c3ddea;
+  border: 1px solid rgb(255, 0, 0);
 }
 
 .module-card:hover {

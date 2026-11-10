@@ -265,14 +265,14 @@ public class AdminController : ControllerBase
 
     // PUT /api/admin/products/{id}
     [HttpPut("products/{id}")]
-    public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product, [FromHeader(Name = "x-admin-token")] string? token)
+    public async Task<IActionResult> UpdateProduct(string id, [FromBody] System.Text.Json.JsonElement body, [FromHeader(Name = "x-admin-token")] string? token)
     {
         var auth = CheckAuth(token, requireAdmin: true);
         if (!auth.authorized) return StatusCode(401, new { error = "No autorizado. Se requiere inicio de sesión de Gerencia." });
 
         try
         {
-            var updated = await _db.UpdateProductAsync(id, product);
+            var updated = await _db.UpdateProductPartialAsync(id, body);
             if (updated == null)
             {
                 return NotFound(new { error = "Producto no encontrado." });

@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|d:\\aplicaciones web progresivas\\material\\crudv2\\dgustar_pwa\\api\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|solutionrelative:api\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|d:\\aplicaciones web progresivas\\material\\crudv2\\dgustar_pwa\\api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|solutionrelative:api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|d:\\aplicaciones web progresivas\\material\\crudv2\\dgustar_pwa\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|d:\\aplicaciones web progresivas\\material\\crudv2\\dgustar_pwa\\api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|solutionrelative:api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|d:\\aplicaciones web progresivas\\material\\crudv2\\dgustar_pwa\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{7DFAE0D0-BA99-41B4-97B1-ECC8B2A4B9BC}|API\\DGustAR.Api.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
@@ -19,15 +35,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "styles.css",
+              "DocumentMoniker": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\wwwroot\\css\\styles.css",
+              "RelativeDocumentMoniker": "API\\wwwroot\\css\\styles.css",
+              "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\wwwroot\\css\\styles.css",
+              "RelativeToolTip": "API\\wwwroot\\css\\styles.css",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-11-10T04:06:59.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "API\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-10T03:42:28.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAAMUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-09T23:27:40.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "API\\appsettings.Development.json",
+              "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\appsettings.Development.json",
+              "RelativeToolTip": "API\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-09T23:27:38.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\appsettings.json",
               "RelativeDocumentMoniker": "API\\appsettings.json",
               "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\appsettings.json",
               "RelativeToolTip": "API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-10-27T04:43:59.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-10-27T04:43:59.422Z"
             }
           ]
         }

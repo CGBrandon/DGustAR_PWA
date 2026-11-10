@@ -1,7 +1,8 @@
 wwwroot\app.html
+wwwroot\assets\admin-golden.css
+wwwroot\assets\admin-golden.js
 wwwroot\assets\index-BV5RYNIR.css
 wwwroot\assets\index-CebOQXM1.js
-wwwroot\css\styles.css
 wwwroot\logo-192.png
 wwwroot\logo-512.png
 wwwroot\logo-admin-192.png
@@ -17,3 +18,5 @@ wwwroot\models\drink.glb
 wwwroot\models\fries.glb
 wwwroot\models\pizza.glb
 wwwroot\sw.js
+wwwroot\uploads\asset-633213d609054d849af3b7fc091e6758.png
+wwwroot\css\styles.css

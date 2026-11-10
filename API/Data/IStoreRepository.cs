@@ -21,6 +21,7 @@ public interface IStoreRepository
     Product? GetProductById(string id);
     Task<Product> AddProductAsync(Product product);
     Task<Product?> UpdateProductAsync(string id, Product updated);
+    Task<Product?> UpdateProductPartialAsync(string id, System.Text.Json.JsonElement body);
     Task<Product?> DeleteProductAsync(string id);
     Task<Product?> ToggleProductAvailabilityAsync(string id);
     Task<string> UploadAssetAsync(AssetUploadDto asset);

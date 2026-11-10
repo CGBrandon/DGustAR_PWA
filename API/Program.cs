@@ -1,6 +1,7 @@
 using System.Text.Json;
 using DGustAR.Api.Data;
 using DGustAR.Api.Services;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,7 +38,33 @@ builder.Services.AddCors(options =>
     });
 });
 
-// 4. Configuración de Swagger / OpenAPI para Visual Studio Community
+// 4. Compresión de respuestas HTTP (Brotli + Gzip) para GLB, JS, CSS, JSON
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+    options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]
+    {
+        "model/gltf-binary",
+        "model/gltf+json",
+        "application/octet-stream",
+        "application/javascript",
+        "text/css",
+        "application/json"
+    });
+});
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    // Fastest evita latencia extra; los archivos GLB ya son binarios bien comprimidos
+    options.Level = System.IO.Compression.CompressionLevel.Fastest;
+});
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = System.IO.Compression.CompressionLevel.Fastest;
+});
+
+// 4b. Configuración de Swagger / OpenAPI para Visual Studio Community
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -79,6 +106,11 @@ app.Use(async (context, next) =>
 });
 
 // Publica el frontend creado con HTML, CSS y JavaScript desde wwwroot
+app.UseCors("NuevaPolitica");
+
+// Compresión Brotli/Gzip — debe ir ANTES de UseStaticFiles
+app.UseResponseCompression();
+
 var fileExtensionProvider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider();
 fileExtensionProvider.Mappings[".glb"] = "model/gltf-binary";
 fileExtensionProvider.Mappings[".gltf"] = "model/gltf+json";
@@ -93,15 +125,40 @@ app.UseStaticFiles(new StaticFileOptions
     ContentTypeProvider = fileExtensionProvider,
     OnPrepareResponse = context =>
     {
-        if (context.File.Name.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+        context.Context.Response.Headers.AccessControlAllowOrigin = "*";
+        context.Context.Response.Headers.AccessControlAllowHeaders = "*";
+        context.Context.Response.Headers.AccessControlAllowMethods = "*";
+
+        var fileName = context.File.Name;
+
+        if (fileName.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
         {
+            // HTML siempre fresco — el SW decide desde caché
             context.Context.Response.Headers.CacheControl = "no-store, no-cache, must-revalidate";
             context.Context.Response.Headers.Pragma = "no-cache";
         }
+        else if (fileName.EndsWith(".glb", StringComparison.OrdinalIgnoreCase)
+              || fileName.EndsWith(".gltf", StringComparison.OrdinalIgnoreCase))
+        {
+            // Modelos 3D: caché de 1 año — inmutables, versión controlada por nombre
+            context.Context.Response.Headers.CacheControl = "public, max-age=31536000, immutable";
+        }
+        else if (fileName.EndsWith(".js", StringComparison.OrdinalIgnoreCase)
+              || fileName.EndsWith(".css", StringComparison.OrdinalIgnoreCase))
+        {
+            // Assets con hash en el nombre (Vite): caché de 1 año
+            context.Context.Response.Headers.CacheControl = "public, max-age=31536000, immutable";
+        }
+        else if (fileName.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+              || fileName.EndsWith(".svg", StringComparison.OrdinalIgnoreCase)
+              || fileName.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
+              || fileName.EndsWith(".webp", StringComparison.OrdinalIgnoreCase))
+        {
+            // Imágenes: caché de 7 días (pueden cambiar con uploads)
+            context.Context.Response.Headers.CacheControl = "public, max-age=604800";
+        }
     }
 });
-
-app.UseCors("NuevaPolitica");
 
 // 6. Middleware WebSocket nativo
 var webSocketOptions = new WebSocketOptions

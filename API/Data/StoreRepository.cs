@@ -136,6 +136,31 @@ public class StoreRepository : IStoreRepository
         return conn;
     }
 
+    private static string? NormalizeModelUrl(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url)) return null;
+        var trimmed = url.Trim();
+        if (trimmed.Contains("cdn.dgustar.com/models/"))
+        {
+            var fileName = Path.GetFileName(trimmed);
+            return $"/models/{fileName}";
+        }
+        return trimmed;
+    }
+
+    private static string NormalizeEmoji(string? emoji, string? slug, string? id)
+    {
+        if (!string.IsNullOrWhiteSpace(emoji) && !emoji.Contains('?')) return emoji.Trim();
+        var key = $"{slug} {id}".ToLowerInvariant();
+        if (key.Contains("burger")) return "🍔";
+        if (key.Contains("pizza")) return "🍕";
+        if (key.Contains("snack") || key.Contains("papa")) return "🍟";
+        if (key.Contains("postre") || key.Contains("cake")) return "🍰";
+        if (key.Contains("bebida") || key.Contains("drink") || key.Contains("cocktail")) return "🥤";
+        if (key.Contains("cafe") || key.Contains("coffee")) return "☕";
+        return "🍽️";
+    }
+
     private static Product ReadProductFromReader(SqlDataReader reader)
     {
         var alergenosRaw = reader.IsDBNull(10) ? "" : reader.GetString(10);
@@ -180,7 +205,7 @@ public class StoreRepository : IStoreRepository
             Descripcion       = reader.IsDBNull(3) ? "" : reader.GetString(3),
             PrecioBase        = reader.GetDecimal(4),
             Imagen            = reader.IsDBNull(5) ? "" : reader.GetString(5),
-            Modelo3d          = reader.IsDBNull(6) ? null : reader.GetString(6),
+            Modelo3d          = NormalizeModelUrl(reader.IsDBNull(6) ? null : reader.GetString(6)),
             TiempoPreparacion = reader.GetInt32(7),
             Disponible        = reader.GetBoolean(8),
             Destacado         = reader.GetBoolean(9),
@@ -218,10 +243,18 @@ public class StoreRepository : IStoreRepository
                     if (root.TryGetProperty("categories", out var catsProp))
                     {
                         _categories = JsonSerializer.Deserialize<List<Category>>(catsProp.GetRawText(), jsonOptions) ?? new();
+                        foreach (var c in _categories)
+                        {
+                            c.Emoji = NormalizeEmoji(c.Emoji, c.Slug, c.Id);
+                        }
                     }
                     if (root.TryGetProperty("products", out var prodsProp))
                     {
                         _products = JsonSerializer.Deserialize<List<Product>>(prodsProp.GetRawText(), jsonOptions) ?? new();
+                        foreach (var p in _products)
+                        {
+                            p.Modelo3d = NormalizeModelUrl(p.Modelo3d);
+                        }
                     }
                     if (root.TryGetProperty("orders", out var ordsProp))
                     {
@@ -611,7 +644,7 @@ public class StoreRepository : IStoreRepository
                     Nombre = reader.GetString(1),
                     Slug   = reader.GetString(2),
                     Icono  = reader.GetString(3),
-                    Emoji  = reader.GetString(4),
+                    Emoji  = NormalizeEmoji(reader.IsDBNull(4) ? null : reader.GetString(4), reader.GetString(2), reader.GetString(0)),
                     Orden  = reader.GetInt32(5),
                     Activo = reader.GetBoolean(6)
                 });
@@ -714,7 +747,7 @@ public class StoreRepository : IStoreRepository
                         Nombre = reader.GetString(1),
                         Slug = reader.GetString(2),
                         Icono = reader.GetString(3),
-                        Emoji = reader.GetString(4),
+                        Emoji = NormalizeEmoji(reader.IsDBNull(4) ? null : reader.GetString(4), reader.GetString(2), reader.GetString(0)),
                         Orden = reader.GetInt32(5),
                         Activo = reader.GetBoolean(6)
                     });
@@ -763,7 +796,10 @@ public class StoreRepository : IStoreRepository
                 cmd.Parameters.AddWithValue("@Nombre", category.Nombre);
                 cmd.Parameters.AddWithValue("@Slug", category.Slug);
                 cmd.Parameters.AddWithValue("@Icono", string.IsNullOrWhiteSpace(category.Icono) ? "restaurant" : category.Icono);
-                cmd.Parameters.AddWithValue("@Emoji", string.IsNullOrWhiteSpace(category.Emoji) ? "🍽️" : category.Emoji);
+                var finalEmoji = NormalizeEmoji(category.Emoji, category.Slug, category.Id);
+                category.Emoji = finalEmoji;
+                var pEmoji = cmd.Parameters.Add("@Emoji", System.Data.SqlDbType.NVarChar, 50);
+                pEmoji.Value = finalEmoji;
                 cmd.Parameters.AddWithValue("@Orden", category.Orden);
                 await cmd.ExecuteNonQueryAsync();
             }
@@ -944,6 +980,8 @@ public class StoreRepository : IStoreRepository
     {
         await EnsureSqlServerCheckedAsync();
 
+        product.Modelo3d = NormalizeModelUrl(product.Modelo3d);
+
         if (string.IsNullOrWhiteSpace(product.Id))
         {
             product.Id = $"prod-{Guid.NewGuid():N}"[..18];
@@ -1036,6 +1074,32 @@ public class StoreRepository : IStoreRepository
     {
         await EnsureSqlServerCheckedAsync();
 
+        // Obtener el producto existente para completar cualquier campo no enviado
+        var current = GetProductById(id);
+        if (current == null)
+        {
+            lock (_lock)
+            {
+                current = _products.FirstOrDefault(p => p.Id == id);
+            }
+        }
+
+        if (current != null)
+        {
+            if (string.IsNullOrWhiteSpace(updated.CategoriaId)) updated.CategoriaId = current.CategoriaId;
+            if (string.IsNullOrWhiteSpace(updated.Nombre)) updated.Nombre = current.Nombre;
+            if (updated.Descripcion == null) updated.Descripcion = current.Descripcion;
+            if (updated.PrecioBase <= 0) updated.PrecioBase = current.PrecioBase;
+            if (string.IsNullOrWhiteSpace(updated.Imagen)) updated.Imagen = current.Imagen;
+            if (string.IsNullOrWhiteSpace(updated.Modelo3d)) updated.Modelo3d = current.Modelo3d;
+            if (updated.TiempoPreparacion <= 0) updated.TiempoPreparacion = current.TiempoPreparacion;
+            if (updated.Alergenos == null || updated.Alergenos.Count == 0) updated.Alergenos = current.Alergenos;
+            if (updated.IngredientesBase == null || updated.IngredientesBase.Count == 0) updated.IngredientesBase = current.IngredientesBase;
+            if (updated.ExtrasDisponibles == null || updated.ExtrasDisponibles.Count == 0) updated.ExtrasDisponibles = current.ExtrasDisponibles;
+        }
+
+        updated.Modelo3d = NormalizeModelUrl(updated.Modelo3d);
+
         if (SqlServerAvailable)
         {
             try
@@ -1114,6 +1178,66 @@ public class StoreRepository : IStoreRepository
         }
 
         return updated;
+    }
+
+    public async Task<Product?> UpdateProductPartialAsync(string id, JsonElement body)
+    {
+        await EnsureSqlServerCheckedAsync();
+
+        var current = GetProductById(id);
+        if (current == null)
+        {
+            lock (_lock)
+            {
+                current = _products.FirstOrDefault(p => p.Id == id);
+            }
+        }
+        if (current == null) return null;
+
+        var updated = new Product
+        {
+            Id = current.Id,
+            CategoriaId = current.CategoriaId,
+            Nombre = current.Nombre,
+            Descripcion = current.Descripcion,
+            PrecioBase = current.PrecioBase,
+            Imagen = current.Imagen,
+            Modelo3d = current.Modelo3d,
+            TiempoPreparacion = current.TiempoPreparacion,
+            Disponible = current.Disponible,
+            Destacado = current.Destacado,
+            Alergenos = new List<string>(current.Alergenos ?? new()),
+            IngredientesBase = new List<string>(current.IngredientesBase ?? new()),
+            ExtrasDisponibles = current.ExtrasDisponibles ?? new()
+        };
+
+        if (body.TryGetProperty("destacado", out var pDest)) updated.Destacado = pDest.GetBoolean();
+        if (body.TryGetProperty("disponible", out var pDisp)) updated.Disponible = pDisp.GetBoolean();
+        if (body.TryGetProperty("nombre", out var pNom) && !string.IsNullOrWhiteSpace(pNom.GetString())) updated.Nombre = pNom.GetString()!.Trim();
+        if (body.TryGetProperty("categoria_id", out var pCat) && !string.IsNullOrWhiteSpace(pCat.GetString())) updated.CategoriaId = pCat.GetString()!.Trim();
+        if (body.TryGetProperty("precio_base", out var pPre))
+        {
+            if (pPre.ValueKind == JsonValueKind.Number) updated.PrecioBase = pPre.GetDecimal();
+            else if (decimal.TryParse(pPre.GetString(), out var parsedPre)) updated.PrecioBase = parsedPre;
+        }
+        if (body.TryGetProperty("descripcion", out var pDesc)) updated.Descripcion = pDesc.GetString() ?? "";
+        if (body.TryGetProperty("imagen", out var pImg)) updated.Imagen = pImg.GetString() ?? "";
+        if (body.TryGetProperty("modelo_3d", out var pMod)) updated.Modelo3d = NormalizeModelUrl(pMod.GetString());
+        if (body.TryGetProperty("tiempo_preparacion_min", out var pT) || body.TryGetProperty("tiempo_preparacion", out pT))
+        {
+            if (pT.ValueKind == JsonValueKind.Number) updated.TiempoPreparacion = pT.GetInt32();
+            else if (int.TryParse(pT.GetString(), out var parsedT)) updated.TiempoPreparacion = parsedT;
+        }
+        if (body.TryGetProperty("alergenos", out var pAle) && pAle.ValueKind == JsonValueKind.Array)
+        {
+            updated.Alergenos = JsonSerializer.Deserialize<List<string>>(pAle.GetRawText()) ?? new();
+        }
+        if (body.TryGetProperty("ingredientes_base", out var pIng) && pIng.ValueKind == JsonValueKind.Array)
+        {
+            updated.IngredientesBase = JsonSerializer.Deserialize<List<string>>(pIng.GetRawText()) ?? new();
+        }
+
+        return await UpdateProductAsync(id, updated);
     }
 
     public async Task<Product?> DeleteProductAsync(string id)
@@ -1529,6 +1653,12 @@ public class StoreRepository : IStoreRepository
 
             switch (periodClean)
             {
+                case "all":
+                case "historico":
+                case "total":
+                    cutoff = DateTimeOffset.MinValue;
+                    periodName = "Histórico Total";
+                    break;
                 case "today":
                     cutoff = new DateTimeOffset(now.Year, now.Month, now.Day, 0, 0, 0, TimeSpan.Zero);
                     periodName = "Hoy";
@@ -1617,7 +1747,9 @@ public class StoreRepository : IStoreRepository
                 ordenes_pendientes_cobro = ordenesPendientes,
                 periodName = periodName,
                 periodo = periodClean,
-                inicio_periodo = cutoff.ToString("o"),
+                inicio_periodo = cutoff == DateTimeOffset.MinValue
+                    ? (_orders.LastOrDefault()?.CreadoEn ?? _payments.LastOrDefault()?.Timestamp ?? now.AddMonths(-1).ToString("o"))
+                    : cutoff.ToString("o"),
                 fin_periodo = now.ToString("o"),
                 ultimo_corte_timestamp = _cortes.FirstOrDefault()?.Timestamp,
                 top_productos = topProductos,

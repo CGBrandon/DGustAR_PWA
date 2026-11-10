@@ -1,120 +1,130 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    
-    <!-- PWA Manifest & Icons -->
-    <link id="pwa-manifest" rel="manifest" href="/manifest.json" />
-    <link id="apple-touch-icon" rel="apple-touch-icon" href="/logo.svg" />
 
-    <!-- PWA & Mobile Meta Tags -->
-    <meta id="pwa-theme-color" name="theme-color" content="#b80035" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta id="apple-app-title" name="apple-mobile-web-app-title" content="DGustAR" />
-    <meta name="description" content="DGustAR: Menú gastronómico interactivo con Realidad Aumentada 3D en mesa, pedidos instantáneos y cocina en tiempo real." />
-    
-    <!-- Google Fonts: Plus Jakarta Sans & Material Symbols Outlined -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 
-    <title>DGustAR — Menú Digital con Realidad Aumentada</title>
-    <style>
-      #qr-entry-lock {
-        position: fixed;
-        inset: 0;
-        z-index: 9000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        background: #f8f9ff;
-        color: #172033;
-        text-align: center;
+  <!-- PWA Manifest & Icons -->
+  <link id="pwa-manifest" rel="manifest" href="/manifest.json" />
+  <link id="apple-touch-icon" rel="apple-touch-icon" href="/logo.svg" />
+
+  <!-- PWA & Mobile Meta Tags -->
+  <meta id="pwa-theme-color" name="theme-color" content="#b80035" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta id="apple-app-title" name="apple-mobile-web-app-title" content="DGustAR" />
+  <meta name="description"
+    content="DGustAR: Menú gastronómico interactivo con Realidad Aumentada 3D en mesa, pedidos instantáneos y cocina en tiempo real." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Material Symbols Outlined -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <title>DGustAR — Menú Digital con Realidad Aumentada</title>
+  <style>
+    #qr-entry-lock {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #f8f9ff;
+      color: #172033;
+      text-align: center;
+    }
+
+    #qr-entry-lock[hidden] {
+      display: none;
+    }
+
+    #qr-entry-lock button {
+      margin-top: 16px;
+      border: 0;
+      border-radius: 14px;
+      padding: 12px 18px;
+      background: #b80035;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    // Una entrada nueva al menú debe comenzar con el QR de la mesa.
+    // La mesa se conserva mientras el usuario navega dentro de la PWA,
+    // pero no se reutiliza automáticamente al abrir una nueva entrada.
+    (() => {
+      const path = window.location.pathname;
+      const hasTableFromQr = new URLSearchParams(window.location.search).has("mesa");
+      if ((path === "/" || path === "/menu") && !hasTableFromQr) {
+        [
+          "ar_menu_active_visit_table",
+          "ar_menu_active_visit_time",
+          "ar_menu_table",
+          "ar_menu_table_time",
+          "ar_menu_table_session"
+        ].forEach((key) => {
+          localStorage.removeItem(key);
+          sessionStorage.removeItem(key);
+        });
       }
-      #qr-entry-lock[hidden] { display: none; }
-      #qr-entry-lock button {
-        margin-top: 16px;
-        border: 0;
-        border-radius: 14px;
-        padding: 12px 18px;
-        background: #b80035;
-        color: white;
-        font-weight: 800;
-        cursor: pointer;
-      }
-    </style>
-    <script>
-      // Una entrada nueva al menú debe comenzar con el QR de la mesa.
-      // La mesa se conserva mientras el usuario navega dentro de la PWA,
-      // pero no se reutiliza automáticamente al abrir una nueva entrada.
-      (() => {
-        const path = window.location.pathname;
-        const hasTableFromQr = new URLSearchParams(window.location.search).has("mesa");
-        if ((path === "/" || path === "/menu") && !hasTableFromQr) {
-          [
-            "ar_menu_active_visit_table",
-            "ar_menu_active_visit_time",
-            "ar_menu_table",
-            "ar_menu_table_time",
-            "ar_menu_table_session"
-          ].forEach((key) => {
-            localStorage.removeItem(key);
-            sessionStorage.removeItem(key);
-          });
-        }
 
-        if ((path === "/" || path === "/menu") && !hasTableFromQr) {
-          let qrScannerOpened = false;
-          const openQrScanner = () => {
-            if (qrScannerOpened) return;
-            const button = document.querySelector('button[aria-label="Mesa física verificada por QR"]');
-            if (button && (button.textContent || "").includes("Escanear mesa")) {
-              qrScannerOpened = true;
-              button.click();
-            }
-          };
-          new MutationObserver(openQrScanner).observe(document.documentElement, {
-            childList: true,
-            subtree: true
-          });
-          setTimeout(openQrScanner, 100);
-        }
-      })();
-
-      // Quita la sección heredada de nómina que sigue dentro del bundle
-      // distribuido. El personal accede únicamente con su PIN desde el panel.
-      (() => {
-        const hideRemovedEmployeeTab = () => {
-          document.querySelectorAll("button").forEach((button) => {
-            const label = (button.textContent || "").replace(/\s+/g, " ").trim();
-            if (/Personal\s*&\s*Empleados/i.test(label)) button.remove();
-          });
-          document.querySelectorAll("h1,h2,h3").forEach((heading) => {
-            const label = (heading.textContent || "").replace(/\s+/g, " ").trim();
-            if (!/Nómina y Personal del Restaurante/i.test(label)) return;
-            const section = heading.closest("section, article") || heading.parentElement?.parentElement?.parentElement;
-            section?.remove();
-          });
+      if ((path === "/" || path === "/menu") && !hasTableFromQr) {
+        let qrScannerOpened = false;
+        const openQrScanner = () => {
+          if (qrScannerOpened) return;
+          const button = document.querySelector('button[aria-label="Mesa física verificada por QR"]');
+          if (button && (button.textContent || "").includes("Escanear mesa")) {
+            qrScannerOpened = true;
+            button.click();
+          }
         };
-        new MutationObserver(hideRemovedEmployeeTab).observe(document.documentElement, {
+        new MutationObserver(openQrScanner).observe(document.documentElement, {
           childList: true,
           subtree: true
         });
-        hideRemovedEmployeeTab();
-      })();
+        setTimeout(openQrScanner, 100);
+      }
+    })();
 
-      (() => {
-        const path = window.location.pathname;
-        const params = new URLSearchParams(window.location.search);
-        const setupQrEntryLock = () => {
-          const lock = document.getElementById("qr-entry-lock");
-          if (!lock) return;
+    // Quita la sección heredada de nómina que sigue dentro del bundle
+    // distribuido. El personal accede únicamente con su PIN desde el panel.
+    (() => {
+      const hideRemovedEmployeeTab = () => {
+        document.querySelectorAll("button").forEach((button) => {
+          const label = (button.textContent || "").replace(/\s+/g, " ").trim();
+          if (/Personal\s*&\s*Empleados/i.test(label)) button.remove();
+        });
+        document.querySelectorAll("h1,h2,h3").forEach((heading) => {
+          const label = (heading.textContent || "").replace(/\s+/g, " ").trim();
+          if (!/Nómina y Personal del Restaurante/i.test(label)) return;
+          const section = heading.closest("section, article") || heading.parentElement?.parentElement?.parentElement;
+          section?.remove();
+        });
+      };
+      new MutationObserver(hideRemovedEmployeeTab).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+      hideRemovedEmployeeTab();
+    })();
+
+    (() => {
+      const path = window.location.pathname;
+      const params = new URLSearchParams(window.location.search);
+      const setupQrEntryLock = () => {
+        const lock = document.getElementById("qr-entry-lock");
+        if (!lock) return;
         const hasTable = () => params.has("mesa") || Boolean(
           localStorage.getItem("ar_menu_table") ||
           sessionStorage.getItem("ar_menu_table_session") ||
@@ -140,25 +150,102 @@
         } else if (lock) {
           lock.hidden = true;
         }
-        };
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", setupQrEntryLock, { once: true });
-        } else {
-          setupQrEntryLock();
-        }
-      })();
-    </script>
-    <script type="module" crossorigin src="/assets/index-CebOQXM1.js?v=7"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-BV5RYNIR.css?v=7">
+      };
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupQrEntryLock, { once: true });
+      } else {
+        setupQrEntryLock();
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="/assets/index-CebOQXM1.js?v=7"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BV5RYNIR.css?v=7">
+  
+  <!-- DGustAR Golden Ratio Design System & Admin Suite -->
+  <link rel="stylesheet" href="/assets/admin-golden.css?v=4">
+  <script src="/assets/admin-golden.js?v=2" defer></script>
 
-    <!-- ══════════════════════════════════════════════════════════════════
+  <!-- ══════════════════════════════════════════════════════════════════
+       Service Worker — PWA offline + cache de modelos 3D
+       ══════════════════════════════════════════════════════════════════ -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js').then(function (reg) {
+          console.log('[PWA] Service Worker registrado:', reg.scope);
+        }).catch(function (err) {
+          console.warn('[PWA] SW no pudo registrarse:', err);
+        });
+      });
+    }
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════════
+       Prefetch de Modelos 3D en tiempo de inactividad del navegador
+       Se ejecuta sólo cuando el hilo principal está libre (requestIdleCallback).
+       No bloquea ni afecta la carga inicial de la PWA.
+       ══════════════════════════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      var MODELS = [
+        '/models/burger.glb',
+        '/models/pizza.glb',
+        '/models/fries.glb',
+        '/models/drink.glb',
+        '/models/coffee.glb',
+        '/models/dessert.glb'
+      ];
+
+      function prefetchModels() {
+        // Verificar si ya están en caché antes de descargar
+        if ('caches' in window) {
+          caches.open('dgustar-pwa-v8').then(function (cache) {
+            MODELS.forEach(function (url) {
+              cache.match(url).then(function (cached) {
+                if (!cached) {
+                  // No está en caché — lo descargamos con prioridad baja
+                  fetch(url, { priority: 'low' })
+                    .then(function (res) {
+                      if (res.ok) {
+                        cache.put(url, res);
+                        console.log('[3D] Modelo precargado:', url);
+                      }
+                    })
+                    .catch(function () { /* Sin conexión — el SW lo intentará luego */ });
+                }
+              });
+            });
+          });
+        } else {
+          // Fallback: fetch simple sin verificar caché
+          MODELS.forEach(function (url) {
+            fetch(url, { priority: 'low' }).catch(function () { });
+          });
+        }
+      }
+
+      // Esperar a que la página esté completamente cargada e idle
+      if ('requestIdleCallback' in window) {
+        window.addEventListener('load', function () {
+          requestIdleCallback(prefetchModels, { timeout: 5000 });
+        });
+      } else {
+        // Safari fallback: esperar 4 segundos después del load
+        window.addEventListener('load', function () {
+          setTimeout(prefetchModels, 4000);
+        });
+      }
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════════════════════════════════
          Google Maps Deep Link Booster
          Intercepta cualquier intento de abrir una reseña de Google Maps
          y fuerza la apertura en la app nativa (Maps) en lugar del navegador.
          Funciona en modo PWA standalone, Chrome, Safari y WebView.
          ══════════════════════════════════════════════════════════════════ -->
-    <script>
-    (function() {
+  <script>
+    (function () {
       'use strict';
 
       // Abre la app de Google Maps para dejar reseña usando el mejor método
@@ -169,7 +256,7 @@
           return false;
         }
 
-        var isIOS     = /iP(hone|od|ad)/.test(navigator.userAgent);
+        var isIOS = /iP(hone|od|ad)/.test(navigator.userAgent);
         var isAndroid = /Android/i.test(navigator.userAgent);
 
         if (isIOS) {
@@ -189,10 +276,10 @@
             window.removeEventListener('blur', onBlur);
           }, { once: true });
 
-          try { iframe.contentWindow.location.href = iosUrl; } catch(e) {}
+          try { iframe.contentWindow.location.href = iosUrl; } catch (e) { }
           iframe.src = iosUrl;
 
-          setTimeout(function() {
+          setTimeout(function () {
             document.body.removeChild(iframe);
             if (!launched) {
               // Maps no está instalado: abrimos web de Google Maps
@@ -224,7 +311,7 @@
       // Interceptor de clicks: cuando el usuario toca cualquier enlace/botón
       // que apunta a search.google.com/local/writereview o g.page/r/,
       // lo redirigimos por nuestro método mejorado.
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         var el = e.target;
         // Buscar el <a> más cercano aunque se haga click en un hijo
         while (el && el.tagName !== 'A') el = el.parentElement;
@@ -247,17 +334,19 @@
       }, true); // useCapture: true para interceptar antes que el bundle
 
     })();
-    </script>
-  </head>
-  <body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
-    <div id="app"></div>
-    <div id="qr-entry-lock" hidden>
-      <div>
-        <div style="font-size: 48px">📍</div>
-        <h1 style="margin: 12px 0 8px; font-size: 22px">Escanea el QR de tu mesa</h1>
-        <p style="margin: 0; color: #596579">Debes validar la mesa antes de consultar el menú.</p>
-        <button id="qr-lock-open" type="button">Abrir escáner QR</button>
-      </div>
+  </script>
+</head>
+
+<body class="bg-surface text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+  <div id="app"></div>
+  <div id="qr-entry-lock" hidden>
+    <div>
+      <div style="font-size: 48px">📍</div>
+      <h1 style="margin: 12px 0 8px; font-size: 22px">Escanea el QR de tu mesa</h1>
+      <p style="margin: 0; color: #596579">Debes validar la mesa antes de consultar el menú.</p>
+      <button id="qr-lock-open" type="button">Abrir escáner QR</button>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
