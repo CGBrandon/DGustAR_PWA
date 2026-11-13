@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DGustAR.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd885eabca1837121c75dea12deac4737b32f021")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+944b8519c59f766b801934d8c0df907c032924d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("DGustAR.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DGustAR.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "API\\wwwroot\\css\\styles.css",
               "ToolTip": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\wwwroot\\css\\styles.css",
               "RelativeToolTip": "API\\wwwroot\\css\\styles.css",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-11-10T04:06:59.512Z",
               "EditorCaption": ""
@@ -55,8 +55,7 @@
               "RelativeToolTip": "API\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-11-10T03:42:28.319Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-10T03:42:28.319Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAALQAAAAAAAAAAAAAAMUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-09T23:27:40.166Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-09T23:27:40.166Z"
             },
             {
               "$type": "Document",

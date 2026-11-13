@@ -234,4 +234,3 @@ D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0
 D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.pdb
 D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\DGustAR.Api.genruntimeconfig.cache
 D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\ref\DGustAR.Api.dll
-D:\Aplicaciones Web Progresivas\material\CRUDV2\DGustAR_PWA\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

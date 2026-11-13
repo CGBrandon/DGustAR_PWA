@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj": {}
+    "d:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj": {}
   },
   "projects": {
-    "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj": {
+    "d:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj",
+        "projectUniqueName": "d:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj",
         "projectName": "DGustAR.Api",
-        "projectPath": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj",
+        "projectPath": "d:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\DGustAR.Api.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "D:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\obj\\",
+        "outputPath": "d:\\Aplicaciones Web Progresivas\\material\\CRUDV2\\DGustAR_PWA\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
