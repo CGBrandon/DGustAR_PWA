@@ -4,6 +4,9 @@ namespace DGustAR.Api.Data;
 
 public interface IStoreRepository
 {
+    /// <summary>Indica si los datos vienen de SQL Server o de db.json, y el último error de SQL.</summary>
+    object GetDataSourceStatus();
+
     RestaurantInfo GetRestaurantInfo();
     Task<RestaurantInfo> UpdateGoogleMapsSettingsAsync(GoogleMapsSettingsDto dto);
     Task<(int totalClicks, GoogleReviewClickLog entry)> RecordGoogleReviewClickAsync(GoogleReviewClickDto dto);

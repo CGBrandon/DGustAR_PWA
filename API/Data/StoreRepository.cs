@@ -16,8 +16,18 @@ public class StoreRepository : IStoreRepository
     private readonly object _lock = new();
 
     // true cuando SQL Server está disponible y con datos
-    private bool _useSqlServer = false;
-    private readonly Task _initSqlTask;
+    private volatile bool _useSqlServer = false;
+    private readonly Task _initSqlTask;      // verificación al arrancar (se espera)
+    private Task? _retrySqlTask;              // reintentos en segundo plano (no se esperan)
+
+    // Reintento de conexión: la BD serverless de Azure se pausa sola y puede
+    // no responder a tiempo cuando la app arranca. En vez de quedarse en db.json
+    // para siempre, se vuelve a intentar en segundo plano cada SqlRetryInterval.
+    private static readonly TimeSpan SqlRetryInterval = TimeSpan.FromSeconds(60);
+    private readonly object _sqlCheckLock = new();
+    private DateTime _lastSqlCheckUtc = DateTime.MinValue;
+    private string _sqlStatus = "sin verificar";
+    private string? _lastSqlError;
 
     private RestaurantInfo _restaurant = new();
     private List<string> _tables = new();
@@ -60,7 +70,12 @@ public class StoreRepository : IStoreRepository
 
     private async Task TryInitSqlServerAsync()
     {
-        if (string.IsNullOrWhiteSpace(_connectionString)) return;
+        _lastSqlCheckUtc = DateTime.UtcNow;
+        if (string.IsNullOrWhiteSpace(_connectionString))
+        {
+            _sqlStatus = "sin cadena de conexión (DefaultConnection)";
+            return;
+        }
 
         try
         {
@@ -76,18 +91,24 @@ public class StoreRepository : IStoreRepository
             if (count != 4)
             {
                 _useSqlServer = false;
+                _sqlStatus = "esquema incompatible";
+                _lastSqlError = $"Se encontraron {count} de 4 tablas requeridas.";
                 _logger.LogWarning(
                     "[SQL Server] La BD no contiene el esquema compatible del repositorio. Usando db.json como fuente de datos.");
                 return;
             }
 
             _useSqlServer = true;
+            _sqlStatus = "conectado";
+            _lastSqlError = null;
             _logger.LogInformation(
                 "[SQL Server] Modo SQL activo — {Count} platillos en la BD DGustAR_DB.", count);
         }
         catch (Exception ex)
         {
             _useSqlServer = false;
+            _sqlStatus = "no disponible";
+            _lastSqlError = ex.Message;
             _logger.LogWarning(
                 "[SQL Server] No disponible ({Message}). Usando db.json como fuente de datos.",
                 ex.Message);
@@ -100,10 +121,12 @@ public class StoreRepository : IStoreRepository
     {
         try
         {
-            if (_initSqlTask != null && !_initSqlTask.IsCompleted)
+            var startup = _initSqlTask;
+            if (startup != null && !startup.IsCompleted)
             {
-                await _initSqlTask;
+                await startup;
             }
+            ScheduleSqlRetryIfNeeded();
         }
         catch { }
     }
@@ -112,12 +135,49 @@ public class StoreRepository : IStoreRepository
     {
         try
         {
-            if (_initSqlTask != null && !_initSqlTask.IsCompleted)
+            var startup = _initSqlTask;
+            if (startup != null && !startup.IsCompleted)
             {
-                _initSqlTask.GetAwaiter().GetResult();
+                startup.GetAwaiter().GetResult();
             }
+            ScheduleSqlRetryIfNeeded();
         }
         catch { }
+    }
+
+    /// <summary>
+    /// Si SQL Server no estaba disponible, lanza un nuevo intento en segundo plano
+    /// (sin bloquear la petición actual, que se sirve desde db.json).
+    /// </summary>
+    private void ScheduleSqlRetryIfNeeded()
+    {
+        if (_useSqlServer || string.IsNullOrWhiteSpace(_connectionString)) return;
+        if (DateTime.UtcNow - _lastSqlCheckUtc < SqlRetryInterval) return;
+
+        lock (_sqlCheckLock)
+        {
+            if (_useSqlServer) return;
+            if (!_initSqlTask.IsCompleted) return;
+            if (_retrySqlTask != null && !_retrySqlTask.IsCompleted) return;
+            if (DateTime.UtcNow - _lastSqlCheckUtc < SqlRetryInterval) return;
+
+            _lastSqlCheckUtc = DateTime.UtcNow;
+            _logger.LogInformation("[SQL Server] Reintentando conexión en segundo plano...");
+            _retrySqlTask = Task.Run(() => TryInitSqlServerAsync());
+        }
+    }
+
+    /// <summary>Estado de la fuente de datos (para /api/health).</summary>
+    public object GetDataSourceStatus()
+    {
+        ScheduleSqlRetryIfNeeded();
+        return new
+        {
+            source = SqlServerAvailable ? "sqlserver" : "db.json",
+            sqlStatus = _sqlStatus,
+            lastSqlError = _lastSqlError,
+            lastSqlCheckUtc = _lastSqlCheckUtc == DateTime.MinValue ? null : _lastSqlCheckUtc.ToString("o")
+        };
     }
 
     /// <summary>Abre una conexión SQL y la devuelve ya abierta de forma asíncrona.</summary>
@@ -560,6 +620,7 @@ public class StoreRepository : IStoreRepository
             }
             catch (Exception ex)
             {
+                _lastSqlError = "Menú: " + ex.Message;
                 _logger.LogError(ex,
                     "[SQL Server] Error leyendo menú de SQL Server. Cayendo a db.json.");
             }
