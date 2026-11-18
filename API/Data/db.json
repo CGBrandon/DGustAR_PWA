@@ -1,4 +1,4 @@
-﻿{
+{
   "restaurant": {
     "nombre": "DGustAR Gastronom\u00EDa \u0026 AR",
     "moneda": "MXN",
@@ -6,27 +6,17 @@
     "telefono": "\u002B52 55 1234 5678",
     "direccion": "Av. Tecnol\u00F3gica 100, Col. Innovaci\u00F3n Gastron\u00F3mica",
     "activo": true,
-    "google_maps_url": "https://maps.google.com",
-    "google_maps_review_url": "https://g.page/r/sample/review",
-    "google_maps_rating": 4.9,
-    "google_maps_reviews_count": 128,
-    "google_place_id": "ChIJ_sample_place_id",
+    "google_maps_url": "https://www.google.com/maps/place/?q=place_id:ChIJ4dnUvJC9YoYR34PKM6Icy4s",
+    "google_maps_review_url": "https://search.google.com/local/writereview?placeid=ChIJ4dnUvJC9YoYR34PKM6Icy4s",
+    "google_maps_rating": 4.1,
+    "google_maps_reviews_count": 843,
+    "google_place_id": "ChIJ4dnUvJC9YoYR34PKM6Icy4s",
     "google_reviews_clicks": 1
   },
   "tables": [
     "Mesa 01",
     "Mesa 02",
-    "Mesa 03",
-    "Mesa 04",
-    "Mesa 05",
-    "Mesa 06",
-    "Mesa 07",
-    "Mesa 08",
-    "Mesa 09",
-    "Mesa 10",
-    "Mesa 11",
-    "Mesa 12",
-    "Para Llevar"
+    "ba\u00F1o"
   ],
   "categories": [
     {
@@ -82,6 +72,15 @@
       "emoji": "\u2615",
       "orden": 6,
       "activo": true
+    },
+    {
+      "id": "cat-221f74f9",
+      "nombre": "especialistas",
+      "slug": "especialistas",
+      "icono": "category",
+      "emoji": "\uD83C\uDF7D\uFE0F",
+      "orden": 7,
+      "activo": true
     }
   ],
   "products": [
@@ -122,31 +121,25 @@
     },
     {
       "id": "prod-papas-trufa",
-      "categoria_id": "cat-snacks",
-      "nombre": "Papas R\u00FAsticas Trufa \u0026 Parmesano",
-      "descripcion": "Papas cortadas con piel, fritas a doble cocci\u00F3n, aceite de trufa blanca y queso parmesano Reggiano.",
-      "precio_base": 89.00,
-      "imagen": "https://images.unsplash.com/photo-1576107232684-1279f3908594?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-      "modelo_3d": "/models/burger.glb",
+      "categoria_id": "cat-pizzas",
+      "nombre": "Papas R\u00FAsticas ",
+      "descripcion": "Corte grueso con piel, dob",
+      "precio_base": 100,
+      "imagen": "/uploads/asset-633213d609054d849af3b7fc091e6758.png",
+      "modelo_3d": "/models/fries.glb",
       "tiempo_preparacion": 10,
       "tiempo_preparacion_min": 10,
       "disponible": true,
-      "destacado": false,
-      "alergenos": [
-        "L\u00E1cteos"
-      ],
+      "destacado": true,
+      "alergenos": [],
       "ingredientes_base": [
         "Papas r\u00FAsticas",
-        "Aceite de trufa",
-        "Queso parmesano"
+        "Aceite de trufa blanca",
+        "Parmesano Reggiano 24 meses",
+        "Perejil picado",
+        "Sal de mar"
       ],
-      "extras_disponibles": [
-        {
-          "id": "ext-dip-ajo",
-          "nombre": "Dip de Ajo Negro y Romero",
-          "precio": 18.00
-        }
-      ]
+      "extras_disponibles": []
     },
     {
       "id": "prod-32f11ac0",
@@ -162,6 +155,72 @@
       "destacado": false,
       "alergenos": [],
       "ingredientes_base": [],
+      "extras_disponibles": []
+    },
+    {
+      "id": "prod-burger-clasica",
+      "categoria_id": "cat-burgers",
+      "nombre": "Smash Burger Doble carne",
+      "descripcion": "Doble medall\u00F3n de 100g smash caramelizado, queso americano fundido, tiras de tocino crocante, pepinillos encurtidos y aderezo especial de la casa.",
+      "precio_base": 139,
+      "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "modelo_3d": "/models/burger.glb",
+      "tiempo_preparacion": 12,
+      "tiempo_preparacion_min": 12,
+      "disponible": true,
+      "destacado": false,
+      "alergenos": [],
+      "ingredientes_base": [
+        "Pan de papa tostado",
+        "Doble smash 200g",
+        "Queso americano",
+        "Tocino crujiente",
+        "Pepinillos agridulces",
+        "Salsa de la casa"
+      ],
+      "extras_disponibles": []
+    },
+    {
+      "id": "prod-volcan-chocolate",
+      "categoria_id": "cat-postres",
+      "nombre": "Volc\u00E1n de Chocolate",
+      "descripcion": "Bizcocho tibio de chocolate amargo 70% con coraz\u00F3n l\u00EDquido fundente, acompa\u00F1ado de helado artesanal de vainilla Bourbon de Madagascar.",
+      "precio_base": 89,
+      "imagen": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "modelo_3d": "/models/dessert.glb",
+      "tiempo_preparacion": 12,
+      "tiempo_preparacion_min": 12,
+      "disponible": true,
+      "destacado": true,
+      "alergenos": [],
+      "ingredientes_base": [
+        "Chocolate belga 70%",
+        "Mantequilla de granja",
+        "Helado de vainilla Bourbon",
+        "Crumble de avellanas"
+      ],
+      "extras_disponibles": []
+    },
+    {
+      "id": "prod-mocktail-berries",
+      "categoria_id": "cat-bebidas",
+      "nombre": "Mocktail Frutos Rojos",
+      "descripcion": "Infusi\u00F3n fresca de frutos del bosque macerados con lim\u00F3n eureka, jarabe artesanal de albahaca morada, soda artesanal y hielo cristalino.",
+      "precio_base": 65,
+      "imagen": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+      "modelo_3d": "/models/drink.glb",
+      "tiempo_preparacion": 5,
+      "tiempo_preparacion_min": 5,
+      "disponible": true,
+      "destacado": false,
+      "alergenos": [],
+      "ingredientes_base": [
+        "Frambuesas",
+        "Moras azules",
+        "Albahaca morada",
+        "Lim\u00F3n eureka",
+        "Agua mineral con gas"
+      ],
       "extras_disponibles": []
     }
   ],
@@ -188,7 +247,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 119,
-          "subtotal": 119
+          "subtotal": 119,
+          "notas": ""
         }
       ],
       "subtotal": 119,
@@ -243,7 +303,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 189,
-          "subtotal": 189
+          "subtotal": 189,
+          "notas": ""
         }
       ],
       "subtotal": 189,
@@ -298,7 +359,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 95,
-          "subtotal": 95
+          "subtotal": 95,
+          "notas": ""
         }
       ],
       "subtotal": 95,
@@ -343,7 +405,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149,
-          "subtotal": 149
+          "subtotal": 149,
+          "notas": ""
         },
         {
           "producto_id": "prod-burger-clasica",
@@ -354,7 +417,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 139,
-          "subtotal": 139
+          "subtotal": 139,
+          "notas": ""
         }
       ],
       "subtotal": 288,
@@ -399,7 +463,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 119,
-          "subtotal": 119
+          "subtotal": 119,
+          "notas": ""
         }
       ],
       "subtotal": 119,
@@ -444,7 +509,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 189,
-          "subtotal": 189
+          "subtotal": 189,
+          "notas": ""
         }
       ],
       "subtotal": 189,
@@ -489,7 +555,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 95,
-          "subtotal": 95
+          "subtotal": 95,
+          "notas": ""
         }
       ],
       "subtotal": 95,
@@ -534,7 +601,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149,
-          "subtotal": 149
+          "subtotal": 149,
+          "notas": ""
         },
         {
           "producto_id": "prod-burger-clasica",
@@ -545,7 +613,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 139,
-          "subtotal": 139
+          "subtotal": 139,
+          "notas": ""
         }
       ],
       "subtotal": 288,
@@ -590,7 +659,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 119,
-          "subtotal": 119
+          "subtotal": 119,
+          "notas": ""
         }
       ],
       "subtotal": 119,
@@ -635,7 +705,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 189,
-          "subtotal": 189
+          "subtotal": 189,
+          "notas": ""
         }
       ],
       "subtotal": 189,
@@ -680,7 +751,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 95,
-          "subtotal": 95
+          "subtotal": 95,
+          "notas": ""
         }
       ],
       "subtotal": 95,
@@ -725,7 +797,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149,
-          "subtotal": 149
+          "subtotal": 149,
+          "notas": ""
         },
         {
           "producto_id": "prod-burger-clasica",
@@ -736,7 +809,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 139,
-          "subtotal": 139
+          "subtotal": 139,
+          "notas": ""
         }
       ],
       "subtotal": 288,
@@ -781,7 +855,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 119,
-          "subtotal": 119
+          "subtotal": 119,
+          "notas": ""
         }
       ],
       "subtotal": 119,
@@ -826,7 +901,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 189,
-          "subtotal": 189
+          "subtotal": 189,
+          "notas": ""
         }
       ],
       "subtotal": 189,
@@ -871,7 +947,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 95,
-          "subtotal": 95
+          "subtotal": 95,
+          "notas": ""
         }
       ],
       "subtotal": 95,
@@ -916,7 +993,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149,
-          "subtotal": 149
+          "subtotal": 149,
+          "notas": ""
         },
         {
           "producto_id": "prod-burger-clasica",
@@ -927,7 +1005,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 139,
-          "subtotal": 139
+          "subtotal": 139,
+          "notas": ""
         }
       ],
       "subtotal": 288,
@@ -972,7 +1051,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 119,
-          "subtotal": 119
+          "subtotal": 119,
+          "notas": ""
         }
       ],
       "subtotal": 119,
@@ -1017,7 +1097,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 189,
-          "subtotal": 189
+          "subtotal": 189,
+          "notas": ""
         }
       ],
       "subtotal": 189,
@@ -1062,7 +1143,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 95,
-          "subtotal": 95
+          "subtotal": 95,
+          "notas": ""
         }
       ],
       "subtotal": 95,
@@ -1107,7 +1189,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149,
-          "subtotal": 149
+          "subtotal": 149,
+          "notas": ""
         },
         {
           "producto_id": "prod-burger-clasica",
@@ -1118,7 +1201,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 139,
-          "subtotal": 139
+          "subtotal": 139,
+          "notas": ""
         }
       ],
       "subtotal": 288,
@@ -1163,7 +1247,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 149.00,
-          "subtotal": 298.00
+          "subtotal": 298.00,
+          "notas": ""
         }
       ],
       "subtotal": 298.00,
@@ -1218,7 +1303,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 229.00,
-          "subtotal": 229.00
+          "subtotal": 229.00,
+          "notas": ""
         },
         {
           "producto_id": "prod-papas-trufa",
@@ -1229,7 +1315,8 @@
           "ingredientes_removidos": [],
           "extras": [],
           "precio_unitario": 89.00,
-          "subtotal": 89.00
+          "subtotal": 89.00,
+          "notas": ""
         }
       ],
       "subtotal": 318.00,
@@ -1558,6 +1645,22 @@
     }
   ],
   "cortes": [
+    {
+      "id": "corte-1a1c2bd0214",
+      "responsable": "Administrador",
+      "inicio_periodo": "2026-10-31T01:06:51.2265760Z",
+      "fin_periodo": "2026-11-09T23:55:29.1714185Z",
+      "fondo_inicial": 500,
+      "efectivo_contado": 0,
+      "total_efectivo": 318,
+      "total_terminal": 0,
+      "total_transferencia": 0,
+      "total_ventas": 318,
+      "diferencia_efectivo": -818,
+      "cantidad_pedidos": 1,
+      "notas": "",
+      "timestamp": "2026-11-09T23:55:29.1714185Z"
+    },
     {
       "id": "corte-1a18f7ec0db",
       "responsable": "Administrador",

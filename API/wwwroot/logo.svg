@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="28" fill="#E11D48"/>
+  <!-- Cloche plate cover combined with AR spatial glasses/cube motif -->
+  <path d="M50 24C36.7452 24 26 34.7452 26 48H74C74 34.7452 63.2548 24 50 24Z" fill="white"/>
+  <circle cx="50" cy="20" r="4" fill="white"/>
+  <rect x="22" y="51" width="56" height="5" rx="2.5" fill="white"/>
+  <!-- AR corner brackets around dish -->
+  <path d="M28 36H22V42" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <path d="M72 36H78V42" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <path d="M22 62V68H28" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <path d="M78 62V68H72" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.85"/>
+  <!-- Small spark/AR star -->
+  <path d="M50 63L52 68L57 70L52 72L50 77L48 72L43 70L48 68L50 63Z" fill="#FFE4E6"/>
+</svg>
