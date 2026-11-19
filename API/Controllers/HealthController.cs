@@ -1,3 +1,4 @@
+using DGustAR.Api.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DGustAR.Api.Controllers;
@@ -6,6 +7,13 @@ namespace DGustAR.Api.Controllers;
 [Route("api/[controller]")]
 public class HealthController : ControllerBase
 {
+    private readonly IStoreRepository _db;
+
+    public HealthController(IStoreRepository db)
+    {
+        _db = db;
+    }
+
     [HttpGet]
     public IActionResult Get()
     {
@@ -14,7 +22,8 @@ public class HealthController : ControllerBase
             status = "ok",
             message = "DGustAR .NET API Server operativo y protegido",
             environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development",
-            timestamp = DateTime.UtcNow.ToString("o")
+            timestamp = DateTime.UtcNow.ToString("o"),
+            dataSource = _db.GetDataSourceStatus()
         });
     }
 }
