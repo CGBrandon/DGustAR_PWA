@@ -6,6 +6,12 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Overrides locales con secretos (p. ej. la cadena de conexión a Azure SQL).
+// appsettings.Local.json está en .gitignore: nunca se sube al repositorio.
+// En Azure la cadena se define en App Service > Configuración > Cadenas de conexión
+// (nombre: DefaultConnection), que tiene prioridad sobre appsettings.json.
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
+
 // 1. Registro de Servicios e Inyección de Dependencias
 builder.Services.AddSingleton<IStoreRepository, StoreRepository>();
 builder.Services.AddSingleton<AppWebSocketManager>();
