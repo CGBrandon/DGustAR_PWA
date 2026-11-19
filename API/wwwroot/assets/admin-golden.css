@@ -1,0 +1,981 @@
+/**
+ * ════════════════════════════════════════════════════════════════════════════
+ * DGustAR Admin Portal — Golden Ratio Design System (Sistema Áureo Φ)
+ * Basado en la proporción áurea (Φ ≈ 1.6180339887) y secuencia Fibonacci (5, 8, 13, 21, 34, 55)
+ * Armonía cromática 60-30-10: 60% Obsidiana Orgánica · 30% Cristal Estructural · 10% Oro/Rubí
+ * ════════════════════════════════════════════════════════════════════════════
+ */
+
+:root {
+  /* Constantes Matemáticas Áureas */
+  --phi: 1.6180339887;
+  --phi-inv: 0.6180339887;
+
+  /* Escala de Radios Fibonacci / Áureos */
+  --golden-r-nano: 5px;
+  --golden-r-xs: 8px;
+  --golden-r-sm: 13px;
+  --golden-r-md: 21px;
+  --golden-r-lg: 34px;
+  --golden-r-pill: 9999px;
+
+  /* Escala de Espaciado Fibonacci / Áureo */
+  --golden-gap-2xs: 5px;
+  --golden-gap-xs: 8px;
+  --golden-gap-sm: 13px;
+  --golden-gap-md: 21px;
+  --golden-gap-lg: 34px;
+  --golden-gap-xl: 55px;
+
+  /* Escala Tipográfica Modular Áurea */
+  --golden-fs-nano: 10.5px;
+  --golden-fs-caption: 12px;
+  --golden-fs-body: 13.5px;
+  --golden-fs-base: 16px;
+  --golden-fs-subhead: 21px;
+  --golden-fs-title: 26px;
+  --golden-fs-kpi: 34px;
+  --golden-fs-hero: 55px;
+
+  /* Curvas de Transición Áureas (1 - 0.618 = 0.382) */
+  --golden-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --golden-t-fast: 162ms;
+  --golden-t-normal: 262ms;
+  --golden-t-smooth: 424ms;
+
+  /* 60% — Lienzo Dominante (Obsidiana Profunda con Iluminación Radial) */
+  --canvas-bg: #0b0f19;
+  --canvas-radial: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184, 0, 53, 0.16) 0%, rgba(11, 15, 25, 0) 61.8%),
+                   radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 158, 11, 0.08) 0%, rgba(11, 15, 25, 0) 61.8%),
+                   #0b0f19;
+
+  /* 30% — Superficies y Paneles Estructurales */
+  --surface-header: rgba(11, 15, 25, 0.88);
+  --surface-card: rgba(18, 25, 41, 0.82);
+  --surface-card-hover: rgba(25, 34, 56, 0.92);
+  --surface-elevated: rgba(28, 38, 62, 0.88);
+  --surface-glass-border: rgba(255, 255, 255, 0.09);
+  --surface-glass-border-hover: rgba(245, 158, 11, 0.3);
+  --surface-inner-glow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --surface-inner-glow-gold: inset 0 1px 0 rgba(245, 158, 11, 0.25);
+
+  /* 10% — Acentos Cromáticos y Señalización */
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+  --color-gold-glow: 0 0 21px rgba(245, 158, 11, 0.28);
+
+  --color-ruby-500: #e11d48;
+  --color-ruby-600: #b80035;
+  --color-ruby-glow: 0 0 21px rgba(184, 0, 53, 0.38);
+
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-glow: 0 0 21px rgba(16, 185, 129, 0.28);
+
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0284c7;
+
+  /* Sombras Escalonadas Áureas */
+  --shadow-golden-sm: 0 2px 5px -1px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-golden-md: 0 5px 13px -2px rgba(0, 0, 0, 0.45), 0 2px 5px rgba(0, 0, 0, 0.3), var(--surface-inner-glow);
+  --shadow-golden-lg: 0 13px 34px -5px rgba(0, 0, 0, 0.6), 0 5px 13px rgba(0, 0, 0, 0.35), var(--surface-inner-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. LIENZO Y FONDO GLOBAL DEL PORTAL ADMINISTRATIVO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+div[data-v-48ad60c4].min-h-screen {
+  background: var(--canvas-radial) !important;
+  color: #f1f5f9 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: -0.011em !important;
+  -webkit-font-smoothing: antialiased !important;
+  min-height: 100vh !important;
+  position: relative !important;
+}
+
+/* Grano sutil orgánico en el fondo para profundidad táctil */
+div[data-v-48ad60c4].min-h-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 21px 21px; /* Malla Fibonacci de 21px */
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. BARRA SUPERIOR (HEADER) — ALTO ÁUREO (68px) CON EFECTO VIDRIO FLOTANTE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+header[data-v-48ad60c4] {
+  height: 68px !important; /* Altura áurea: 42px * 1.618 ≈ 68px */
+  padding: 0 var(--golden-gap-md) !important;
+  background: var(--surface-header) !important;
+  backdrop-filter: blur(21px) !important;
+  -webkit-backdrop-filter: blur(21px) !important;
+  border-bottom: 1px solid var(--surface-glass-border) !important;
+  box-shadow: 0 4px 21px rgba(0, 0, 0, 0.35) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+}
+
+/* Logo e ícono DGustAR en header con resplandor rubí */
+header[data-v-48ad60c4] .w-9.h-9 {
+  width: 42px !important; /* Fibonacci 42px */
+  height: 42px !important;
+  border-radius: var(--golden-r-sm) !important;
+  background: linear-gradient(135deg, var(--color-ruby-600) 0%, #880026 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: var(--color-ruby-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+header[data-v-48ad60c4] .font-extrabold.text-sm {
+  font-size: var(--golden-fs-base) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Píldora de Rol (Gerencia / Personal) */
+header[data-v-48ad60c4] .rounded-full {
+  border-radius: var(--golden-r-pill) !important;
+  padding: 4px 13px !important;
+  font-size: var(--golden-fs-caption) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--shadow-golden-sm) !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Indicador de WebSocket con pulso de vida esmeralda */
+header[data-v-48ad60c4] span.bg-emerald-950\/80 {
+  background: rgba(6, 78, 59, 0.5) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+  color: var(--color-emerald-400) !important;
+}
+
+/* Botones de acción en header */
+header[data-v-48ad60c4] button,
+header[data-v-48ad60c4] a {
+  border-radius: var(--golden-r-sm) !important;
+  font-size: var(--golden-fs-caption) !important;
+  font-weight: 700 !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+  box-shadow: var(--shadow-golden-sm) !important;
+}
+
+header[data-v-48ad60c4] button:hover,
+header[data-v-48ad60c4] a:hover {
+  transform: translateY(-1.5px) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. BARRA DE PESTAÑAS (SEGMENTED CONTROL ÁUREO)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 {
+  background: var(--surface-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  border-radius: var(--golden-r-md) !important; /* 21px */
+  padding: var(--golden-gap-2xs) var(--golden-gap-xs) !important;
+  box-shadow: var(--shadow-golden-md) !important;
+  gap: var(--golden-gap-xs) !important;
+  margin-bottom: var(--golden-gap-xs) !important;
+}
+
+/* Cada pestaña individual */
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 button {
+  border-radius: var(--golden-r-sm) !important; /* 13px */
+  padding: 8px 16px !important;
+  font-size: var(--golden-fs-caption) !important;
+  font-weight: 700 !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+  cursor: pointer !important;
+  border: 1px solid transparent !important;
+  position: relative !important;
+}
+
+/* Pestaña Inactiva */
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 button:not(.bg-primary-container) {
+  color: #94a3b8 !important;
+  background: transparent !important;
+}
+
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 button:not(.bg-primary-container):hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Pestaña Activa (Resplandor Rubí Áureo con Anillo) */
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 button.bg-primary-container {
+  background: linear-gradient(135deg, var(--color-ruby-600) 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 4px 16px rgba(184, 0, 53, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Badges numéricos en las pestañas */
+div[data-v-48ad60c4] .flex.flex-wrap.items-center.gap-2.p-1\.5 button .rounded-full {
+  border-radius: var(--golden-r-pill) !important;
+  font-weight: 900 !important;
+  font-size: 10px !important;
+  padding: 2px 7px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. TARJETAS DE MÉTRICAS / KPIS (CAJA, RESÚMENES, VENTAS)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Grid de Métricas */
+div[data-v-48ad60c4] .grid.grid-cols-2.md\:grid-cols-4 {
+  gap: var(--golden-gap-md) !important; /* 21px */
+}
+
+/* Tarjeta individual de métrica */
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950 {
+  background: var(--surface-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  border-radius: var(--golden-r-md) !important; /* 21px */
+  padding: var(--golden-gap-md) !important; /* 21px */
+  box-shadow: var(--shadow-golden-md) !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Efecto de luz superior áurea en tarjeta */
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.4), transparent);
+  opacity: 0;
+  transition: opacity var(--golden-t-normal) var(--golden-ease);
+}
+
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950:hover {
+  background: var(--surface-card-hover) !important;
+  border-color: var(--surface-glass-border-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-golden-lg), var(--color-gold-glow) !important;
+}
+
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950:hover::before {
+  opacity: 1;
+}
+
+/* Valor numérico de KPI — Proporción Áurea 34px */
+div[data-v-48ad60c4] .text-2xl.font-black {
+  font-size: var(--golden-fs-kpi) !important; /* Fibonacci 34px */
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  font-weight: 900 !important;
+}
+
+/* Etiquetas de KPI */
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950 span.text-xs {
+  font-size: var(--golden-fs-caption) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #94a3b8 !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. SISTEMA KDS DE COCINA (COLUMNAS Y TICKETS DE COMANDAS)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Grid de las 4 columnas KDS */
+div[data-v-48ad60c4] .grid.grid-cols-1.md\:grid-cols-4.gap-4 {
+  gap: var(--golden-gap-md) !important; /* 21px */
+  align-items: stretch !important;
+}
+
+/* Contenedor de cada Columna KDS */
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 {
+  background: var(--surface-card) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: var(--golden-r-lg) !important; /* 34px */
+  border: 1px solid var(--surface-glass-border) !important;
+  box-shadow: var(--shadow-golden-md) !important;
+  padding: var(--golden-gap-md) !important; /* 21px */
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--golden-gap-sm) !important;
+}
+
+/* Cabecera de Columna KDS */
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 > div:first-child {
+  padding-bottom: var(--golden-gap-sm) !important;
+  border-bottom: 1px solid var(--surface-glass-border) !important;
+  margin-bottom: var(--golden-gap-xs) !important;
+}
+
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 span.uppercase {
+  font-size: var(--golden-fs-caption) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* ── Tarjetas Individuales de Comandas (Tickets KDS) ── */
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 .p-4.rounded-2xl {
+  background: var(--surface-elevated) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  border-radius: var(--golden-r-md) !important; /* 21px */
+  box-shadow: var(--shadow-golden-md) !important;
+  padding: var(--golden-gap-md) !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--golden-gap-sm) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Hover suave en comandas */
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 .p-4.rounded-2xl:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: var(--shadow-golden-lg) !important;
+}
+
+/* Borde indicador lateral en cada columna de comanda */
+/* 1. Nuevas / Pendientes: Ámbar Dorado */
+div[data-v-48ad60c4] .border-amber-900\/40 .p-4.rounded-2xl {
+  border-left: 4px solid var(--color-gold-500) !important;
+}
+/* 2. En Fuego: Azul Eléctrico */
+div[data-v-48ad60c4] .border-blue-900\/40 .p-4.rounded-2xl {
+  border-left: 4px solid var(--color-sky-400) !important;
+}
+/* 3. Listas para Servir: Esmeralda Brillante */
+div[data-v-48ad60c4] .border-emerald-900\/40 .p-4.rounded-2xl {
+  border-left: 4px solid var(--color-emerald-500) !important;
+}
+
+/* Título de la Mesa en la Comanda (Jerarquía Clara) */
+div[data-v-48ad60c4] .font-black.text-base {
+  font-size: var(--golden-fs-subhead) !important; /* Fibonacci 21px */
+  font-weight: 900 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Ítems del pedido (Cantidad y Nombre) */
+div[data-v-48ad60c4] .font-bold.text-white {
+  font-size: var(--golden-fs-body) !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+  line-height: 1.4 !important;
+}
+
+/* ⚠️ INSTRUCCIONES ESPECIALES DE COCINA (Solución al reporte de auditoría) */
+/* Antes se perdían en texto diminuto. Ahora tienen banner destacado áureo */
+div[data-v-48ad60c4] span.italic {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(245, 158, 11, 0.14) !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  border-left: 4px solid var(--color-gold-500) !important;
+  border-radius: var(--golden-r-xs) !important; /* 8px */
+  padding: 6px 10px !important;
+  margin-top: 5px !important;
+  font-size: var(--golden-fs-caption) !important; /* 12px */
+  font-weight: 700 !important;
+  color: #fef08a !important; /* Amarillo de alta visibilidad */
+  font-style: normal !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+div[data-v-48ad60c4] span.italic::before {
+  content: "⚠️ NOTA:";
+  font-weight: 900;
+  font-size: 10px;
+  background: var(--color-gold-500);
+  color: #000;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Botones de acción KDS ("Iniciar Preparación", "Listo", etc.) */
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 button {
+  border-radius: var(--golden-r-sm) !important; /* 13px */
+  padding: 11px 16px !important;
+  font-size: var(--golden-fs-body) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+  box-shadow: var(--shadow-golden-md) !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+  cursor: pointer !important;
+}
+
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 button:hover {
+  transform: translateY(-1.5px) !important;
+  box-shadow: var(--shadow-golden-lg) !important;
+}
+
+div[data-v-48ad60c4] .p-4.rounded-3xl.bg-slate-950 button:active {
+  transform: scale(0.98) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   6. PANTALLA DE ACCESO (LOGIN CON PIN / TECLADO NUMÉRICO)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+div[data-v-48ad60c4] .w-full.max-w-md.p-6.sm\:p-8.rounded-3xl.bg-slate-950 {
+  background: var(--surface-card) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  border-radius: var(--golden-r-lg) !important; /* 34px */
+  box-shadow: var(--shadow-golden-lg), 0 0 55px rgba(0, 0, 0, 0.8) !important;
+  padding: var(--golden-gap-lg) !important; /* 34px */
+}
+
+/* Input del PIN */
+div[data-v-48ad60c4] input[type="password"],
+div[data-v-48ad60c4] input[type="text"],
+div[data-v-48ad60c4] input[type="number"],
+div[data-v-48ad60c4] input[type="url"],
+div[data-v-48ad60c4] select,
+div[data-v-48ad60c4] textarea {
+  border-radius: var(--golden-r-sm) !important; /* 13px */
+  background: rgba(11, 15, 25, 0.75) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  color: #ffffff !important;
+  font-size: var(--golden-fs-body) !important;
+  padding: 10px 14px !important;
+  transition: all var(--golden-t-normal) var(--golden-ease) !important;
+}
+
+div[data-v-48ad60c4] input:focus,
+div[data-v-48ad60c4] select:focus,
+div[data-v-48ad60c4] textarea:focus {
+  outline: none !important;
+  border-color: var(--color-ruby-500) !important;
+  box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.25), var(--surface-inner-glow) !important;
+  background: rgba(11, 15, 25, 0.95) !important;
+}
+
+/* Teclado numérico táctil (Keypad) */
+div[data-v-48ad60c4] .grid.grid-cols-3.gap-2.py-1 button {
+  border-radius: var(--golden-r-sm) !important; /* 13px */
+  background: var(--surface-elevated) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  color: #ffffff !important;
+  font-size: var(--golden-fs-subhead) !important; /* 21px */
+  font-weight: 800 !important;
+  padding: 14px !important;
+  box-shadow: var(--shadow-golden-sm) !important;
+  transition: all var(--golden-t-fast) var(--golden-ease) !important;
+}
+
+div[data-v-48ad60c4] .grid.grid-cols-3.gap-2.py-1 button:hover {
+  background: var(--surface-card-hover) !important;
+  border-color: var(--color-gold-500) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-golden-md), var(--color-gold-glow) !important;
+}
+
+div[data-v-48ad60c4] .grid.grid-cols-3.gap-2.py-1 button:active {
+  transform: scale(0.95) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   7. SECCIÓN DE MESAS & CÓDIGOS QR (TAB "QR")
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Tarjeta individual de Mesa QR */
+div[data-v-48ad60c4] .p-4.rounded-2xl.bg-slate-950.border.border-slate-800:has(img[alt*="QR"]),
+div[data-v-48ad60c4] .p-4.rounded-2xl:has(canvas) {
+  border-radius: var(--golden-r-md) !important; /* 21px */
+  background: var(--surface-card) !important;
+  border: 1px solid var(--surface-glass-border) !important;
+  padding: var(--golden-gap-md) !important;
+  box-shadow: var(--shadow-golden-md) !important;
+}
+
+/* Marco blanco de alto contraste para el QR (para lectura perfecta de cámara) */
+div[data-v-48ad60c4] img[alt*="QR"],
+div[data-v-48ad60c4] canvas {
+  border-radius: var(--golden-r-sm) !important; /* 13px */
+  background: #ffffff !important;
+  padding: 8px !important;
+  box-shadow: 0 4px 13px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   8. VENTANAS MODALES Y MODAL "NUEVO PLATILLO" (HIGH-DEF LUMINOUS GLASSMORHPISM)
+   Ergonomía Áurea para registro ágil de platillos consecutivos sin fatiga cognitiva
+   (Exclusivo para el portal administrativo - sin afectar el menú ni el visor 3D)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Telón de fondo (Backdrop) exclusivo para modales del portal administrativo */
+body:has(div[data-v-48ad60c4]) > .fixed.inset-0.z-50.bg-black\/80,
+body:has(div[data-v-48ad60c4]) > .fixed.inset-0.z-50.backdrop-blur-md,
+body:has(div[data-v-48ad60c4]) > .fixed.inset-0.z-50.backdrop-blur-sm,
+div[data-v-48ad60c4] .fixed.inset-0.z-50.bg-black\/80,
+div[data-v-48ad60c4] .fixed.inset-0.z-50.backdrop-blur-md,
+div[data-v-48ad60c4] .fixed.inset-0.z-50.backdrop-blur-sm {
+  backdrop-filter: blur(34px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(200%) !important;
+  background: radial-gradient(ellipse 90% 65% at 50% 25%, rgba(184, 0, 53, 0.26) 0%, rgba(245, 158, 11, 0.12) 34%, rgba(11, 15, 25, 0.88) 100%) !important;
+}
+
+/* 2. Tarjeta Modal Cristalina: más ancha, clara, luminosa y proporcionada */
+body:has(div[data-v-48ad60c4]) .fixed.inset-0.z-50 .max-w-2xl,
+body:has(div[data-v-48ad60c4]) .fixed.inset-0.z-50 .max-w-md,
+div[data-v-48ad60c4] .w-full.max-w-2xl.max-h-\[92vh\],
+div[data-v-48ad60c4] .w-full.max-w-2xl {
+  max-width: 840px !important; /* Proporción áurea Fibonacci ~840px para eliminar claustrofobia */
+  max-height: 92vh !important;
+  background: 
+    linear-gradient(155deg, 
+      rgba(255, 255, 255, 0.14) 0%, 
+      rgba(255, 255, 255, 0.05) 38%, 
+      rgba(255, 255, 255, 0.02) 100%
+    ),
+    linear-gradient(180deg, 
+      rgba(30, 43, 67, 0.88) 0%, 
+      rgba(15, 23, 42, 0.84) 100%
+    ) !important;
+  backdrop-filter: blur(55px) saturate(220%) contrast(108%) !important;
+  -webkit-backdrop-filter: blur(55px) saturate(220%) contrast(108%) !important;
+  border-radius: 28px !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  box-shadow: 
+    0 34px 89px -15px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 60px rgba(245, 158, 11, 0.10),
+    inset 0 1.618px 2px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Cabecera del modal: Cristal puro translúcido con brillo superior */
+div[data-v-48ad60c4] .max-w-2xl > div:first-child,
+div[data-v-48ad60c4] .flex.items-center.justify-between.border-b {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  padding: 20px 32px !important;
+}
+
+/* Ícono en cabecera del modal con gema rubí */
+div[data-v-48ad60c4] .max-w-2xl .w-10.h-10 {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, var(--color-ruby-600) 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 4px 16px rgba(184, 0, 53, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl h3 {
+  color: #ffffff !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+div[data-v-48ad60c4] .max-w-2xl span.text-xs.text-slate-400 {
+  color: #cbd5e1 !important;
+  font-size: 13px !important;
+  margin-top: 2px !important;
+}
+
+/* Botón cerrar modal con micro-interacción suave */
+div[data-v-48ad60c4] .max-w-2xl button[title="Cerrar modal"],
+div[data-v-48ad60c4] .max-w-2xl .w-8.h-8.rounded-full {
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #e2e8f0 !important;
+  border-radius: 50% !important;
+  transition: all 180ms ease !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl button[title="Cerrar modal"]:hover,
+div[data-v-48ad60c4] .max-w-2xl .w-8.h-8.rounded-full:hover {
+  background: rgba(225, 29, 72, 0.3) !important;
+  border-color: rgba(225, 29, 72, 0.5) !important;
+  color: #ffffff !important;
+  transform: rotate(90deg) scale(1.05) !important;
+}
+
+/* Cuerpo del formulario: Espaciado áureo y scrollbar estilizada */
+div[data-v-48ad60c4] .max-w-2xl form {
+  background: transparent !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl .p-6.overflow-y-auto {
+  padding: 28px 32px !important;
+  gap: 21px !important; /* Fibonacci 21px */
+  background: transparent !important;
+}
+
+/* Etiquetas del modal: Micro-tipografía de alta legibilidad */
+div[data-v-48ad60c4] .max-w-2xl label {
+  color: #e2e8f0 !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin-bottom: 7px !important;
+  display: block !important;
+}
+
+/* Asterisco de campo obligatorio con destello oro áureo */
+div[data-v-48ad60c4] .max-w-2xl label:after {
+  content: "";
+}
+
+/* Campos de entrada: Ergonómicos (50px de altura), cristalinos y de alto contraste */
+div[data-v-48ad60c4] .max-w-2xl input,
+div[data-v-48ad60c4] .max-w-2xl select,
+div[data-v-48ad60c4] .max-w-2xl textarea {
+  min-height: 50px !important;
+  padding: 12px 18px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  background: rgba(15, 23, 42, 0.55) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  color: #ffffff !important;
+  border-radius: 14px !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35) !important;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl input::placeholder,
+div[data-v-48ad60c4] .max-w-2xl textarea::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+  opacity: 0.9 !important;
+}
+
+/* Estado Focus Activo: Halo dorado que orienta visualmente sin fatiga */
+div[data-v-48ad60c4] .max-w-2xl input:focus,
+div[data-v-48ad60c4] .max-w-2xl select:focus,
+div[data-v-48ad60c4] .max-w-2xl textarea:focus {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: var(--color-gold-400) !important;
+  box-shadow: 
+    0 0 0 3.5px rgba(245, 158, 11, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  outline: none !important;
+}
+
+/* Área de texto de Descripción apetitosa: Altura generosa para redacción cómoda */
+div[data-v-48ad60c4] .max-w-2xl textarea {
+  min-height: 105px !important;
+  line-height: 1.6 !important;
+  resize: vertical !important;
+}
+
+/* Selector de Categoría: Desplegable con opciones de alto contraste y emojis nítidos */
+div[data-v-48ad60c4] .max-w-2xl select {
+  cursor: pointer !important;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif !important;
+  background-color: rgba(15, 23, 42, 0.65) !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl select option {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  padding: 14px 18px !important;
+  line-height: 2 !important;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif !important;
+}
+
+/* Prefijos de Moneda ($) y Tiempo (⏱️): Destacados con ámbar dorado */
+div[data-v-48ad60c4] .max-w-2xl .relative > span.absolute {
+  color: var(--color-gold-400) !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  left: 16px !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl .relative > input {
+  padding-left: 36px !important;
+}
+
+/* Contenedor de previsualización de fotografía */
+div[data-v-48ad60c4] .max-w-2xl .border-dashed,
+div[data-v-48ad60c4] .max-w-2xl div:has(> img[alt*="Foto"]),
+div[data-v-48ad60c4] .max-w-2xl div:has(> div > img) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1.5px dashed rgba(255, 255, 255, 0.32) !important;
+  border-radius: 20px !important;
+  padding: 16px 20px !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Barra inferior (Footer sticky) con glassmorphism de soporte */
+div[data-v-48ad60c4] .max-w-2xl .border-t,
+div[data-v-48ad60c4] .max-w-2xl form > div:last-child {
+  background: rgba(18, 25, 41, 0.88) !important;
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+  padding: 18px 32px !important;
+}
+
+/* Botón Cancelar */
+div[data-v-48ad60c4] .max-w-2xl button[type="button"]:not([title="Cerrar modal"]) {
+  min-height: 48px !important;
+  padding: 0 24px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #cbd5e1 !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  transition: all 180ms ease !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl button[type="button"]:not([title="Cerrar modal"]):hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Botón Guardar Platillo: Invita a la acción con resplandor rubí áureo */
+div[data-v-48ad60c4] .max-w-2xl button[type="submit"] {
+  min-height: 48px !important;
+  padding: 0 28px !important;
+  background: linear-gradient(135deg, var(--color-ruby-600) 0%, #e11d48 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 14px !important;
+  font-weight: 800 !important;
+  font-size: 14.5px !important;
+  color: #ffffff !important;
+  box-shadow: 
+    0 4px 20px rgba(184, 0, 53, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl button[type="submit"]:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 
+    0 8px 28px rgba(184, 0, 53, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
+}
+
+div[data-v-48ad60c4] .max-w-2xl button[type="submit"]:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   9. MEJORAS DE ACCESIBILIDAD Y CONTRASTE (WCAG AAA)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Resaltado del texto seleccionado con rubí áureo */
+div[data-v-48ad60c4] ::selection {
+  background: var(--color-ruby-500) !important;
+  color: #ffffff !important;
+}
+
+/* Scrollbars estilizadas con la secuencia áurea */
+div[data-v-48ad60c4] ::-webkit-scrollbar {
+  width: 8px; /* Fibonacci */
+  height: 8px;
+}
+
+div[data-v-48ad60c4] ::-webkit-scrollbar-track {
+  background: rgba(11, 15, 25, 0.5);
+  border-radius: var(--golden-r-pill);
+}
+
+div[data-v-48ad60c4] ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: var(--golden-r-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+div[data-v-48ad60c4] ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   10. VISOR 3D & MENÚ AR (ARView) — ESTILO PULIDO, LÍMPIDO Y EN ARMONÍA CON EL MENÚ
+   Resuelve el espacio inferior y la tarjeta grisácea en la cinta deslizante 3D
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Contenedor global de la pantalla Visor 3D */
+div[data-v-ff276f84].fixed.inset-0.z-50,
+.fixed.inset-0.z-50:has([data-v-ff276f84]) {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Barra superior de Visor 3D */
+[data-v-ff276f84] header,
+div[data-v-ff276f84] .flex-shrink-0.z-30 {
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
+}
+
+/* Área central de proyección del modelo 3D */
+[data-v-ff276f84] main,
+[data-v-ff276f84] .relative.flex-1.min-h-0 {
+  background: radial-gradient(circle at 50% 38%, #ffffff 0%, #f1f5f9 100%) !important;
+}
+
+/* Contenedor inferior (Footer) de la cinta deslizante y ficha del platillo */
+[data-v-ff276f84] footer,
+footer[data-v-ff276f84],
+div:has(> [data-v-ff276f84]) footer,
+div.fixed.inset-0.z-50:has([data-v-ff276f84]) footer {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.06) !important;
+  max-width: 540px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  max-height: none !important;
+  border-radius: 28px 28px 0 0 !important;
+  padding: 16px 18px 24px 18px !important;
+}
+
+/* Cinta deslizante de platillos en 3D (q4) */
+[data-v-ff276f84] footer .overflow-x-auto {
+  padding: 4px 0 8px 0 !important;
+  gap: 10px !important;
+}
+
+/* Píldoras de platillo inactivo en la cinta deslizante */
+[data-v-ff276f84] footer .overflow-x-auto button:not(.bg-\[\#c00037\]) {
+  background: #f8fafc !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+  color: #334155 !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  transition: all 180ms ease !important;
+}
+
+[data-v-ff276f84] footer .overflow-x-auto button:not(.bg-\[\#c00037\]):hover {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Píldora de platillo activo en la cinta deslizante */
+[data-v-ff276f84] footer .overflow-x-auto button.bg-\[\#c00037\] {
+  background: linear-gradient(135deg, #b80035 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #b80035 !important;
+  box-shadow: 0 4px 14px rgba(184, 0, 53, 0.35) !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+}
+
+/* Tarjetita de abajo del menú / información del platillo seleccionado (J4) */
+[data-v-ff276f84] footer .p-3.rounded-2xl.bg-slate-50\/70,
+[data-v-ff276f84] footer .rounded-2xl:has(.text-\[\#c00037\]),
+[data-v-ff276f84] footer .p-3.rounded-2xl {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 20px !important;
+  box-shadow: 
+    0 6px 20px -3px rgba(0, 0, 0, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  padding: 14px 16px !important;
+}
+
+/* Título del platillo */
+[data-v-ff276f84] footer h2 {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  font-size: 17px !important;
+  letter-spacing: -0.015em !important;
+}
+
+/* Descripción del platillo */
+[data-v-ff276f84] footer p.text-\[11px\] {
+  color: #64748b !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+/* Precio en Rubí DGustAR */
+[data-v-ff276f84] footer .text-2xl.font-black.text-\[\#c00037\] {
+  color: #b80035 !important;
+  font-weight: 900 !important;
+}
+
+/* Insignia / Badge de recomendación */
+[data-v-ff276f84] footer .bg-rose-50 {
+  background: rgba(184, 0, 53, 0.08) !important;
+  color: #b80035 !important;
+  border: 1px solid rgba(184, 0, 53, 0.16) !important;
+  font-weight: 800 !important;
+  padding: 3px 9px !important;
+  border-radius: 9999px !important;
+}
+
+/* Botón grande "Agregar al Pedido" */
+[data-v-ff276f84] footer button.bg-\[\#c00037\]:not(.rounded-full) {
+  background: linear-gradient(135deg, #b80035 0%, #e11d48 100%) !important;
+  color: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 18px rgba(184, 0, 53, 0.38) !important;
+  font-weight: 800 !important;
+  padding: 14px 18px !important;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-v-ff276f84] footer button.bg-\[\#c00037\]:not(.rounded-full):hover {
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 8px 26px rgba(184, 0, 53, 0.5) !important;
+}
+

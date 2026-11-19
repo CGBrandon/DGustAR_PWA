@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Fondo Slate Oscuro con Borde de Seguridad -->
+  <rect width="100" height="100" rx="26" fill="#0F172A"/>
+  <rect x="2" y="2" width="96" height="96" rx="24" stroke="#334155" stroke-width="2"/>
+
+  <!-- Resplandor sutil esmeralda/dorado -->
+  <circle cx="50" cy="40" r="28" fill="#10B981" fill-opacity="0.12"/>
+
+  <!-- Campana de Chef / Cocina KDS -->
+  <path d="M50 20C38 20 28 29 28 41H72C72 29 62 20 50 20Z" fill="#F8FAFC"/>
+  <circle cx="50" cy="16" r="4" fill="#F59E0B"/>
+  <rect x="24" y="44" width="52" height="5" rx="2.5" fill="#F8FAFC"/>
+
+  <!-- Símbolo de Engranaje / Gestión Central en Dorado -->
+  <circle cx="50" cy="33" r="5" fill="#F59E0B"/>
+  <path d="M50 25V27M50 39V41M42 33H44M56 33H58" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Brackets de Realidad Aumentada & Escaneo en Esmeralda KDS -->
+  <path d="M22 28H16V34" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M78 28H84V34" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 54V60H22" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M84 54V60H78" stroke="#10B981" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Badge Inferior "ADMIN" -->
+  <rect x="18" y="68" width="64" height="20" rx="6" fill="#1E293B" stroke="#10B981" stroke-width="1.5"/>
+  <text x="50" y="82" fill="#34D399" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="900" text-anchor="middle" letter-spacing="2">ADMIN</text>
+</svg>
