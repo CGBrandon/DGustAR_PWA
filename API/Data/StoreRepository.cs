@@ -14,6 +14,7 @@ public class StoreRepository : IStoreRepository
     private readonly string _webRootPath;
     private readonly ILogger<StoreRepository> _logger;
     private readonly object _lock = new();
+    private readonly bool _isProduction;
 
     // true cuando SQL Server está disponible y con datos
     private bool _useSqlServer = false;
@@ -30,20 +31,25 @@ public class StoreRepository : IStoreRepository
     private List<GoogleReviewClickLog> _googleReviewClicksLog = new();
     private string _adminPin = "1234";
     private string _staffPin = "1111";
-    private string _adminToken = "bistro-admin-authorized";
-    private string _staffToken = "bistro-staff-authorized";
+    private string _adminToken = string.Empty;
+    private string _staffToken = string.Empty;
 
     public StoreRepository(IConfiguration configuration, IWebHostEnvironment env, ILogger<StoreRepository> logger)
     {
         _logger = logger;
+        _isProduction = env.IsProduction();
         _connectionString = configuration.GetConnectionString("DefaultConnection");
         _webRootPath = env.WebRootPath ?? Path.Combine(env.ContentRootPath, "wwwroot");
-        _adminPin = configuration["RestaurantSettings:DefaultAdminPin"]?.Trim() is { Length: >= 4 } configuredAdminPin
-            ? configuredAdminPin
-            : _adminPin;
-        _staffPin = configuration["RestaurantSettings:DefaultStaffPin"]?.Trim() is { Length: >= 4 } configuredStaffPin
-            ? configuredStaffPin
-            : _staffPin;
+        _adminPin = RequireSecret(configuration["RestaurantSettings:DefaultAdminPin"], "RestaurantSettings:DefaultAdminPin", "1234");
+        _staffPin = RequireSecret(configuration["RestaurantSettings:DefaultStaffPin"], "RestaurantSettings:DefaultStaffPin", "1111");
+        _adminToken = RequireSecret(configuration["RestaurantSettings:AdminToken"], "RestaurantSettings:AdminToken", "bistro-admin-authorized");
+        _staffToken = RequireSecret(configuration["RestaurantSettings:StaffToken"], "RestaurantSettings:StaffToken", "bistro-staff-authorized");
+
+        if (_isProduction && string.IsNullOrWhiteSpace(_connectionString))
+        {
+            throw new InvalidOperationException(
+                "Production requiere ConnectionStrings:DefaultConnection configurada mediante Azure App Settings o una variable de entorno.");
+        }
 
         var dataDir = Path.Combine(env.ContentRootPath, "Data");
         Directory.CreateDirectory(dataDir);
@@ -52,6 +58,18 @@ public class StoreRepository : IStoreRepository
         LoadData();
         // Verificar SQL Server; almacena la tarea para sincronización
         _initSqlTask = TryInitSqlServerAsync();
+    }
+
+    private string RequireSecret(string? configuredValue, string key, string developmentFallback)
+    {
+        var value = configuredValue?.Trim();
+        if (!string.IsNullOrWhiteSpace(value)) return value;
+        if (_isProduction)
+        {
+            throw new InvalidOperationException(
+                $"Production requiere configurar {key} mediante Azure App Settings o una variable de entorno.");
+        }
+        return developmentFallback;
     }
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -76,6 +94,11 @@ public class StoreRepository : IStoreRepository
             if (count != 4)
             {
                 _useSqlServer = false;
+                if (_isProduction)
+                {
+                    throw new InvalidOperationException(
+                        "Azure SQL no contiene el esquema compatible de DGustAR; se detiene el arranque para evitar usar db.json en producción.");
+                }
                 _logger.LogWarning(
                     "[SQL Server] La BD no contiene el esquema compatible del repositorio. Usando db.json como fuente de datos.");
                 return;
@@ -105,7 +128,10 @@ public class StoreRepository : IStoreRepository
                 await _initSqlTask;
             }
         }
-        catch { }
+        catch
+        {
+            if (_isProduction) throw;
+        }
     }
 
     private void EnsureSqlServerCheckedSync()
@@ -117,7 +143,10 @@ public class StoreRepository : IStoreRepository
                 _initSqlTask.GetAwaiter().GetResult();
             }
         }
-        catch { }
+        catch
+        {
+            if (_isProduction) throw;
+        }
     }
 
     /// <summary>Abre una conexión SQL y la devuelve ya abierta de forma asíncrona.</summary>
@@ -276,19 +305,19 @@ public class StoreRepository : IStoreRepository
                     {
                         _googleReviewClicksLog = JsonSerializer.Deserialize<List<GoogleReviewClickLog>>(glogProp.GetRawText(), jsonOptions) ?? new();
                     }
-                    if (root.TryGetProperty("admin_pin", out var adminPinProp) && adminPinProp.ValueKind == JsonValueKind.String)
+                    if (!_isProduction && root.TryGetProperty("admin_pin", out var adminPinProp) && adminPinProp.ValueKind == JsonValueKind.String)
                     {
                         _adminPin = adminPinProp.GetString() ?? _adminPin;
                     }
-                    if (root.TryGetProperty("staff_pin", out var staffPinProp) && staffPinProp.ValueKind == JsonValueKind.String)
+                    if (!_isProduction && root.TryGetProperty("staff_pin", out var staffPinProp) && staffPinProp.ValueKind == JsonValueKind.String)
                     {
                         _staffPin = staffPinProp.GetString() ?? _staffPin;
                     }
-                    if (root.TryGetProperty("admin_token", out var adminTokenProp) && adminTokenProp.ValueKind == JsonValueKind.String)
+                    if (!_isProduction && root.TryGetProperty("admin_token", out var adminTokenProp) && adminTokenProp.ValueKind == JsonValueKind.String)
                     {
                         _adminToken = adminTokenProp.GetString() ?? _adminToken;
                     }
-                    if (root.TryGetProperty("staff_token", out var staffTokenProp) && staffTokenProp.ValueKind == JsonValueKind.String)
+                    if (!_isProduction && root.TryGetProperty("staff_token", out var staffTokenProp) && staffTokenProp.ValueKind == JsonValueKind.String)
                     {
                         _staffToken = staffTokenProp.GetString() ?? _staffToken;
                     }

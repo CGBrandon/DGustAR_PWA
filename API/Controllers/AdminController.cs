@@ -478,7 +478,29 @@ public class AdminController : ControllerBase
         var auth = CheckAuth(token, requireAdmin: true);
         if (!auth.authorized) return StatusCode(401, new { error = "No autorizado. Se requiere inicio de sesión de Gerencia." });
 
-        return Ok(new { cortes = _db.GetCortes() });
+        // El panel administrativo consume un contrato de reporte (no el modelo
+        // interno de persistencia). Mantener aquí los alias evita que una
+        // refactorización del modelo deje la tabla renderizada con celdas vacías.
+        var cortes = _db.GetCortes().Select(c => new
+        {
+            c.Id,
+            c.Responsable,
+            fecha = string.IsNullOrWhiteSpace(c.Timestamp) ? c.FinPeriodo : c.Timestamp,
+            fondo_inicial = c.FondoInicial ?? 0m,
+            ventas_efectivo = c.TotalEfectivo ?? 0m,
+            ventas_tarjeta = c.TotalTerminal ?? 0m,
+            ventas_totales = c.TotalVentas ?? 0m,
+            total_caja_esperado = (c.FondoInicial ?? 0m) + (c.TotalEfectivo ?? 0m),
+            efectivo_contado = c.EfectivoContado ?? 0m,
+            diferencia_efectivo = c.DiferenciaEfectivo ?? 0m,
+            cantidad_pedidos = c.CantidadPedidos ?? 0,
+            c.Notas,
+            c.InicioPeriodo,
+            c.FinPeriodo,
+            c.Timestamp
+        });
+
+        return Ok(new { cortes });
     }
 
     // PUT /api/admin/tables
