@@ -1,4 +1,4 @@
-{
+﻿{
   "restaurant": {
     "nombre": "DGustAR Gastronom\u00EDa \u0026 AR",
     "moneda": "MXN",
@@ -148,7 +148,7 @@
       "descripcion": "Deliciosos tacos",
       "precio_base": 99,
       "imagen": "",
-      "modelo_3d": "",
+      "modelo_3d": null,
       "tiempo_preparacion": 15,
       "tiempo_preparacion_min": 15,
       "disponible": true,
@@ -1348,6 +1348,108 @@
           "cambiado_por": "Personal / Cocina"
         }
       ]
+    },
+    {
+      "id": "ord-1a1fb549f5b-4cff",
+      "order_token": "8a99799e-d65c-4e59-98b4-15fb52530c37",
+      "mesa": "Mesa 01",
+      "tipo_cuenta": "MESA",
+      "comensal": "Cuenta General de la Mesa",
+      "tipo_servicio": "En Mesa",
+      "metodo_pago": "Pago al mesero en mesa",
+      "estado": "ENTREGADO",
+      "estado_pago": "PAGADO",
+      "monto_pagado": 100,
+      "saldo_pendiente": 0,
+      "items": [
+        {
+          "producto_id": "prod-papas-trufa",
+          "nombre": "Papas R\u00FAsticas ",
+          "imagen": "/uploads/asset-633213d609054d849af3b7fc091e6758.png",
+          "precio_base": 100,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [],
+          "precio_unitario": 100,
+          "subtotal": 100,
+          "notas": "Ajonjoli"
+        }
+      ],
+      "subtotal": 100,
+      "total": 100,
+      "notas_cliente": "Ajonjoli",
+      "creado_en": "2026-11-20T23:39:49.4670645Z",
+      "actualizado_en": "2026-11-20T23:41:08.1972745Z",
+      "cerrada": false,
+      "cerrada_en": null,
+      "historial_estados": [
+        {
+          "estado": "NUEVO",
+          "timestamp": "2026-11-20T23:39:49.4670645Z",
+          "cambiado_por": "Comensal PWA"
+        },
+        {
+          "estado": "EN_PREPARACION",
+          "timestamp": "2026-11-20T23:40:09.5049973Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "LISTO",
+          "timestamp": "2026-11-20T23:40:10.6938473Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "ENTREGADO",
+          "timestamp": "2026-11-20T23:40:12.2040222Z",
+          "cambiado_por": "Personal / Cocina"
+        }
+      ]
+    },
+    {
+      "id": "ord-1a1fb55e41b-73d8",
+      "order_token": "98bafdd8-534f-4ce1-91ee-c9f3017c7b05",
+      "mesa": "Mesa 01",
+      "tipo_cuenta": "MESA",
+      "comensal": "Cuenta General de la Mesa",
+      "tipo_servicio": "En Mesa",
+      "metodo_pago": "Pago al mesero en mesa",
+      "estado": "EN_PREPARACION",
+      "estado_pago": "PAGADO",
+      "monto_pagado": 139,
+      "saldo_pendiente": 0,
+      "items": [
+        {
+          "producto_id": "prod-burger-clasica",
+          "nombre": "Smash Burger Doble carne",
+          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 139,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [],
+          "precio_unitario": 139,
+          "subtotal": 139,
+          "notas": ""
+        }
+      ],
+      "subtotal": 139,
+      "total": 139,
+      "notas_cliente": "",
+      "creado_en": "2026-11-20T23:41:12.6033360Z",
+      "actualizado_en": "2026-11-20T23:41:55.6304831Z",
+      "cerrada": false,
+      "cerrada_en": null,
+      "historial_estados": [
+        {
+          "estado": "NUEVO",
+          "timestamp": "2026-11-20T23:41:12.6033360Z",
+          "cambiado_por": "Comensal PWA"
+        },
+        {
+          "estado": "EN_PREPARACION",
+          "timestamp": "2026-11-20T23:41:55.6304831Z",
+          "cambiado_por": "Personal / Cocina"
+        }
+      ]
     }
   ],
   "payments": [
@@ -1569,6 +1671,26 @@
       "method": "EFECTIVO",
       "received_by": "Gerencia",
       "timestamp": "2026-11-05T04:24:32.9616166Z",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "pay-1a1fb55d2e5-ac6e",
+      "order_id": "ord-1a1fb549f5b-4cff",
+      "order_token": "8a99799e-d65c-4e59-98b4-15fb52530c37",
+      "amount": 100,
+      "method": "EFECTIVO",
+      "received_by": "Gerencia",
+      "timestamp": "2026-11-20T23:41:08.1972412Z",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "pay-1a1fb5687a8-dfa5",
+      "order_id": "ord-1a1fb55e41b-73d8",
+      "order_token": "98bafdd8-534f-4ce1-91ee-c9f3017c7b05",
+      "amount": 139,
+      "method": "EFECTIVO",
+      "received_by": "Gerencia",
+      "timestamp": "2026-11-20T23:41:54.4729444Z",
       "status": "COMPLETED"
     }
   ],

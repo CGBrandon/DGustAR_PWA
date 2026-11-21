@@ -233,3 +233,7 @@ ClientBin/
 .ntvs_analysis.dat
 .mfractor
 profile.arm.json
+
+# Herramientas de túnel local (celular)
+cloudflared.exe
+probar-en-celular.bat
