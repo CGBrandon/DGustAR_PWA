@@ -26,33 +26,21 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.WriteIndented = true;
     });
 
-// 3. CORS explícito. La PWA se sirve desde el mismo host en producción, por lo
-// que no necesita CORS; solo se habilitan orígenes externos declarados.
-var allowedCorsOrigins = builder.Configuration
-    .GetSection("Cors:AllowedOrigins")
-    .GetChildren()
-    .Select(section => section.Value)
-    .Where(origin => !string.IsNullOrWhiteSpace(origin))
-    .Select(origin => origin!.Trim().TrimEnd('/'))
-    .Distinct(StringComparer.OrdinalIgnoreCase)
-    .ToArray();
-
+// 3. Configuración de CORS amplia para Frontend en desarrollo y producción
 builder.Services.AddCors(options =>
 {
+    options.AddPolicy("AllowFrontendPolicy", policy =>
+    {
+        policy.SetIsOriginAllowed(_ => true)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
     options.AddPolicy("NuevaPolitica", policy =>
     {
-        if (allowedCorsOrigins.Length > 0)
-        {
-            policy.WithOrigins(allowedCorsOrigins)
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
-        }
-        else
-        {
-            // Sin orígenes externos configurados, el mismo origen sigue
-            // funcionando y las páginas de terceros no reciben permisos CORS.
-            policy.SetIsOriginAllowed(_ => false);
-        }
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
@@ -97,17 +85,13 @@ builder.Services.AddSwaggerGen(c =>
 var app = builder.Build();
 
 // 5. Canal de procesamiento HTTP (Pipeline)
-// Swagger solo se publica fuera de Production. Así sigue disponible para
-// desarrollo/staging, pero no expone la consola de la API a clientes finales.
-if (!app.Environment.IsProduction())
+// Swagger UI siempre disponible para evaluación del profesor y pruebas de desarrollo
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "DGustAR API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "DGustAR API v1");
+    c.RoutePrefix = "swagger";
+});
 
 // El menú solo puede abrirse desde un QR de mesa. Los accesos directos sin
 // mesa se envían al mismo shell de la PWA con la bandera que abre el escáner.
@@ -147,6 +131,10 @@ app.UseStaticFiles(new StaticFileOptions
     ContentTypeProvider = fileExtensionProvider,
     OnPrepareResponse = context =>
     {
+        context.Context.Response.Headers.AccessControlAllowOrigin = "*";
+        context.Context.Response.Headers.AccessControlAllowHeaders = "*";
+        context.Context.Response.Headers.AccessControlAllowMethods = "*";
+
         var fileName = context.File.Name;
 
         if (fileName.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
@@ -208,9 +196,7 @@ app.MapFallbackToFile("app.html");
 
 Console.WriteLine("=================================================================");
 Console.WriteLine("🍽️  DGustAR .NET Web API iniciada con éxito");
-Console.WriteLine(app.Environment.IsProduction()
-    ? "🌐  Swagger UI deshabilitado en Production"
-    : "🌐  Swagger UI disponible en: /swagger");
+Console.WriteLine("🌐  Swagger UI disponible en: http://localhost:5000/swagger");
 Console.WriteLine("🔌  WebSocket Server listo en: ws://localhost:5000/ws");
 Console.WriteLine("=================================================================");
 

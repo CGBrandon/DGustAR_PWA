@@ -162,52 +162,8 @@
   <link rel="stylesheet" crossorigin href="/assets/index-BV5RYNIR.css?v=7">
   
   <!-- DGustAR Golden Ratio Design System & Admin Suite -->
-  <link rel="stylesheet" href="/assets/admin-golden.css?v=6">
-  <script src="/assets/admin-golden.js?v=4" defer></script>
-
-  <!-- Ajustes de flujo para el bundle distribuido sin fuente de Vue en este repositorio. -->
-  <script>
-    (() => {
-      const normalize = (value) => String(value || '').replace(/\s+/g, ' ').trim();
-
-      const repairMenuActions = () => {
-        // En el menú normal, el botón rápido no debe saltarse ingredientes y extras.
-        document.querySelectorAll('button[title="Agregar 1 al carrito"]').forEach((button) => {
-          const card = button.closest('.cursor-pointer');
-          if (!card || button.dataset.customizeReady === '1') return;
-          const replacement = button.cloneNode(true);
-          replacement.dataset.customizeReady = '1';
-          replacement.title = 'Personalizar y pedir';
-          replacement.className = replacement.className
-            .replace(/w-8 h-8 rounded-full/g, 'min-h-8 px-2 rounded-full')
-            .replace('justify-center', 'justify-center gap-1');
-          replacement.innerHTML = '<span class="material-symbols-outlined text-[16px]">tune</span><span class="text-[10px] font-extrabold">Personalizar</span>';
-          replacement.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            card.click();
-          });
-          button.replaceWith(replacement);
-        });
-
-        // Hace explícito el mismo flujo en el detalle normal y en el visor 3D.
-        document.querySelectorAll('button').forEach((button) => {
-          if (normalize(button.textContent).toLowerCase().startsWith('agregar al pedido')) {
-            const label = button.querySelector('span.text-xs, span.text-sm');
-            if (label) label.textContent = 'PERSONALIZAR Y PEDIR';
-          }
-        });
-      };
-
-      const observer = new MutationObserver(repairMenuActions);
-      const start = () => {
-        repairMenuActions();
-        observer.observe(document.body, { childList: true, subtree: true });
-      };
-      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });
-      else start();
-    })();
-  </script>
+  <link rel="stylesheet" href="/assets/admin-golden.css?v=4">
+  <script src="/assets/admin-golden.js?v=2" defer></script>
 
   <!-- ══════════════════════════════════════════════════════════════════
        Service Worker — PWA offline + cache de modelos 3D

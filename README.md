@@ -59,9 +59,9 @@ DGustAR_PWA/
 2. Conéctate a la instancia de SQL Server que utilizarás.
 3. Ejecuta el script completo.
 
-El script crea la base de datos `DGustAR_DB`, tablas, restricciones, índices, datos iniciales y procedimientos almacenados para catálogo, pedidos, pagos y cierre de mesa. La API valida el esquema antes de activar SQL Server; en Development puede continuar con `API/Data/db.json` para facilitar pruebas locales, pero en Production se detiene si Azure SQL no está disponible o no coincide con el esquema esperado.
+El script crea la base de datos `DGustAR_DB`, tablas, restricciones, índices, datos iniciales y procedimientos almacenados para catálogo, pedidos, pagos y cierre de mesa. La API valida el esquema antes de activar SQL Server; si no coincide con el esquema que espera su repositorio actual, continúa con `API/Data/db.json` y lo deja registrado en el log.
 
-La aplicación toma la cadena de conexión desde `ConnectionStrings:DefaultConnection`. En producción configúrala mediante Azure App Settings o variables de entorno (`ConnectionStrings__DefaultConnection`); no la guardes en el repositorio. Para desarrollo local puedes usar User Secrets, una variable de entorno o el fallback local `API/Data/db.json`. Ejemplo:
+La aplicación toma la cadena de conexión de `API/appsettings.json`. Ajusta `ConnectionStrings` a tu instancia local antes de ejecutar la API. Ejemplo:
 
 ```json
 {
@@ -91,29 +91,6 @@ cd API
 dotnet run --urls "http://localhost:5000"
 ```
 
-### Configuración requerida en Azure App Service
-
-En `Configuration > Application settings`, agrega estos valores como secretos de la aplicación. No los guardes en `appsettings.json` ni en el repositorio:
-
-| Nombre | Valor |
-| --- | --- |
-| `ASPNETCORE_ENVIRONMENT` | `Production` |
-| `ConnectionStrings__DefaultConnection` | Cadena de conexión real de Azure SQL |
-| `RestaurantSettings__DefaultAdminPin` | PIN de gerencia nuevo, no `1234` |
-| `RestaurantSettings__DefaultStaffPin` | PIN de personal nuevo, no `1111` |
-| `RestaurantSettings__AdminToken` | Token aleatorio largo |
-| `RestaurantSettings__StaffToken` | Token aleatorio largo |
-
-Para Azure SQL con autenticación SQL, la cadena debe tener un formato equivalente a este, reemplazando los marcadores por valores reales:
-
-```text
-Server=tcp:<servidor>.database.windows.net,1433;Initial Catalog=<base_de_datos>;Persist Security Info=False;User ID=<usuario>;Password=<contraseña>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-```
-
-Si la PWA y la API se sirven desde dominios distintos, configura también `Cors__AllowedOrigins__0` con el origen exacto de la PWA, por ejemplo `https://menu.ejemplo.com`. Si ambas viven en el mismo dominio de Azure, no es necesario agregarlo.
-
-Después de guardar App Settings, reinicia el App Service y verifica `/api/health`. La aplicación debe iniciar en `Production` y conectarse a Azure SQL; si la conexión o el esquema fallan, debe detenerse en vez de operar sobre `db.json`.
-
 Accesos oficiales de la aplicación:
 
 | Recurso | URL |
@@ -121,7 +98,7 @@ Accesos oficiales de la aplicación:
 | Menú digital | `http://localhost:5000/menu` |
 | Panel administrativo y KDS | `http://localhost:5000/admin` |
 | Tarjetas QR del panel | `http://localhost:5000/admin/tarjetas-qr` |
-| Swagger (solo Development/Staging) | `http://localhost:5000/swagger` |
+| Swagger (aparte) | `http://localhost:5000/swagger` |
 
 La raíz `http://localhost:5000/` abre el escáner QR. El menú solo se habilita después de validar una mesa; los QR generados por el panel abren `/menu?mesa=...`. La configuración de desarrollo de `API/Properties/launchSettings.json` usa `http://localhost:5000` y `https://localhost:5001`.
 
@@ -129,7 +106,7 @@ Las rutas `/platillo`, `/ar`, `/carrito` y `/pedido` son pantallas internas del 
 
 ## Acceso por PIN
 
-El panel administrativo utiliza un único formulario de acceso por PIN. En desarrollo, los valores de prueba viven en `API/appsettings.Development.json`. En producción deben configurarse como Azure App Settings o variables de entorno (`RestaurantSettings__DefaultAdminPin`, `RestaurantSettings__DefaultStaffPin`, `RestaurantSettings__AdminToken` y `RestaurantSettings__StaffToken`):
+El panel administrativo utiliza un único formulario de acceso por PIN. Las credenciales predeterminadas se definen en `API/appsettings.json`:
 
 | PIN | Rol | Uso |
 | --- | --- | --- |
@@ -139,10 +116,6 @@ El panel administrativo utiliza un único formulario de acceso por PIN. En desar
 El panel administrativo utiliza los tokens generados por el endpoint `POST /api/admin/login`. Para pruebas directas autorizadas, la colección de Postman incluye las variables necesarias.
 
 ## API y WebSocket
-
-En producción, CORS solo se habilita para orígenes externos declarados mediante
-`Cors__AllowedOrigins__0`, `Cors__AllowedOrigins__1`, etc. Si la PWA y la API
-usan el mismo dominio, no es necesario configurar orígenes externos.
 
 Los controladores disponibles incluyen:
 
@@ -167,4 +140,4 @@ Swagger ofrece el detalle de rutas, parámetros y modelos cuando la aplicación 
 - La PWA que se ejecuta en producción está dentro de `API/wwwroot`; por eso no debe buscarse una carpeta `Frontend/` en este repositorio.
 - Los archivos `API/bin` y `API/obj` son artefactos generados por .NET y no forman parte del código fuente.
 - Los modelos 3D y los manifiestos PWA están en `API/wwwroot/models` y `API/wwwroot/manifest*.json`.
-- Swagger está habilitado para facilitar el desarrollo y la evaluación local; se deshabilita automáticamente cuando `ASPNETCORE_ENVIRONMENT=Production`.
+- Swagger está habilitado para facilitar el desarrollo y la evaluación local; en producción conviene restringirlo.
