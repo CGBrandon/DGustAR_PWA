@@ -979,3 +979,228 @@ div.fixed.inset-0.z-50:has([data-v-ff276f84]) footer {
   box-shadow: 0 8px 26px rgba(184, 0, 53, 0.5) !important;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   11. INDICADOR VISUAL DE CAMPANITA KDS (BARRA SUPERIOR)
+   Sin botón, indicador puro para cocina con música/ruido de restaurante
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#dgustar-kds-bell-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 14px;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 50;
+  vertical-align: middle;
+}
+
+.kds-bell-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: #94a3b8;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kds-bell-svg {
+  width: 26px;
+  height: 26px;
+  stroke: #cbd5e1;
+  transition: all 240ms ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* Cuando hay comandas o alertas activas */
+#dgustar-kds-bell-indicator.has-alerts .kds-bell-icon-wrap {
+  color: #ffffff;
+}
+
+#dgustar-kds-bell-indicator.has-alerts .kds-bell-svg {
+  stroke: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.8)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* Animación de timbre vibrante para captar la vista entre el bullicio */
+@keyframes dgustarBellShake {
+  0% { transform: rotate(0); }
+  10% { transform: rotate(16deg) scale(1.08); }
+  20% { transform: rotate(-16deg) scale(1.08); }
+  30% { transform: rotate(12deg); }
+  40% { transform: rotate(-12deg); }
+  50% { transform: rotate(8deg); }
+  60% { transform: rotate(-6deg); }
+  70% { transform: rotate(4deg); }
+  80% { transform: rotate(-2deg); }
+  90%, 100% { transform: rotate(0) scale(1); }
+}
+
+#dgustar-kds-bell-indicator.has-alerts .kds-bell-svg {
+  animation: dgustarBellShake 2.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) infinite;
+  transform-origin: top center;
+}
+
+/* Badge rojo circular de contador */
+.kds-bell-badge {
+  position: absolute;
+  top: 1px;
+  right: -2px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #ff1744 0%, #d50000 100%);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(255, 23, 68, 0.9), 0 2px 5px rgba(0, 0, 0, 0.5);
+  border: 2px solid #0b0f19;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1;
+  transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.kds-bell-badge.hidden-badge {
+  display: none !important;
+}
+
+/* Pulso de alerta continuo en el badge cuando hay pedidos */
+@keyframes dgustarBadgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.85), 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(255, 23, 68, 0), 0 2px 8px rgba(0, 0, 0, 0.6);
+  }
+}
+
+#dgustar-kds-bell-indicator.has-alerts .kds-bell-badge {
+  animation: dgustarBadgePulse 1.6s infinite ease-in-out;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   12. BANNER TOAST VISUAL FLOTANTE (Para cuando la música no deja escuchar)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#dgustar-order-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: rgba(15, 23, 42, 0.96);
+  border: 1.5px solid #ff1744;
+  border-radius: 16px;
+  box-shadow: 0 0 28px rgba(255, 23, 68, 0.55), 0 12px 36px rgba(0, 0, 0, 0.7);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 99999;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  animation: dgustarToastSlideDown 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  max-width: 90vw;
+  pointer-events: auto;
+}
+
+@keyframes dgustarToastSlideDown {
+  from {
+    transform: translateX(-50%) translateY(-30px) scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+#dgustar-order-toast.toast-exit {
+  animation: dgustarToastSlideUp 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dgustarToastSlideUp {
+  from {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(-30px) scale(0.92);
+    opacity: 0;
+  }
+}
+
+.toast-bell-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff1744 0%, #b71c1c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(255, 23, 68, 0.7);
+  flex-shrink: 0;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.toast-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.toast-desc {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.toast-close-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: 8px;
+  border-radius: 8px;
+  transition: all 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-close-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Destello en cabecera cuando llega nueva comanda */
+@keyframes header-alert-flash {
+  0% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.9); }
+  50% { box-shadow: 0 0 35px 6px rgba(255, 23, 68, 0.6); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0); }
+}
+
+.header-alert-flash {
+  animation: header-alert-flash 1.4s ease-out 2 !important;
+}
+
+

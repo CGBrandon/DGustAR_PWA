@@ -233,3 +233,7 @@ ClientBin/
 .ntvs_analysis.dat
 .mfractor
 profile.arm.json
+
+# Local testing tools
+cloudflared.exe
+probar-en-celular.bat
