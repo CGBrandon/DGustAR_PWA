@@ -222,13 +222,68 @@ public class AdminController : ControllerBase
     }
 
     // GET /api/admin/products
+    // GET /api/admin/products?nombre=pizza&categoria=cat-pizzas&disponible=true&precioMin=50&precioMax=200
+    // Consulta general y consulta con filtro (todos los parámetros son opcionales).
     [HttpGet("products")]
-    public IActionResult GetProducts([FromHeader(Name = "x-admin-token")] string? token)
+    public IActionResult GetProducts(
+        [FromQuery] string? nombre,
+        [FromQuery] string? categoria,
+        [FromQuery] bool? disponible,
+        [FromQuery] decimal? precioMin,
+        [FromQuery] decimal? precioMax,
+        [FromHeader(Name = "x-admin-token")] string? token)
     {
         var auth = CheckAuth(token, requireAdmin: true);
         if (!auth.authorized) return StatusCode(401, new { error = "No autorizado. Se requiere inicio de sesión de Gerencia." });
 
-        return Ok(_db.GetAllProductsAdmin());
+        IEnumerable<Product> productos = _db.GetAllProductsAdmin();
+
+        if (!string.IsNullOrWhiteSpace(nombre))
+        {
+            var texto = nombre.Trim();
+            productos = productos.Where(p =>
+                (p.Nombre ?? string.Empty).Contains(texto, StringComparison.OrdinalIgnoreCase) ||
+                (p.Descripcion ?? string.Empty).Contains(texto, StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (!string.IsNullOrWhiteSpace(categoria))
+        {
+            productos = productos.Where(p => string.Equals(p.CategoriaId, categoria.Trim(), StringComparison.OrdinalIgnoreCase));
+        }
+
+        if (disponible.HasValue)
+        {
+            productos = productos.Where(p => p.Disponible == disponible.Value);
+        }
+
+        if (precioMin.HasValue)
+        {
+            productos = productos.Where(p => p.PrecioBase >= precioMin.Value);
+        }
+
+        if (precioMax.HasValue)
+        {
+            productos = productos.Where(p => p.PrecioBase <= precioMax.Value);
+        }
+
+        return Ok(productos.ToList());
+    }
+
+    // GET /api/admin/products/{id}
+    // Consulta de un platillo por su Id.
+    [HttpGet("products/{id}")]
+    public IActionResult GetProductById(string id, [FromHeader(Name = "x-admin-token")] string? token)
+    {
+        var auth = CheckAuth(token, requireAdmin: true);
+        if (!auth.authorized) return StatusCode(401, new { error = "No autorizado. Se requiere inicio de sesión de Gerencia." });
+
+        var producto = _db.GetProductById(id);
+        if (producto == null)
+        {
+            return NotFound(new { error = $"No existe un platillo con Id \"{id}\"." });
+        }
+
+        return Ok(producto);
     }
 
     // POST /api/admin/products
