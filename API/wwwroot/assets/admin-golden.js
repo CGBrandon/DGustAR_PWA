@@ -74,6 +74,121 @@
   var notificationsList = [];
   var unreadCount = 0;
   var audioContext = null;
+  var titleBlinkTimer = null;
+  var originalDocTitle = document.title || 'Portal Administrativo DGustAR';
+  var seenOrderIds = {};
+
+  // Alerta en la pestaña del navegador (útil cuando el admin está en otra ventana)
+  function startTitleFlash(alertText) {
+    stopTitleFlash();
+    originalDocTitle = document.title.replace(/^🛎️\s*\(\d+\)\s*[^•\-|]+\s*[•\-|]\s*/i, '');
+    var isAlert = false;
+    titleBlinkTimer = setInterval(function () {
+      isAlert = !isAlert;
+      document.title = isAlert
+        ? '🛎️ (' + (unreadCount || 1) + ') ¡NUEVA COMANDA!'
+        : originalDocTitle;
+    }, 1200);
+
+    window.addEventListener('focus', stopTitleFlash, { once: true });
+  }
+
+  function stopTitleFlash() {
+    if (titleBlinkTimer) {
+      clearInterval(titleBlinkTimer);
+      titleBlinkTimer = null;
+    }
+    if (originalDocTitle) {
+      document.title = originalDocTitle;
+    }
+  }
+
+  // Destello visual en la barra superior
+  function flashHeader() {
+    var header = document.querySelector('header[data-v-48ad60c4]');
+    if (header) {
+      header.classList.remove('header-alert-flash');
+      void header.offsetWidth; // Forzar reflow
+      header.classList.add('header-alert-flash');
+      setTimeout(function () {
+        header.classList.remove('header-alert-flash');
+      }, 2600);
+    }
+  }
+
+  // Gran Banner Toast flotante en pantalla (Alerta 100% visual sin depender del volumen)
+  function showVisualOrderToast(notif) {
+    // Si ya hay un toast en pantalla, removerlo
+    var existingToast = document.getElementById('dgustar-order-toast');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    var isOrder = notif.tipo === 'ORDER';
+    var iconName = isOrder ? 'lunch_dining' : 'notifications_active';
+    var badgeTitle = isOrder ? '¡NUEVA COMANDA RECIBIDA!' : '¡LLAMADO DE MESERO!';
+
+    var toast = document.createElement('div');
+    toast.id = 'dgustar-order-toast';
+    toast.innerHTML = [
+      '<div class="toast-icon-wrap">',
+      '  <span class="material-symbols-outlined text-[24px]">' + iconName + '</span>',
+      '</div>',
+      '<div class="toast-body">',
+      '  <div class="toast-title">',
+      '    <span class="material-symbols-outlined text-[16px]">bolt</span>',
+      '    <span>' + badgeTitle + '</span>',
+      '  </div>',
+      '  <div class="toast-desc">' + (notif.titulo ? notif.titulo + ' • ' : '') + (notif.desc || '') + '</div>',
+      '</div>',
+      '<div class="toast-actions">',
+      '  <button id="dgustar-toast-view-btn" type="button" class="toast-btn-action">Ver Comanda</button>',
+      '  <button id="dgustar-toast-close-btn" type="button" class="toast-btn-close" aria-label="Cerrar">✕</button>',
+      '</div>'
+    ].join('');
+
+    document.body.appendChild(toast);
+
+    var viewBtn = document.getElementById('dgustar-toast-view-btn');
+    var closeBtn = document.getElementById('dgustar-toast-close-btn');
+
+    function closeToast() {
+      toast.classList.add('toast-hiding');
+      setTimeout(function () {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 260);
+    }
+
+    if (viewBtn) {
+      viewBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeToast();
+        stopTitleFlash();
+        switchToKdsTab();
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeToast();
+        stopTitleFlash();
+      });
+    }
+
+    toast.addEventListener('click', function () {
+      closeToast();
+      stopTitleFlash();
+      switchToKdsTab();
+    });
+
+    // Auto-cierre tras 12 segundos
+    setTimeout(function () {
+      if (document.body.contains(toast) && !toast.classList.contains('toast-hiding')) {
+        closeToast();
+      }
+    }, 12000);
+  }
 
   // Sonido de alerta suave para cocina (Web Audio API nativo)
   function playNotificationChime() {
@@ -170,6 +285,7 @@
 
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
+      stopTitleFlash();
       var isHidden = dropdown.classList.contains('hidden');
       if (isHidden) {
         dropdown.classList.remove('hidden');
@@ -187,6 +303,7 @@
     gotoKdsBtn.addEventListener('click', function (e) {
       e.stopPropagation();
       dropdown.classList.add('hidden');
+      stopTitleFlash();
       switchToKdsTab();
     });
 
@@ -196,6 +313,7 @@
       }
     });
 
+    updateBellUi();
     syncFromKdsBoard();
   }
 
@@ -208,16 +326,31 @@
   }
 
   function triggerBellAlert(notif) {
+    // 1. Sonido
     playNotificationChime();
 
-    // Añadir a la lista
+    // 2. Alerta visual en pantalla (Banner Flotante)
+    showVisualOrderToast(notif);
+
+    // 3. Destello en cabecera
+    flashHeader();
+
+    // 4. Parpadeo en la pestaña del navegador
+    startTitleFlash(notif.titulo || 'Nueva Comanda');
+
+    // 5. Vibración si el hardware lo soporta
+    if (navigator.vibrate) {
+      navigator.vibrate([250, 120, 250, 120, 400]);
+    }
+
+    // 6. Añadir a la lista de alertas
     notificationsList.unshift(notif);
     if (notificationsList.length > 25) notificationsList.pop();
 
     unreadCount++;
     updateBellUi();
 
-    // Animación de timbre vibrante
+    // 7. Animación de timbre vibrante
     var btn = document.getElementById('dgustar-admin-bell-btn');
     if (btn) {
       btn.classList.remove('bell-shake');
@@ -225,13 +358,14 @@
       btn.classList.add('bell-shake');
       setTimeout(function () {
         btn.classList.remove('bell-shake');
-      }, 2500);
+      }, 3500);
     }
   }
 
   function clearNotifications() {
     unreadCount = 0;
     notificationsList = [];
+    stopTitleFlash();
     updateBellUi();
     var dropdown = document.getElementById('dgustar-admin-bell-dropdown');
     if (dropdown) dropdown.classList.add('hidden');
@@ -242,7 +376,7 @@
     var badge = document.getElementById('dgustar-admin-bell-badge');
     var listContainer = document.getElementById('dgustar-admin-bell-list');
 
-    if (!btn || !badge || !listContainer) return;
+    if (!btn || !badge) return;
 
     if (unreadCount > 0) {
       btn.classList.add('has-alerts');
@@ -255,6 +389,8 @@
       badge.classList.add('hidden-badge');
       badge.classList.remove('badge-pulse');
     }
+
+    if (!listContainer) return;
 
     if (notificationsList.length === 0) {
       listContainer.innerHTML = [
@@ -289,6 +425,7 @@
         item.addEventListener('click', function () {
           var dropdown = document.getElementById('dgustar-admin-bell-dropdown');
           if (dropdown) dropdown.classList.add('hidden');
+          stopTitleFlash();
           switchToKdsTab();
         });
       });
@@ -301,40 +438,48 @@
     if (!isAdminRoute()) return;
 
     // 1. Detectar el número en la columna NUEVOS (X)
-    var count = 0;
+    var countNew = 0;
     var columnHeadings = document.querySelectorAll('h3, div, span, button');
     columnHeadings.forEach(function (el) {
       var txt = (el.textContent || '').trim();
       var match = txt.match(/^NUEVOS\s*\((\d+)\)/i);
       if (match) {
-        count = parseInt(match[1], 10) || 0;
+        countNew = parseInt(match[1], 10) || 0;
       }
     });
 
-    // 2. Detectar banner azul de llamado de mesero
-    var waiterCalls = document.querySelectorAll('div:has(> span:contains("LLAMADO")), div.bg-blue-900\\/70, [class*="LLAMADO DE MESERO"]');
-    var hasWaiterCall = document.body.innerText.includes('¡LLAMADO DE MESERO!') || document.body.innerText.includes('Solicita la Cuenta');
+    // 2. Detectar si hay órdenes activas en el botón de la pestaña KDS
+    var activeTabCount = 0;
+    var kdsButton = Array.from(document.querySelectorAll('button')).find(function (b) {
+      return b.textContent && b.textContent.includes('Comandas Cocina');
+    });
+    if (kdsButton) {
+      var matchBtn = kdsButton.textContent.match(/Comandas Cocina\s*\(KDS\)\s*(\d+)/i);
+      if (matchBtn) {
+        activeTabCount = parseInt(matchBtn[1], 10) || 0;
+      }
+    }
 
     // Si es la primera carga y hay comandas nuevas
     if (prevNewOrdersCount === null) {
-      prevNewOrdersCount = count;
-      if (count > 0) {
-        unreadCount = count;
+      prevNewOrdersCount = countNew;
+      if (countNew > 0 && unreadCount === 0) {
+        unreadCount = countNew;
         notificationsList = [
           {
             id: 'init-orders',
             tipo: 'ORDER',
-            titulo: 'Comandas Pendientes (' + count + ')',
-            desc: count === 1 ? '1 pedido nuevo en cocina por preparar' : count + ' pedidos nuevos en cocina por preparar',
+            titulo: 'Comandas Pendientes (' + countNew + ')',
+            desc: countNew === 1 ? '1 pedido nuevo en cocina por preparar' : countNew + ' pedidos nuevos en cocina por preparar',
             hora: 'Activas'
           }
         ];
         updateBellUi();
       }
-    } else if (count > prevNewOrdersCount) {
+    } else if (countNew > prevNewOrdersCount) {
       // Llegó un pedido nuevo
-      var diff = count - prevNewOrdersCount;
-      prevNewOrdersCount = count;
+      var diff = countNew - prevNewOrdersCount;
+      prevNewOrdersCount = countNew;
       triggerBellAlert({
         id: 'order-' + Date.now(),
         tipo: 'ORDER',
@@ -343,7 +488,61 @@
         hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       });
     } else {
-      prevNewOrdersCount = count;
+      prevNewOrdersCount = countNew;
+    }
+  }
+
+  // Consulta periódica directa a la API para redundancia infalible
+  var lastApiOrdersCheck = 0;
+  async function checkOrdersApiSilently() {
+    if (!isAdminRoute()) return;
+    var now = Date.now();
+    if (now - lastApiOrdersCheck < 4000) return;
+    lastApiOrdersCheck = now;
+
+    try {
+      var token = localStorage.getItem('bistro_admin_token') || '';
+      var res = await fetch('/api/admin/orders', {
+        headers: { 'x-admin-token': token }
+      });
+      if (!res.ok) return;
+
+      var data = await res.json();
+      var orders = data.orders || [];
+      var newOrders = orders.filter(function (o) {
+        return o.estado === 'PENDIENTE';
+      });
+
+      // Registrar cualquier orden que no hayamos visto antes
+      newOrders.forEach(function (ord) {
+        if (!seenOrderIds[ord.id]) {
+          seenOrderIds[ord.id] = true;
+          // Solo alertar si no es la primera carga fría
+          if (Object.keys(seenOrderIds).length > newOrders.length) {
+            var mesaName = ord.mesa || 'Mesa';
+            var firstItem = ord.items && ord.items[0];
+            var summary = firstItem
+              ? (firstItem.cantidad || 1) + 'x ' + (firstItem.nombre || 'Platillo')
+              : 'Nuevo pedido';
+
+            triggerBellAlert({
+              id: ord.id,
+              tipo: 'ORDER',
+              titulo: 'Comanda en ' + mesaName,
+              desc: summary + ' ($' + (ord.total || '') + ')',
+              hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+          }
+        }
+      });
+
+      // Si hay órdenes nuevas pendientes y unreadCount es 0, mostrar el número
+      if (newOrders.length > 0 && unreadCount === 0) {
+        unreadCount = newOrders.length;
+        updateBellUi();
+      }
+    } catch (e) {
+      // Ignorar fallas de red
     }
   }
 
@@ -488,6 +687,7 @@
     if (isAdminRoute()) {
       ensureNotificationBell();
       syncFromKdsBoard();
+      checkOrdersApiSilently();
       if (!ws || ws.readyState !== WebSocket.OPEN) {
         initAdminWebSocket();
       }
