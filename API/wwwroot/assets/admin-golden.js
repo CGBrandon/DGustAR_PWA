@@ -13,6 +13,77 @@
     return window.location.pathname.startsWith('/admin');
   }
 
+  // Indicador visual persistente para comandas nuevas. Reutiliza el contador
+  // que ya muestra el botón KDS, sin crear una segunda fuente de verdad.
+  function enhanceKitchenBell() {
+    if (!isAdminRoute()) return;
+
+    var header = Array.from(document.querySelectorAll('header')).find(function (candidate) {
+      return /Portal Administrativo DGustAR/i.test(candidate.textContent || '');
+    });
+    if (!header) return;
+
+    var actions = header.querySelector(':scope > div:last-child');
+    if (!actions) return;
+
+    var bell = actions.querySelector('[data-kitchen-bell]');
+    if (!bell) {
+      bell = document.createElement('button');
+      bell.type = 'button';
+      bell.dataset.kitchenBell = 'true';
+      bell.className = 'kitchen-bell';
+      bell.setAttribute('aria-label', 'Ver comandas pendientes');
+      bell.title = 'Comandas pendientes';
+      bell.innerHTML = '<span class="material-symbols-outlined kitchen-bell__icon">notifications</span>' +
+        '<span class="kitchen-bell__badge" aria-live="polite">0</span>';
+      bell.addEventListener('click', function () {
+        var kdsButton = Array.from(document.querySelectorAll('button')).find(function (button) {
+          return /Comandas Cocina \(KDS\)/i.test(button.textContent || '');
+        });
+        if (kdsButton) {
+          kdsButton.click();
+          kdsButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+      actions.insertBefore(bell, actions.firstChild);
+    }
+
+    var kdsButton = Array.from(document.querySelectorAll('button')).find(function (button) {
+      return /Comandas Cocina \(KDS\)/i.test(button.textContent || '');
+    });
+    var label = kdsButton ? (kdsButton.textContent || '') : '';
+    var kdsMatch = label.match(/KDS\)\s*(\d+)/i);
+    var newOrdersMatch = (document.body.textContent || '').match(/Nuevos\s*\(\s*(\d+)\s*\)/i);
+    var pendingOrders = Math.max(
+      kdsMatch ? Number(kdsMatch[1]) : 0,
+      newOrdersMatch ? Number(newOrdersMatch[1]) : 0
+    );
+    var pendingCalls = Array.from(document.querySelectorAll('button')).filter(function (button) {
+      if (!/Atendido/i.test(button.textContent || '')) return false;
+      var parent = button.parentElement;
+      while (parent && parent !== document.body) {
+        if (/(Llamado de Mesero|Solicita la Cuenta|Nueva Calificación|Calificando en Google Maps)/i.test(parent.textContent || '')) return true;
+        parent = parent.parentElement;
+      }
+      return false;
+    }).length;
+    var pending = pendingOrders + pendingCalls;
+    var badge = bell.querySelector('.kitchen-bell__badge');
+    var badgeText = pending > 99 ? '99+' : String(pending);
+    if (badge.textContent !== badgeText) badge.textContent = badgeText;
+    if (bell.classList.contains('has-pending') !== (pending > 0)) {
+      bell.classList.toggle('has-pending', pending > 0);
+    }
+    var ariaLabel = pending > 0
+      ? 'Ver ' + pending + ' comanda' + (pending === 1 ? '' : 's') + ' pendiente' + (pending === 1 ? '' : 's')
+      : 'No hay comandas pendientes';
+    if (bell.getAttribute('aria-label') !== ariaLabel) bell.setAttribute('aria-label', ariaLabel);
+  }
+
+  var kitchenBellObserver = new MutationObserver(enhanceKitchenBell);
+  kitchenBellObserver.observe(document.documentElement, { childList: true, subtree: true });
+  enhanceKitchenBell();
+
   // 1. Saneador de Categorías y Emojis (Elimina los "??" y asegura emojis nítidos)
   var EMOJI_MAP = [
     { match: /burger|hamburguesa/i, emoji: '🍔' },

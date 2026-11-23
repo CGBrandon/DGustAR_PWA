@@ -66,10 +66,41 @@
     (() => {
       const path = window.location.pathname;
       const hasTableFromQr = new URLSearchParams(window.location.search).has("mesa");
-      if ((path === "/" || path === "/menu") && !hasTableFromQr) {
+      const savedOrderToken = localStorage.getItem("ar_menu_active_visit_order") ||
+        sessionStorage.getItem("ar_menu_active_visit_order");
+      const savedOrdersRaw = localStorage.getItem("ar_menu_active_visit_orders_list") ||
+        sessionStorage.getItem("ar_menu_active_visit_orders_list");
+      let savedOrders = [];
+      try {
+        const parsedOrders = JSON.parse(savedOrdersRaw || "[]");
+        savedOrders = Array.isArray(parsedOrders) ? parsedOrders : [];
+      } catch { /* datos locales dañados: se solicitará el QR */ }
+      const activeStates = new Set(["NUEVO", "ACEPTADO", "EN_PREPARACION", "LISTO"]);
+      const activeSavedOrder = savedOrders.find((order) =>
+        order && order.order_token === savedOrderToken && activeStates.has(order.estado)
+      ) || savedOrders.find((order) => order && activeStates.has(order.estado));
+      const savedVisitTime = Number(localStorage.getItem("ar_menu_active_visit_time") ||
+        sessionStorage.getItem("ar_menu_active_visit_time") || 0);
+      const hasRecoverableOrder = Boolean(activeSavedOrder && savedVisitTime &&
+        Date.now() - savedVisitTime < 2 * 60 * 60 * 1000);
+
+      // Solo se conserva la sesión durante 2 horas y mientras la comanda siga activa.
+      if (hasRecoverableOrder) {
+        localStorage.setItem("ar_menu_active_visit_time", String(Date.now()));
+        localStorage.setItem("ar_menu_active_visit_order", activeSavedOrder.order_token);
+        if (activeSavedOrder.mesa) {
+          localStorage.setItem("ar_menu_active_visit_table", activeSavedOrder.mesa);
+          localStorage.setItem("ar_menu_table", activeSavedOrder.mesa);
+        }
+      }
+
+      if ((path === "/" || path === "/menu" || path.startsWith("/pedido")) &&
+        !hasTableFromQr && !hasRecoverableOrder) {
         [
           "ar_menu_active_visit_table",
           "ar_menu_active_visit_time",
+          "ar_menu_active_visit_order",
+          "ar_menu_active_visit_orders_list",
           "ar_menu_table",
           "ar_menu_table_time",
           "ar_menu_table_session"
@@ -160,6 +191,180 @@
   </script>
   <script type="module" crossorigin src="/assets/index-CebOQXM1.js?v=7"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-BV5RYNIR.css?v=7">
+
+  <!-- El personal puede cobrar, pero no necesita consultar el reporte de caja.
+       Evita que el 401 esperado de ese reporte se interprete como sesión vencida. -->
+  <script>
+    (() => {
+      const nativeFetch = window.fetch.bind(window);
+      window.fetch = async (...args) => {
+        const response = await nativeFetch(...args);
+        const request = args[0];
+        const url = typeof request === 'string' ? request : request?.url || '';
+        if (response.status === 401 &&
+          url.includes('/api/admin/corte-caja/report') &&
+          localStorage.getItem('bistro_admin_role') === 'STAFF') {
+          return new Response(JSON.stringify({
+            periodo: 'shift',
+            total_ventas: 0,
+            total_efectivo: 0,
+            total_terminal: 0,
+            orders: [],
+            top_productos: []
+          }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+        return response;
+      };
+    })();
+  </script>
+
+  <!-- Monto recibido y cambio para cobros en efectivo. -->
+  <script>
+    (() => {
+      let cashPayment = null;
+
+      const money = (value) => Number(String(value || '').replace(/[$,\s]/g, '')) || 0;
+      const locatePaymentModal = () => [...document.querySelectorAll('div.fixed.inset-0')]
+        .find((modal) => /Registrar Cobro en Caja/i.test(modal.textContent || ''));
+
+      const enhanceCashPayment = () => {
+        const modal = locatePaymentModal();
+        if (!modal) {
+          cashPayment = null;
+          return;
+        }
+
+        const methodButtons = [...modal.querySelectorAll('button')].filter((button) =>
+          /Efectivo|Terminal Bancaria/i.test(button.textContent || '')
+        );
+        const terminalSelected = methodButtons.some((button) =>
+          /Terminal Bancaria/i.test(button.textContent || '') && /bg-blue-500\/20/.test(button.className)
+        );
+
+        let fields = modal.querySelector('[data-cash-payment-fields]');
+        if (!fields) {
+          fields = document.createElement('div');
+          fields.dataset.cashPaymentFields = 'true';
+          fields.className = 'cash-payment-fields';
+          fields.innerHTML = `
+            <label class="cash-payment-fields__label" for="cash-received-amount">Efectivo recibido</label>
+            <div class="cash-payment-fields__input-wrap">
+              <span>$</span>
+              <input id="cash-received-amount" inputmode="decimal" type="number" min="0" step="0.01" placeholder="0.00" autocomplete="off">
+            </div>
+            <div class="cash-payment-fields__change" aria-live="polite">
+              <span>Cambio a entregar</span><strong>$0.00</strong>
+            </div>`;
+          const actionArea = [...modal.querySelectorAll('button')].find((button) =>
+            /Confirmar Cobro/i.test(button.textContent || '')
+          )?.parentElement;
+          (actionArea || modal).before(fields);
+          fields.querySelector('input').addEventListener('input', () => updateCashPayment(modal, fields));
+        }
+
+        fields.hidden = terminalSelected;
+        if (!terminalSelected) updateCashPayment(modal, fields);
+      };
+
+      const updateCashPayment = (modal, fields) => {
+        const totalMatch = (modal.textContent || '').match(/Total a Cobrar\s*\$\s*([\d,.]+)/i);
+        const total = money(totalMatch?.[1]);
+        const input = fields.querySelector('input');
+        const received = money(input.value);
+        const change = Math.max(0, received - total);
+        fields.querySelector('strong').textContent = `$${change.toFixed(2)}`;
+        fields.classList.toggle('is-invalid', received > 0 && received < total);
+        cashPayment = { input, total };
+      };
+
+      const originalFetchWithCash = window.fetch.bind(window);
+      window.fetch = async (...args) => {
+        const request = args[0];
+        const url = typeof request === 'string' ? request : request?.url || '';
+        const options = args[1] || {};
+        if (url.includes('/api/admin/payments') && options.method === 'POST' && cashPayment) {
+          try {
+            const body = JSON.parse(options.body || '{}');
+            if (body.method === 'EFECTIVO') {
+              const received = money(cashPayment.input.value);
+              if (!received || received < cashPayment.total) {
+                return new Response(JSON.stringify({ error: 'Ingresa un efectivo igual o mayor al total.' }), {
+                  status: 400,
+                  headers: { 'Content-Type': 'application/json' }
+                });
+              }
+              body.received_amount = received;
+              body.change = Number((received - cashPayment.total).toFixed(2));
+              args[1] = { ...options, body: JSON.stringify(body) };
+            }
+          } catch { /* El flujo original mostrará su propio error. */ }
+        }
+        return originalFetchWithCash(...args);
+      };
+
+      new MutationObserver(enhanceCashPayment).observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class', 'hidden']
+      });
+      enhanceCashPayment();
+    })();
+  </script>
+
+  <!-- Flujo de personalización desde el listado del menú.
+       El bundle distribuye el botón + como alta directa; aquí lo convertimos
+       en acceso a la ficha para que el comensal pueda personalizar primero. -->
+  <script>
+    (() => {
+      const isMenuRoute = () => window.location.pathname === '/menu';
+      const isDishRoute = () => window.location.pathname.startsWith('/platillo/');
+
+      document.addEventListener('click', (event) => {
+        if (!isMenuRoute()) return;
+        const addButton = event.target.closest?.('button[title="Agregar 1 al carrito"]');
+        if (!addButton) return;
+
+        let card = addButton.parentElement;
+        while (card && card !== document.body) {
+          if (card !== addButton && card.classList?.contains('cursor-pointer') && card.querySelector('img')) break;
+          card = card.parentElement;
+        }
+        if (!card || card === document.body) return;
+
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        card.click();
+      }, true);
+
+      const keepDishActionsVisible = () => {
+        if (!isDishRoute()) return;
+        const main = [...document.querySelectorAll('main')].find((element) =>
+          element.classList.contains('max-w-lg') && element.classList.contains('flex-1')
+        );
+        if (main) {
+          main.style.paddingBottom = '9rem';
+          main.style.scrollPaddingBottom = '9rem';
+        }
+      };
+
+      const originalPushState = history.pushState;
+      history.pushState = function (...args) {
+        const result = originalPushState.apply(this, args);
+        setTimeout(keepDishActionsVisible, 0);
+        return result;
+      };
+      window.addEventListener('popstate', keepDishActionsVisible);
+      new MutationObserver(keepDishActionsVisible).observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+      keepDishActionsVisible();
+    })();
+  </script>
   
   <!-- DGustAR Golden Ratio Design System & Admin Suite -->
   <link rel="stylesheet" href="/assets/admin-golden.css?v=4">
@@ -199,7 +404,7 @@
       function prefetchModels() {
         // Verificar si ya están en caché antes de descargar
         if ('caches' in window) {
-          caches.open('dgustar-pwa-v8').then(function (cache) {
+            caches.open('dgustar-pwa-v9').then(function (cache) {
             MODELS.forEach(function (url) {
               cache.match(url).then(function (cached) {
                 if (!cached) {

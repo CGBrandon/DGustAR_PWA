@@ -248,6 +248,12 @@ public class Payment
     [JsonPropertyName("amount")]
     public decimal Amount { get; set; }
 
+    [JsonPropertyName("received_amount")]
+    public decimal? ReceivedAmount { get; set; }
+
+    [JsonPropertyName("change")]
+    public decimal Change { get; set; }
+
     [JsonPropertyName("method")]
     public string Method { get; set; } = "EFECTIVO"; // EFECTIVO, TERMINAL_EXTERNA
 
@@ -331,6 +337,23 @@ public class CorteCaja
 
     [JsonPropertyName("timestamp")]
     public string Timestamp { get; set; } = DateTime.UtcNow.ToString("o");
+
+    // Alias de compatibilidad con la vista administrativa distribuida.
+    // Mantienen un único origen de datos y evitan columnas vacías en el historial.
+    [JsonPropertyName("fecha")]
+    public string Fecha => Timestamp;
+
+    [JsonPropertyName("ventas_efectivo")]
+    public decimal VentasEfectivo => TotalEfectivo ?? 0m;
+
+    [JsonPropertyName("ventas_tarjeta")]
+    public decimal VentasTarjeta => TotalTerminal ?? 0m;
+
+    [JsonPropertyName("ventas_totales")]
+    public decimal VentasTotales => TotalVentas ?? 0m;
+
+    [JsonPropertyName("total_caja_esperado")]
+    public decimal TotalCajaEsperado => (FondoInicial ?? 0m) + (TotalEfectivo ?? 0m);
 }
 
 public class GoogleReviewClickLog
@@ -516,6 +539,12 @@ public class RegisterPaymentDto
 
     [JsonPropertyName("amount")]
     public decimal Amount { get; set; }
+
+    [JsonPropertyName("received_amount")]
+    public decimal? ReceivedAmount { get; set; }
+
+    [JsonPropertyName("change")]
+    public decimal? Change { get; set; }
 
     [JsonPropertyName("method")]
     public string Method { get; set; } = "EFECTIVO";
