@@ -1,0 +1,597 @@
+{
+  "info": {
+    "_postman_id": "dgustar-pwa-api-collection-v1",
+    "name": "DGustAR - API REST & PWA Suite",
+    "description": "Colección oficial de pruebas para DGustAR (ASP.NET Core Web API .NET 8 / SQL Server / WebSocket).\nIncluye endpoints públicos de menú, pedidos y mesas, así como endpoints protegidos de administración, KDS y corte de caja.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "admin_token",
+      "value": "bistro-admin-authorized",
+      "type": "string"
+    },
+    {
+      "key": "staff_token",
+      "value": "bistro-staff-authorized",
+      "type": "string"
+    },
+    {
+      "key": "mesa",
+      "value": "Mesa 01",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Salud & Diagnóstico",
+      "item": [
+        {
+          "name": "Health Check (Estado de API y Base de Datos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Verifica si el servicio está en línea y si está operando sobre Azure SQL / SQL Server o almacenamiento fallback local."
+          }
+        },
+        {
+          "name": "OpenAPI / Swagger JSON",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/swagger/v1/swagger.json",
+              "host": ["{{base_url}}"],
+              "path": ["swagger", "v1", "swagger.json"]
+            },
+            "description": "Especificación OpenAPI v3 para importar automáticamente en Postman o herramientas de integración."
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Menú Digital (Público)",
+      "item": [
+        {
+          "name": "Obtener Menú Completo (Categorías y Platillos)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/menu",
+              "host": ["{{base_url}}"],
+              "path": ["api", "menu"]
+            },
+            "description": "Retorna el catálogo gastronómico completo con categorías activas, platillos y enlaces a modelos 3D."
+          }
+        },
+        {
+          "name": "Consultar Detalle de Platillo por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/menu/products/prod-burger-classic",
+              "host": ["{{base_url}}"],
+              "path": ["api", "menu", "products", "prod-burger-classic"]
+            },
+            "description": "Obtiene la ficha técnica, descripción, precio y modelo 3D GLB de un platillo específico."
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Mesas & Salón",
+      "item": [
+        {
+          "name": "Listar Mesas Físicas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tables",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tables"]
+            },
+            "description": "Retorna la lista de mesas habilitadas y configuradas en el restaurante."
+          }
+        },
+        {
+          "name": "Consultar Cuenta / Consumo de una Mesa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tables/{{mesa}}/account",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tables", "{{mesa}}", "account"]
+            },
+            "description": "Calcula el total de la cuenta, órdenes activas y resumen de consumo para una mesa."
+          }
+        },
+        {
+          "name": "Llamar al Mesero desde la Mesa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comensal\": \"Juan Pérez\",\n  \"motivo\": \"Solicita apoyo con la carta\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tables/{{mesa}}/call-waiter",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tables", "{{mesa}}", "call-waiter"]
+            },
+            "description": "Envía una alerta en tiempo real a cocina y barra vía WebSockets notificando asistencia en mesa."
+          }
+        },
+        {
+          "name": "Solicitar la Cuenta desde la Mesa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comensal\": \"Familia López\",\n  \"metodo_pago\": \"EFECTIVO\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tables/{{mesa}}/request-bill",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tables", "{{mesa}}", "request-bill"]
+            },
+            "description": "Avisa al personal que la mesa solicita su ticket de cobro."
+          }
+        },
+        {
+          "name": "Cerrar y Liberar Mesa (Admin/Staff)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/tables/{{mesa}}/close",
+              "host": ["{{base_url}}"],
+              "path": ["api", "tables", "{{mesa}}", "close"]
+            },
+            "description": "Marca todas las órdenes de la mesa como finalizadas y la deja lista para nuevos comensales."
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Pedidos & Comandas",
+      "item": [
+        {
+          "name": "Crear Pedido / Comanda en Mesa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mesa\": \"{{mesa}}\",\n  \"comensal\": \"Carlos Cliente\",\n  \"notas\": \"Sin cebolla por favor\",\n  \"detalles\": [\n    {\n      \"producto_id\": \"prod-burger-classic\",\n      \"cantidad\": 2,\n      \"precio_unitario\": 149.00,\n      \"nombre\": \"Hamburguesa Clásica DGustAR\",\n      \"notas\": \"Término medio\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/orders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "orders"]
+            },
+            "description": "Crea una orden con estado NUEVO y emite el evento NEW_ORDER vía WebSockets a cocina."
+          }
+        },
+        {
+          "name": "Consultar Pedido por Token de Seguimiento",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/orders/ord-sample-token",
+              "host": ["{{base_url}}"],
+              "path": ["api", "orders", "ord-sample-token"]
+            },
+            "description": "Permite al cliente seguir en tiempo real el estado de preparación de su comanda."
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Administración & KDS (Protegido)",
+      "item": [
+        {
+          "name": "Login con PIN (Gerencia PIN: 1234)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pin\": \"1234\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "login"]
+            },
+            "description": "Valida el PIN de Gerencia (1234) y devuelve el token de sesión con rol ADMIN."
+          }
+        },
+        {
+          "name": "Login con PIN (Cocina/Staff PIN: 1111)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pin\": \"1111\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "login"]
+            },
+            "description": "Valida el PIN de Cocina (1111) y devuelve el token de sesión con rol STAFF."
+          }
+        },
+        {
+          "name": "Listar Comandas para KDS (Cocina)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/orders?estado=&mesa=",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "orders"],
+              "query": [
+                {
+                  "key": "estado",
+                  "value": ""
+                },
+                {
+                  "key": "mesa",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Retorna todas las comandas activas para organizar el tablero de cocina (Nuevos, En Fuego, Listos, Entregados)."
+          }
+        },
+        {
+          "name": "Actualizar Estado de Comanda (KDS)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"EN_PREPARACION\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/orders/ord-ejemplo-id/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "orders", "ord-ejemplo-id", "status"]
+            },
+            "description": "Cambia el estado de una comanda (NUEVO, EN_PREPARACION, LISTO, ENTREGADO, CANCELADO) y lo notifica vía WebSockets."
+          }
+        },
+        {
+          "name": "Consultar Platillos con Filtros (Gestor de Menú)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/products?nombre=pizza&categoria=&disponible=true&precioMin=50&precioMax=300",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products"],
+              "query": [
+                {
+                  "key": "nombre",
+                  "value": "pizza"
+                },
+                {
+                  "key": "categoria",
+                  "value": ""
+                },
+                {
+                  "key": "disponible",
+                  "value": "true"
+                },
+                {
+                  "key": "precioMin",
+                  "value": "50"
+                },
+                {
+                  "key": "precioMax",
+                  "value": "300"
+                }
+              ]
+            },
+            "description": "Permite filtrar platillos por nombre, categoría, disponibilidad y rango de precios contra la API."
+          }
+        },
+        {
+          "name": "Consultar Platillo por Id (Gestor de Menú)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/products/prod-burger-classic",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products", "prod-burger-classic"]
+            },
+            "description": "Busca un platillo específico por su identificador único."
+          }
+        },
+        {
+          "name": "Crear Nuevo Platillo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Tacos al Pastor Gourmet\",\n  \"categoria_id\": \"cat-especiales\",\n  \"precio_base\": 165.00,\n  \"tiempo_preparacion_min\": 12,\n  \"descripcion\": \"Tres tacos con piña caramelizada y cebolla morada\",\n  \"ingredientes\": [\"Carne de cerdo marinada\", \"Piña\", \"Cilantro\", \"Tortilla de maíz artesanal\"],\n  \"disponible\": true,\n  \"destacado\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products"]
+            },
+            "description": "Registra un nuevo platillo en el catálogo."
+          }
+        },
+        {
+          "name": "Alternar Disponibilidad (Agotado/Disponible)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/products/prod-burger-classic/toggle",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "products", "prod-burger-classic", "toggle"]
+            },
+            "description": "Cambia rápidamente la disponibilidad de un producto sin editar todos sus datos."
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Pagos & Caja",
+      "item": [
+        {
+          "name": "Registrar Cobro en Caja (Con Efectivo y Cambio)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"order_id\": \"ord-sample-id\",\n  \"amount\": 298.00,\n  \"received_amount\": 500.00,\n  \"change\": 202.00,\n  \"method\": \"EFECTIVO\",\n  \"received_by\": \"Caja 1\",\n  \"close_table_after\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/payments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "payments"]
+            },
+            "description": "Registra el pago de una orden. Valida el monto recibido, calcula el cambio entregado y opcionalmente libera la mesa."
+          }
+        },
+        {
+          "name": "Cobrar Todo lo Pendiente en Bloque",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"EFECTIVO\",\n  \"received_by\": \"Caja General\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/payments/collect-all-pending",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "payments", "collect-all-pending"]
+            },
+            "description": "Marca todas las comandas entregadas pendientes de cobro como liquidadas."
+          }
+        },
+        {
+          "name": "Reporte de Corte de Caja (Turno Actual)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/corte-caja/report?period=shift",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "corte-caja", "report"],
+              "query": [
+                {
+                  "key": "period",
+                  "value": "shift"
+                }
+              ]
+            },
+            "description": "Calcula ventas en efectivo, tarjeta terminal, ticket promedio y total esperado en caja."
+          }
+        },
+        {
+          "name": "Ejecutar y Guardar Corte de Caja",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"responsable\": \"Administrador General\",\n  \"fondo_inicial\": 500.00,\n  \"efectivo_contado\": 3450.00,\n  \"notas\": \"Cierre de turno sin novedades\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/admin/corte-caja",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "corte-caja"]
+            },
+            "description": "Guarda el corte en el historial con diferencias de efectivo y arqueo."
+          }
+        },
+        {
+          "name": "Historial de Cortes de Caja",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-admin-token",
+                "value": "{{admin_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/admin/corte-caja/history",
+              "host": ["{{base_url}}"],
+              "path": ["api", "admin", "corte-caja", "history"]
+            },
+            "description": "Retorna la lista histórica de cortes de caja realizados."
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Reseñas & Calificaciones",
+      "item": [
+        {
+          "name": "Crear Reseña / Calificación de Cliente",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comensal\": \"María Gómez\",\n  \"mesa\": \"{{mesa}}\",\n  \"estrellas\": 5,\n  \"comentario\": \"Excelente experiencia gastronómica y la presentación 3D está increíble\",\n  \"etiquetas\": [\"Servicio rápido\", \"Comida deliciosa\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews"]
+            },
+            "description": "Registra una reseña de comensal en el sistema."
+          }
+        },
+        {
+          "name": "Obtener Estadísticas y Lista de Reseñas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "reviews"]
+            },
+            "description": "Retorna el promedio de estrellas, porcentaje de satisfacción y lista de opiniones."
+          }
+        }
+      ]
+    }
+  ]
+}
