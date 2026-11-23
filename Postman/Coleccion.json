@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "dgustar-pwa-api-collection-v1",
     "name": "DGustAR - API REST & PWA Suite",
-    "description": "Colección oficial de pruebas para DGustAR (ASP.NET Core Web API .NET 8 / SQL Server / WebSocket).\nIncluye endpoints públicos de menú, pedidos y mesas, así como endpoints protegidos de administración, KDS y corte de caja.",
+    "description": "Colección oficial de pruebas para DGustAR (ASP.NET Core Web API .NET 10 / SQL Server / WebSocket).\nIncluye endpoints públicos de menú, pedidos y mesas, así como endpoints protegidos de administración, KDS y corte de caja.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [

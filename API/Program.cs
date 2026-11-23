@@ -90,7 +90,7 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "DGustAR - API de Gastronomía y Realidad Aumentada",
         Version = "v1",
-        Description = "API REST oficial y servidor WebSocket para DGustAR PWA desarrollada en ASP.NET Core .NET 8 y Microsoft SQL Server."
+        Description = "API REST oficial y servidor WebSocket para DGustAR PWA desarrollada en ASP.NET Core .NET 10 y Microsoft SQL Server."
     });
 });
 

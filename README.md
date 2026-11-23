@@ -2,11 +2,11 @@
 
 PWA gastronómica con menú digital, modelos 3D/realidad aumentada, comandas en mesa, panel administrativo y API REST con actualizaciones por WebSocket.
 
-El repositorio actual contiene una solución ASP.NET Core .NET 8 que sirve la PWA ya compilada desde `API/wwwroot`. No incluye un proyecto fuente independiente de Vue/Vite.
+El repositorio actual contiene una solución ASP.NET Core .NET 10 que sirve la PWA ya compilada desde `API/wwwroot`. No incluye un proyecto fuente independiente de Vue/Vite.
 
 ## Estado actual del proyecto
 
-- Backend: ASP.NET Core Web API sobre .NET 8.
+- Backend: ASP.NET Core Web API sobre .NET 10.
 - Frontend servido por la API: HTML, CSS y JavaScript compilados en `API/wwwroot`.
 - Persistencia operativa: datos locales en `API/Data/db.json`, con arranque seguro cuando SQL Server no está disponible.
 - Integración SQL Server: se activa únicamente si la instancia contiene el esquema compatible con el repositorio; si detecta otro esquema, conserva el fallback local para no ejecutar operaciones parciales.
@@ -37,7 +37,7 @@ DGustAR_PWA/
 
 ## Tecnologías
 
-- C# y ASP.NET Core Web API (.NET 8).
+- C# y ASP.NET Core Web API (.NET 10).
 - Swagger/OpenAPI mediante Swashbuckle.
 - SQL Server mediante `Microsoft.Data.SqlClient`.
 - HTML, CSS y JavaScript para la PWA distribuida.
@@ -47,7 +47,7 @@ DGustAR_PWA/
 ## Requisitos
 
 - Windows 10/11.
-- .NET SDK 8.0 o superior.
+- .NET SDK 10.0 o superior.
 - SQL Server 2019, 2022 o Express (opcional si se usa el fallback local).
 - SQL Server Management Studio, si se va a ejecutar el script de base de datos.
 - Visual Studio 2022 o la CLI de .NET.
