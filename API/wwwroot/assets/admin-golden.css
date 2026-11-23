@@ -205,6 +205,150 @@ header[data-v-48ad60c4] a:hover {
   transform: translateY(-1.5px) !important;
 }
 
+/* Indicador adicional de comandas: visible aunque el aviso sonoro no se escuche. */
+.kitchen-bell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px !important;
+  height: 38px !important;
+  flex: 0 0 auto;
+  margin-right: 2px;
+  border: 1px solid rgba(244, 63, 94, 0.38);
+  border-radius: 999px !important;
+  color: #cbd5e1;
+  background: rgba(127, 29, 29, 0.32);
+  cursor: pointer;
+  transition: color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+.kitchen-bell:hover,
+.kitchen-bell:focus-visible {
+  color: #fff;
+  background: rgba(190, 24, 93, 0.48);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.kitchen-bell.has-pending {
+  color: #fff;
+  border-color: #fb7185;
+  background: linear-gradient(135deg, #be123c, #e11d48);
+  box-shadow: 0 0 0 4px rgba(225, 29, 72, .14), 0 6px 18px rgba(225, 29, 72, .3);
+  animation: kitchen-bell-pulse 1.8s ease-in-out infinite;
+}
+
+.kitchen-bell.has-pending .kitchen-bell__icon {
+  animation: kitchen-bell-ring .9s ease-in-out infinite;
+  transform-origin: 50% 12%;
+}
+
+.kitchen-bell__icon { font-size: 21px; }
+
+header[data-v-48ad60c4] button.kitchen-bell {
+  padding: 0 !important;
+  border-radius: 999px !important;
+  font-size: inherit !important;
+}
+
+.kitchen-bell__badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #0b0f19;
+  border-radius: 999px;
+  color: #fff;
+  background: #f43f5e;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+@keyframes kitchen-bell-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes kitchen-bell-ring {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-14deg); }
+  45% { transform: rotate(9deg); }
+  60% { transform: rotate(-6deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kitchen-bell.has-pending,
+  .kitchen-bell.has-pending .kitchen-bell__icon { animation: none; }
+}
+
+.cash-payment-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 4px;
+  padding: 12px;
+  border: 1px solid rgba(245, 158, 11, .35);
+  border-radius: 16px;
+  background: rgba(120, 53, 15, .18);
+}
+
+.cash-payment-fields[hidden] { display: none; }
+
+.cash-payment-fields__label {
+  color: #fcd34d;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.cash-payment-fields__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 11px;
+  border: 1px solid rgba(148, 163, 184, .35);
+  border-radius: 12px;
+  color: #fbbf24;
+  background: #0f172a;
+}
+
+.cash-payment-fields__input-wrap input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #fff;
+  background: transparent;
+  font-weight: 800;
+}
+
+.cash-payment-fields__change {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #cbd5e1;
+  font-size: 11px;
+}
+
+.cash-payment-fields__change strong {
+  color: #34d399;
+  font-size: 16px;
+}
+
+.cash-payment-fields.is-invalid .cash-payment-fields__input-wrap {
+  border-color: #fb7185;
+}
+
+.cash-payment-fields.is-invalid .cash-payment-fields__change strong {
+  color: #fb7185;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    3. BARRA DE PESTAÑAS (SEGMENTED CONTROL ÁUREO)
    ═══════════════════════════════════════════════════════════════════════════ */

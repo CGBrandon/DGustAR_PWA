@@ -1585,6 +1585,17 @@ public class StoreRepository : IStoreRepository
                 throw new InvalidOperationException("Método de pago no válido.");
             }
 
+            var receivedAmount = method == "EFECTIVO"
+                ? (dto.ReceivedAmount ?? dto.Amount)
+                : dto.Amount;
+            if (receivedAmount < dto.Amount)
+            {
+                throw new InvalidOperationException("El efectivo recibido no puede ser menor al total.");
+            }
+            var change = method == "EFECTIVO"
+                ? Math.Round(receivedAmount - dto.Amount, 2)
+                : 0m;
+
             var paymentId = $"pay-{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds():x}-{Guid.NewGuid().ToString("N")[..4]}";
             var payment = new Payment
             {
@@ -1592,6 +1603,8 @@ public class StoreRepository : IStoreRepository
                 OrderId = order.Id,
                 OrderToken = order.OrderToken,
                 Amount = dto.Amount,
+                ReceivedAmount = receivedAmount,
+                Change = change,
                 Method = method,
                 ReceivedBy = dto.ReceivedBy ?? "Caja",
                 Timestamp = DateTime.UtcNow.ToString("o"),

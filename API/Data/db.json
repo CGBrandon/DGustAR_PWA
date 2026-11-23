@@ -81,6 +81,15 @@
       "emoji": "\uD83C\uDF7D\uFE0F",
       "orden": 7,
       "activo": true
+    },
+    {
+      "id": "cat-92e4fca0",
+      "nombre": "chiles",
+      "slug": "chiles",
+      "icono": "category",
+      "emoji": "\uD83C\uDF7D\uFE0F",
+      "orden": 8,
+      "activo": true
     }
   ],
   "products": [
@@ -1350,8 +1359,8 @@
       ]
     },
     {
-      "id": "ord-1a1fb549f5b-4cff",
-      "order_token": "8a99799e-d65c-4e59-98b4-15fb52530c37",
+      "id": "ord-1a2067b0b1c-72fb",
+      "order_token": "41ea90fe-e901-4eec-bb99-c101cefbecd6",
       "mesa": "Mesa 01",
       "tipo_cuenta": "MESA",
       "comensal": "Cuenta General de la Mesa",
@@ -1359,94 +1368,267 @@
       "metodo_pago": "Pago al mesero en mesa",
       "estado": "ENTREGADO",
       "estado_pago": "PAGADO",
-      "monto_pagado": 100,
+      "monto_pagado": 187,
       "saldo_pendiente": 0,
       "items": [
+        {
+          "producto_id": "prod-mocktail-berries",
+          "nombre": "Mocktail Frutos Rojos",
+          "imagen": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 65.00,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [],
+          "precio_unitario": 65.00,
+          "subtotal": 65.00,
+          "notas": ""
+        },
         {
           "producto_id": "prod-papas-trufa",
           "nombre": "Papas R\u00FAsticas ",
           "imagen": "/uploads/asset-633213d609054d849af3b7fc091e6758.png",
-          "precio_base": 100,
+          "precio_base": 100.00,
           "cantidad": 1,
           "ingredientes_removidos": [],
-          "extras": [],
-          "precio_unitario": 100,
-          "subtotal": 100,
-          "notas": "Ajonjoli"
+          "extras": [
+            {
+              "id": "ext-dip-trufa",
+              "nombre": "Dip de Mayonesa Trufada",
+              "precio": 22.00
+            }
+          ],
+          "precio_unitario": 122.00,
+          "subtotal": 122.00,
+          "notas": ""
         }
       ],
-      "subtotal": 100,
-      "total": 100,
-      "notas_cliente": "Ajonjoli",
-      "creado_en": "2026-11-20T23:39:49.4670645Z",
-      "actualizado_en": "2026-11-20T23:41:08.1972745Z",
+      "subtotal": 187.00,
+      "total": 187.00,
+      "notas_cliente": "",
+      "creado_en": "2026-11-23T03:37:36.7961744Z",
+      "actualizado_en": "2026-11-23T03:39:12.3226907Z",
       "cerrada": false,
       "cerrada_en": null,
       "historial_estados": [
         {
           "estado": "NUEVO",
-          "timestamp": "2026-11-20T23:39:49.4670645Z",
+          "timestamp": "2026-11-23T03:37:36.7961744Z",
           "cambiado_por": "Comensal PWA"
         },
         {
           "estado": "EN_PREPARACION",
-          "timestamp": "2026-11-20T23:40:09.5049973Z",
+          "timestamp": "2026-11-23T03:39:08.5553585Z",
           "cambiado_por": "Personal / Cocina"
         },
         {
           "estado": "LISTO",
-          "timestamp": "2026-11-20T23:40:10.6938473Z",
+          "timestamp": "2026-11-23T03:39:09.7618977Z",
           "cambiado_por": "Personal / Cocina"
         },
         {
           "estado": "ENTREGADO",
-          "timestamp": "2026-11-20T23:40:12.2040222Z",
+          "timestamp": "2026-11-23T03:39:12.3102426Z",
           "cambiado_por": "Personal / Cocina"
         }
       ]
     },
     {
-      "id": "ord-1a1fb55e41b-73d8",
-      "order_token": "98bafdd8-534f-4ce1-91ee-c9f3017c7b05",
+      "id": "ord-1a20687b33b-00f9",
+      "order_token": "f7511ce8-a0ea-41b0-ab61-10554eab0837",
       "mesa": "Mesa 01",
       "tipo_cuenta": "MESA",
       "comensal": "Cuenta General de la Mesa",
-      "tipo_servicio": "En Mesa",
+      "tipo_servicio": "Para Llevar",
       "metodo_pago": "Pago al mesero en mesa",
-      "estado": "EN_PREPARACION",
+      "estado": "ENTREGADO",
       "estado_pago": "PAGADO",
-      "monto_pagado": 139,
+      "monto_pagado": 428,
       "saldo_pendiente": 0,
       "items": [
         {
-          "producto_id": "prod-burger-clasica",
-          "nombre": "Smash Burger Doble carne",
-          "imagen": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
-          "precio_base": 139,
+          "producto_id": "prod-mocktail-berries",
+          "nombre": "Mocktail Frutos Rojos",
+          "imagen": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 65.00,
           "cantidad": 1,
           "ingredientes_removidos": [],
           "extras": [],
-          "precio_unitario": 139,
-          "subtotal": 139,
-          "notas": ""
+          "precio_unitario": 65.00,
+          "subtotal": 65.00,
+          "notas": "Un billarcito o que?"
+        },
+        {
+          "producto_id": "prod-pizza-burrata",
+          "nombre": "Pizza Artesanal Burrata \u0026 Prosciutto",
+          "imagen": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 229.00,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [
+            {
+              "id": "ext-prosciutto",
+              "nombre": "Porci\u00F3n Extra Prosciutto",
+              "precio": 45.00
+            }
+          ],
+          "precio_unitario": 274.00,
+          "subtotal": 274.00,
+          "notas": "Un billarcito o que?"
+        },
+        {
+          "producto_id": "prod-volcan-chocolate",
+          "nombre": "Volc\u00E1n de Chocolate",
+          "imagen": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 89.00,
+          "cantidad": 1,
+          "ingredientes_removidos": [
+            "Chocolate belga 70%",
+            "Helado de vainilla Bourbon"
+          ],
+          "extras": [],
+          "precio_unitario": 89.00,
+          "subtotal": 89.00,
+          "notas": "Sin: Chocolate belga 70%, Helado de vainilla Bourbon \u00B7 Un billarcito o que?"
         }
       ],
-      "subtotal": 139,
-      "total": 139,
-      "notas_cliente": "",
-      "creado_en": "2026-11-20T23:41:12.6033360Z",
-      "actualizado_en": "2026-11-20T23:41:55.6304831Z",
+      "subtotal": 428.00,
+      "total": 428.00,
+      "notas_cliente": "Un billarcito o que?",
+      "creado_en": "2026-11-23T03:51:26.2679909Z",
+      "actualizado_en": "2026-11-23T03:53:10.7930364Z",
       "cerrada": false,
       "cerrada_en": null,
       "historial_estados": [
         {
           "estado": "NUEVO",
-          "timestamp": "2026-11-20T23:41:12.6033360Z",
+          "timestamp": "2026-11-23T03:51:26.2679909Z",
           "cambiado_por": "Comensal PWA"
         },
         {
           "estado": "EN_PREPARACION",
-          "timestamp": "2026-11-20T23:41:55.6304831Z",
+          "timestamp": "2026-11-23T03:52:22.9718976Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "LISTO",
+          "timestamp": "2026-11-23T03:52:55.0025610Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "ENTREGADO",
+          "timestamp": "2026-11-23T03:52:56.8659688Z",
+          "cambiado_por": "Personal / Cocina"
+        }
+      ]
+    },
+    {
+      "id": "ord-1a206885dbc-0dfa",
+      "order_token": "4dcc1b64-286d-4e2c-b25f-d73707505ee1",
+      "mesa": "Mesa 01",
+      "tipo_cuenta": "MESA",
+      "comensal": "Cuenta General de la Mesa",
+      "tipo_servicio": "Para Llevar",
+      "metodo_pago": "Pago al mesero en mesa",
+      "estado": "ENTREGADO",
+      "estado_pago": "PAGADO",
+      "monto_pagado": 65,
+      "saldo_pendiente": 0,
+      "items": [
+        {
+          "producto_id": "prod-mocktail-berries",
+          "nombre": "Mocktail Frutos Rojos",
+          "imagen": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 65.00,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [],
+          "precio_unitario": 65.00,
+          "subtotal": 65.00,
+          "notas": ""
+        }
+      ],
+      "subtotal": 65.00,
+      "total": 65.00,
+      "notas_cliente": "",
+      "creado_en": "2026-11-23T03:52:09.9167421Z",
+      "actualizado_en": "2026-11-23T03:53:03.7852161Z",
+      "cerrada": false,
+      "cerrada_en": null,
+      "historial_estados": [
+        {
+          "estado": "NUEVO",
+          "timestamp": "2026-11-23T03:52:09.9167421Z",
+          "cambiado_por": "Comensal PWA"
+        },
+        {
+          "estado": "EN_PREPARACION",
+          "timestamp": "2026-11-23T03:52:32.1771112Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "LISTO",
+          "timestamp": "2026-11-23T03:52:42.5476686Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "ENTREGADO",
+          "timestamp": "2026-11-23T03:52:52.6249596Z",
+          "cambiado_por": "Personal / Cocina"
+        }
+      ]
+    },
+    {
+      "id": "ord-1a206937eba-14c0",
+      "order_token": "4cbe73bf-bbdf-438b-a144-44406491a571",
+      "mesa": "Mesa 01",
+      "tipo_cuenta": "MESA",
+      "comensal": "Cuenta General de la Mesa",
+      "tipo_servicio": "En Mesa",
+      "metodo_pago": "Pago al mesero en mesa",
+      "estado": "ENTREGADO",
+      "estado_pago": "PAGADO",
+      "monto_pagado": 229,
+      "saldo_pendiente": 0,
+      "items": [
+        {
+          "producto_id": "prod-pizza-burrata",
+          "nombre": "Pizza Artesanal Burrata \u0026 Prosciutto",
+          "imagen": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format\u0026fit=crop\u0026w=800\u0026q=80",
+          "precio_base": 229.00,
+          "cantidad": 1,
+          "ingredientes_removidos": [],
+          "extras": [],
+          "precio_unitario": 229.00,
+          "subtotal": 229.00,
+          "notas": ""
+        }
+      ],
+      "subtotal": 229.00,
+      "total": 229.00,
+      "notas_cliente": "",
+      "creado_en": "2026-11-23T04:04:19.2581185Z",
+      "actualizado_en": "2026-11-23T04:04:34.8072772Z",
+      "cerrada": false,
+      "cerrada_en": null,
+      "historial_estados": [
+        {
+          "estado": "NUEVO",
+          "timestamp": "2026-11-23T04:04:19.2581185Z",
+          "cambiado_por": "Comensal PWA"
+        },
+        {
+          "estado": "EN_PREPARACION",
+          "timestamp": "2026-11-23T04:04:22.8378111Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "LISTO",
+          "timestamp": "2026-11-23T04:04:23.6946242Z",
+          "cambiado_por": "Personal / Cocina"
+        },
+        {
+          "estado": "ENTREGADO",
+          "timestamp": "2026-11-23T04:04:24.4960782Z",
           "cambiado_por": "Personal / Cocina"
         }
       ]
@@ -1674,23 +1856,43 @@
       "status": "COMPLETED"
     },
     {
-      "id": "pay-1a1fb55d2e5-ac6e",
-      "order_id": "ord-1a1fb549f5b-4cff",
-      "order_token": "8a99799e-d65c-4e59-98b4-15fb52530c37",
-      "amount": 100,
+      "id": "pay-1a2067c8042-f7eb",
+      "order_id": "ord-1a2067b0b1c-72fb",
+      "order_token": "41ea90fe-e901-4eec-bb99-c101cefbecd6",
+      "amount": 187,
       "method": "EFECTIVO",
       "received_by": "Gerencia",
-      "timestamp": "2026-11-20T23:41:08.1972412Z",
+      "timestamp": "2026-11-23T03:39:12.3226585Z",
       "status": "COMPLETED"
     },
     {
-      "id": "pay-1a1fb5687a8-dfa5",
-      "order_id": "ord-1a1fb55e41b-73d8",
-      "order_token": "98bafdd8-534f-4ce1-91ee-c9f3017c7b05",
-      "amount": 139,
+      "id": "pay-1a206893029-5c28",
+      "order_id": "ord-1a206885dbc-0dfa",
+      "order_token": "4dcc1b64-286d-4e2c-b25f-d73707505ee1",
+      "amount": 65,
+      "method": "TERMINAL_EXTERNA",
+      "received_by": "Caja",
+      "timestamp": "2026-11-23T03:53:03.7851959Z",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "pay-1a206894b89-74d9",
+      "order_id": "ord-1a20687b33b-00f9",
+      "order_token": "f7511ce8-a0ea-41b0-ab61-10554eab0837",
+      "amount": 428,
+      "method": "TERMINAL_EXTERNA",
+      "received_by": "Caja",
+      "timestamp": "2026-11-23T03:53:10.7930342Z",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "pay-1a20693bb77-cdf8",
+      "order_id": "ord-1a206937eba-14c0",
+      "order_token": "4cbe73bf-bbdf-438b-a144-44406491a571",
+      "amount": 229,
       "method": "EFECTIVO",
       "received_by": "Gerencia",
-      "timestamp": "2026-11-20T23:41:54.4729444Z",
+      "timestamp": "2026-11-23T04:04:34.8072555Z",
       "status": "COMPLETED"
     }
   ],
@@ -1781,7 +1983,12 @@
       "diferencia_efectivo": -818,
       "cantidad_pedidos": 1,
       "notas": "",
-      "timestamp": "2026-11-09T23:55:29.1714185Z"
+      "timestamp": "2026-11-09T23:55:29.1714185Z",
+      "fecha": "2026-11-09T23:55:29.1714185Z",
+      "ventas_efectivo": 318,
+      "ventas_tarjeta": 0,
+      "ventas_totales": 318,
+      "total_caja_esperado": 818
     },
     {
       "id": "corte-1a18f7ec0db",
@@ -1797,7 +2004,12 @@
       "diferencia_efectivo": -500,
       "cantidad_pedidos": 0,
       "notas": "",
-      "timestamp": "2026-10-31T01:06:51.2265760Z"
+      "timestamp": "2026-10-31T01:06:51.2265760Z",
+      "fecha": "2026-10-31T01:06:51.2265760Z",
+      "ventas_efectivo": 0,
+      "ventas_tarjeta": 0,
+      "ventas_totales": 0,
+      "total_caja_esperado": 500
     }
   ],
   "google_review_clicks_log": [

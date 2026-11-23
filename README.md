@@ -157,10 +157,79 @@ Swagger ofrece el detalle de rutas, parámetros y modelos cuando la aplicación 
 
 ## Pruebas con Postman
 
-1. Inicia la API en `http://localhost:5000`.
-2. Importa `Postman/Coleccion.json` en Postman.
-3. Verifica que `base_url` apunte a `http://localhost:5000`.
-4. Ejecuta primero los endpoints de salud/autenticación y después las operaciones protegidas.
+El repositorio incluye la colección oficial lista para importar en `Postman/Coleccion.json`. Cubre tanto los endpoints públicos como las operaciones protegidas con token de administración y cocina.
+
+### Métodos de importación en Postman
+
+Hay dos alternativas para cargar las pruebas en Postman:
+
+#### Opción A: Importar el archivo JSON local (Recomendado)
+1. Abre Postman y presiona el botón **Import** (esquina superior izquierda).
+2. Selecciona o arrastra el archivo [`Postman/Coleccion.json`](file:///d:/Aplicaciones%20Web%20Progresivas/material/CRUDV2/DGustAR_PWA/Postman/Coleccion.json).
+3. La colección **"DGustAR - API REST & PWA Suite"** aparecerá organizada en carpetas con ejemplos de peticiones y cuerpos listos para enviar.
+
+#### Opción B: Importar desde la URL de Swagger
+1. Inicia la API localmente (`dotnet run` en el puerto 5000).
+2. En Postman, ve a **Import** y pega la URL de OpenAPI:
+   ```text
+   http://localhost:5000/swagger/v1/swagger.json
+   ```
+3. Postman generará automáticamente una colección con todos los esquemas y tipos de datos declarados en los controladores.
+
+### Variables preconfiguradas de la colección
+
+La colección ya incluye las siguientes variables de entorno para que no tengas que escribir URLs ni tokens manualmente:
+
+| Variable | Valor por defecto | Descripción |
+| --- | --- | --- |
+| `base_url` | `http://localhost:5000` | Dirección base del servidor de desarrollo local |
+| `admin_token` | `bistro-admin-authorized` | Token predeterminado para rol ADMIN (Gerencia) |
+| `staff_token` | `bistro-staff-authorized` | Token predeterminado para rol STAFF (Cocina KDS) |
+| `mesa` | `Mesa 01` | Mesa predeterminada para pruebas de salón y pedidos |
+
+### Carpetas y endpoints incluidos en la colección
+
+1. **1. Salud & Diagnóstico:**
+   - `GET /api/health`: Comprobación del estado del servicio y si está operando sobre Azure SQL o el fallback local `db.json`.
+   - `GET /swagger/v1/swagger.json`: Especificación OpenAPI v3.
+2. **2. Menú Digital (Público):**
+   - `GET /api/menu`: Catálogo completo con categorías, platillos y enlaces a modelos 3D (`.glb`).
+   - `GET /api/menu/products/{id}`: Ficha detallada de un platillo.
+3. **3. Mesas & Salón:**
+   - `GET /api/tables`: Listado de mesas físicas configuradas.
+   - `GET /api/tables/{mesa}/account`: Resumen de consumo y cuenta activa de una mesa.
+   - `POST /api/tables/{mesa}/call-waiter`: Alerta de llamado al mesero enviada a cocina vía WebSockets.
+   - `POST /api/tables/{mesa}/request-bill`: Solicitud de ticket o cuenta de la mesa.
+   - `POST /api/tables/{mesa}/close`: Cierre y liberación de mesa (protegido con `x-admin-token`).
+4. **4. Pedidos & Comandas:**
+   - `POST /api/orders`: Registro de comanda en mesa con notificación instantánea a cocina.
+   - `GET /api/orders/{token}`: Consulta de estatus de preparación por token de comensal.
+5. **5. Administración & KDS (Protegido con `x-admin-token`):**
+   - `POST /api/admin/login`: Validación de PIN (`1234` para Gerencia, `1111` para Personal).
+   - `GET /api/admin/orders`: Listado de comandas activas con filtros por estado y mesa.
+   - `PATCH /api/admin/orders/{id}/status`: Avance de estados en cocina (`NUEVO` ➔ `EN_PREPARACION` ➔ `LISTO` ➔ `ENTREGADO`).
+   - `GET /api/admin/products`: Consulta de platillos con filtros (nombre, categoría, disponibilidad, precios).
+   - `GET /api/admin/products/{id}`: Consulta directa de platillo por ID.
+   - `POST /api/admin/products`: Creación de nuevos platillos.
+   - `PATCH /api/admin/products/{id}/toggle`: Alternar disponibilidad (agotado/disponible).
+6. **6. Pagos & Caja:**
+   - `POST /api/admin/payments`: Registro de cobro en efectivo con validación de monto recibido y cálculo automático de cambio (`received_amount`, `change`), con liberación opcional de mesa.
+   - `POST /api/admin/payments/collect-all-pending`: Liquidación de todas las órdenes entregadas pendientes.
+   - `GET /api/admin/corte-caja/report`: Arqueo y cálculo de ventas en efectivo, tarjeta y esperado en caja.
+   - `POST /api/admin/corte-caja`: Ejecución y guardado de corte de caja en el historial.
+   - `GET /api/admin/corte-caja/history`: Historial de cortes previos.
+7. **7. Reseñas & Calificaciones:**
+   - `POST /api/reviews`: Publicación de reseñas y estrellas de clientes.
+   - `GET /api/reviews`: Estadísticas agregadas, porcentaje de satisfacción y listado de opiniones.
+
+### Flujo recomendado para realizar pruebas completas
+
+1. **Paso 1:** Ejecutar `GET /api/health` para comprobar que la API esté respondiendo en `http://localhost:5000`.
+2. **Paso 2:** Probar `POST /api/admin/login` con PIN `1234` para verificar la autenticación administrativa.
+3. **Paso 3:** Consultar el catálogo con `GET /api/menu` o buscar platillos con `GET /api/admin/products?nombre=pizza`.
+4. **Paso 4:** Simular un pedido de mesa enviando `POST /api/orders` y avanzar su estado con `PATCH /api/admin/orders/{id}/status`.
+5. **Paso 5:** Simular el cobro con `POST /api/admin/payments` enviando `amount`, `received_amount` y `change` para verificar el registro de cambio en efectivo.
+6. **Paso 6:** Consultar el corte con `GET /api/admin/corte-caja/report` y cerrarlo con `POST /api/admin/corte-caja`.
 
 ## Notas importantes
 
