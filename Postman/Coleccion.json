@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "dgustar-pwa-api-collection-v1",
     "name": "DGustAR - API REST & PWA Suite",
-    "description": "Colección oficial de pruebas para DGustAR (ASP.NET Core Web API .NET 10 / SQL Server / WebSocket).\nIncluye endpoints públicos de menú, pedidos y mesas, así como endpoints protegidos de administración, KDS y corte de caja.",
+    "description": "Colección oficial de pruebas para DGustAR (ASP.NET Core Web API .NET 8 / SQL Server / WebSocket).\nIncluye endpoints públicos de menú, pedidos y mesas, así como endpoints protegidos de administración, KDS y corte de caja.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
@@ -38,8 +38,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/health",
-              "host": ["{{base_url}}"],
-              "path": ["api", "health"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "health"
+              ]
             },
             "description": "Verifica si el servicio está en línea y si está operando sobre Azure SQL / SQL Server o almacenamiento fallback local."
           }
@@ -51,8 +56,14 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/swagger/v1/swagger.json",
-              "host": ["{{base_url}}"],
-              "path": ["swagger", "v1", "swagger.json"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "swagger",
+                "v1",
+                "swagger.json"
+              ]
             },
             "description": "Especificación OpenAPI v3 para importar automáticamente en Postman o herramientas de integración."
           }
@@ -69,8 +80,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/menu",
-              "host": ["{{base_url}}"],
-              "path": ["api", "menu"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "menu"
+              ]
             },
             "description": "Retorna el catálogo gastronómico completo con categorías activas, platillos y enlaces a modelos 3D."
           }
@@ -82,8 +98,15 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/menu/products/prod-burger-classic",
-              "host": ["{{base_url}}"],
-              "path": ["api", "menu", "products", "prod-burger-classic"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "menu",
+                "products",
+                "prod-burger-classic"
+              ]
             },
             "description": "Obtiene la ficha técnica, descripción, precio y modelo 3D GLB de un platillo específico."
           }
@@ -100,8 +123,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/tables",
-              "host": ["{{base_url}}"],
-              "path": ["api", "tables"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tables"
+              ]
             },
             "description": "Retorna la lista de mesas habilitadas y configuradas en el restaurante."
           }
@@ -113,8 +141,15 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/tables/{{mesa}}/account",
-              "host": ["{{base_url}}"],
-              "path": ["api", "tables", "{{mesa}}", "account"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "{{mesa}}",
+                "account"
+              ]
             },
             "description": "Calcula el total de la cuenta, órdenes activas y resumen de consumo para una mesa."
           }
@@ -135,8 +170,15 @@
             },
             "url": {
               "raw": "{{base_url}}/api/tables/{{mesa}}/call-waiter",
-              "host": ["{{base_url}}"],
-              "path": ["api", "tables", "{{mesa}}", "call-waiter"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "{{mesa}}",
+                "call-waiter"
+              ]
             },
             "description": "Envía una alerta en tiempo real a cocina y barra vía WebSockets notificando asistencia en mesa."
           }
@@ -157,8 +199,15 @@
             },
             "url": {
               "raw": "{{base_url}}/api/tables/{{mesa}}/request-bill",
-              "host": ["{{base_url}}"],
-              "path": ["api", "tables", "{{mesa}}", "request-bill"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "{{mesa}}",
+                "request-bill"
+              ]
             },
             "description": "Avisa al personal que la mesa solicita su ticket de cobro."
           }
@@ -175,8 +224,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/tables/{{mesa}}/close",
-              "host": ["{{base_url}}"],
-              "path": ["api", "tables", "{{mesa}}", "close"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tables",
+                "{{mesa}}",
+                "close"
+              ]
             },
             "description": "Marca todas las órdenes de la mesa como finalizadas y la deja lista para nuevos comensales."
           }
@@ -202,8 +258,13 @@
             },
             "url": {
               "raw": "{{base_url}}/api/orders",
-              "host": ["{{base_url}}"],
-              "path": ["api", "orders"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders"
+              ]
             },
             "description": "Crea una orden con estado NUEVO y emite el evento NEW_ORDER vía WebSockets a cocina."
           }
@@ -215,8 +276,14 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/orders/ord-sample-token",
-              "host": ["{{base_url}}"],
-              "path": ["api", "orders", "ord-sample-token"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "orders",
+                "ord-sample-token"
+              ]
             },
             "description": "Permite al cliente seguir en tiempo real el estado de preparación de su comanda."
           }
@@ -242,8 +309,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/login",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "login"
+              ]
             },
             "description": "Valida el PIN de Gerencia (1234) y devuelve el token de sesión con rol ADMIN."
           }
@@ -264,8 +337,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/login",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "login"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "login"
+              ]
             },
             "description": "Valida el PIN de Cocina (1111) y devuelve el token de sesión con rol STAFF."
           }
@@ -282,8 +361,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/orders?estado=&mesa=",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "orders"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "orders"
+              ],
               "query": [
                 {
                   "key": "estado",
@@ -318,8 +403,16 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/orders/ord-ejemplo-id/status",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "orders", "ord-ejemplo-id", "status"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "orders",
+                "ord-ejemplo-id",
+                "status"
+              ]
             },
             "description": "Cambia el estado de una comanda (NUEVO, EN_PREPARACION, LISTO, ENTREGADO, CANCELADO) y lo notifica vía WebSockets."
           }
@@ -336,8 +429,14 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/products?nombre=pizza&categoria=&disponible=true&precioMin=50&precioMax=300",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "products"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "products"
+              ],
               "query": [
                 {
                   "key": "nombre",
@@ -376,8 +475,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/products/prod-burger-classic",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "products", "prod-burger-classic"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "products",
+                "prod-burger-classic"
+              ]
             },
             "description": "Busca un platillo específico por su identificador único."
           }
@@ -402,8 +508,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/products",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "products"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "products"
+              ]
             },
             "description": "Registra un nuevo platillo en el catálogo."
           }
@@ -420,8 +532,16 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/products/prod-burger-classic/toggle",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "products", "prod-burger-classic", "toggle"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "products",
+                "prod-burger-classic",
+                "toggle"
+              ]
             },
             "description": "Cambia rápidamente la disponibilidad de un producto sin editar todos sus datos."
           }
@@ -451,8 +571,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/payments",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "payments"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "payments"
+              ]
             },
             "description": "Registra el pago de una orden. Valida el monto recibido, calcula el cambio entregado y opcionalmente libera la mesa."
           }
@@ -477,8 +603,15 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/payments/collect-all-pending",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "payments", "collect-all-pending"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "payments",
+                "collect-all-pending"
+              ]
             },
             "description": "Marca todas las comandas entregadas pendientes de cobro como liquidadas."
           }
@@ -495,8 +628,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/corte-caja/report?period=shift",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "corte-caja", "report"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "corte-caja",
+                "report"
+              ],
               "query": [
                 {
                   "key": "period",
@@ -527,8 +667,14 @@
             },
             "url": {
               "raw": "{{base_url}}/api/admin/corte-caja",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "corte-caja"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "corte-caja"
+              ]
             },
             "description": "Guarda el corte en el historial con diferencias de efectivo y arqueo."
           }
@@ -545,8 +691,15 @@
             ],
             "url": {
               "raw": "{{base_url}}/api/admin/corte-caja/history",
-              "host": ["{{base_url}}"],
-              "path": ["api", "admin", "corte-caja", "history"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "corte-caja",
+                "history"
+              ]
             },
             "description": "Retorna la lista histórica de cortes de caja realizados."
           }
@@ -572,8 +725,13 @@
             },
             "url": {
               "raw": "{{base_url}}/api/reviews",
-              "host": ["{{base_url}}"],
-              "path": ["api", "reviews"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
             },
             "description": "Registra una reseña de comensal en el sistema."
           }
@@ -585,8 +743,13 @@
             "header": [],
             "url": {
               "raw": "{{base_url}}/api/reviews",
-              "host": ["{{base_url}}"],
-              "path": ["api", "reviews"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "reviews"
+              ]
             },
             "description": "Retorna el promedio de estrellas, porcentaje de satisfacción y lista de opiniones."
           }
