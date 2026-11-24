@@ -270,8 +270,8 @@
       };
 
       const updateCashPayment = (modal, fields) => {
-        const totalMatch = (modal.textContent || '').match(/Total a Cobrar\s*\$\s*([\d,.]+)/i);
-        const total = money(totalMatch?.[1]);
+        const totalLabel = [...modal.querySelectorAll('span')].find((el) => /^Total a Cobrar$/i.test((el.textContent || '').trim()));
+        const total = money(totalLabel?.nextElementSibling?.textContent);
         const input = fields.querySelector('input');
         const received = money(input.value);
         const change = Math.max(0, received - total);

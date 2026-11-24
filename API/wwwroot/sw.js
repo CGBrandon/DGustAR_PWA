@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dgustar-pwa-v10';
+const CACHE_NAME = 'dgustar-pwa-v11';
 
 // Recursos del App Shell (críticos — se cachean en install)
 const CORE_ASSETS = [
