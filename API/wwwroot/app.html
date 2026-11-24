@@ -265,7 +265,7 @@
           fields.querySelector('input').addEventListener('input', () => updateCashPayment(modal, fields));
         }
 
-        fields.hidden = terminalSelected;
+        if (fields.hidden !== terminalSelected) fields.hidden = terminalSelected;
         if (!terminalSelected) updateCashPayment(modal, fields);
       };
 
@@ -275,7 +275,7 @@
         const input = fields.querySelector('input');
         const received = money(input.value);
         const change = Math.max(0, received - total);
-        fields.querySelector('strong').textContent = `$${change.toFixed(2)}`;
+        const changeLabel = fields.querySelector('strong'); const changeText = `$${change.toFixed(2)}`; if (changeLabel.textContent !== changeText) changeLabel.textContent = changeText;
         fields.classList.toggle('is-invalid', received > 0 && received < total);
         cashPayment = { input, total };
       };
